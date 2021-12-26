@@ -1,0 +1,104 @@
+html, body, div, section, p {
+  font-family: "Open Sans","Arial","Helvetica",sans-serif;
+  font-weight: normal;
+  font-size: 0.9em;
+  -webkit-transition: all 0s;
+  -moz-transition: all 0s;
+  -o-transition: all 0s;
+  transition: all 0s;
+}
+
+a {
+  word-break: break-all;
+}
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 {
+    margin: 0 0 20px 0;
+    font-family: "Open Sans","Arial","Helvetica",sans-serif;
+    font-weight: normal;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    text-transform: none;
+    text-shadow: none;
+    word-wrap: break-word;
+}
+
+.reveal section.level1 h1 {
+  color: #333333;
+  font-size:1.5em;
+  background-color:#fcfcfc;
+  margin-top:250px;
+  border-top: 3px solid #999999;
+  border-bottom: 3px solid #999999;
+  padding: 50px 0px 50px;
+}
+
+.reveal section.level2 h1 {
+  color: #0084D8;
+  font-size:1.2em;
+}
+
+.reveal ul, .reveal li, .reveal p {
+  text-align:left;
+  width:100%;
+}
+
+.reveal pre {
+  font-size: 0.7em;
+  font-family: "Inconsolata","Consolas",monospace;
+  line-height: 1em;
+  word-wrap: break-word;
+  box-shadow: none;
+  margin: 10px auto;
+  width: 95%;
+}
+
+.reveal pre code {
+  padding: 2px;
+}
+
+.reveal code {
+  font-family: "Inconsolata","Consolas",monospace;
+}
+
+.reveal pre.sourceCode {
+  background-color: #f9f9f9;
+}
+
+div.sourceCode {
+  margin: 10px 0;
+}
+
+.reveal section p img {
+  position:relative;
+  width:90%;
+  left:50%;
+  margin-left:-45%;
+  text-align:center;
+  border: 0px solid #999999;
+  box-shadow:none;
+}
+
+.reveal .bibref {
+  font-size:0.6em;
+  line-height: normal;
+}
+
+.reveal .small p,
+.reveal .small table,
+.reveal .small li,
+.reveal .small pre {
+  font-size:0.75em;
+}
+
+.reveal .smaller p,
+.reveal .smaller table,
+.reveal .smaller li,
+.reveal .smaller pre {
+  font-size:0.6em;
+}
+
+p > .math {
+  text-align: center;
+  margin:auto;
+}
