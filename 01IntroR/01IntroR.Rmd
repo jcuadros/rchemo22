@@ -372,6 +372,32 @@ a[order(a)]
 a[order(a,decreasing = T)]
 ```
 
+------------------------------------------------------------------------
+
+### Selecting elements
+
+```{r, echo = TRUE}
+a <- 10:40
+a[3]
+a[4:6]
+a[7] <- 0
+b <- a[a!=0]
+b
+length(b)
+```
+
+
+## YOUR TURN {data-background=#eeffcc}
+
+1.    Create a numerical vector that includes all multiples of seven up to 1000.
+
+2.    Exclude the numbers that have a last digit equal to 3. Here is a hint (`%%` is the modulus/remainder operation): try `1004 %% 10`
+
+3.    How many numbers are left in the vector?
+
+4.    How many of these numbers have a 5 in their representation?
+
+
 ## Data Structures -- factor
 
 A factor is an indexed character vector. It is usually created from a character vector.
@@ -432,6 +458,12 @@ dfA$let
 ```
 
 Additional options exist to select rows and columns. We'll go into that later on.
+
+
+## YOUR TURN {data-background=#eeffcc}
+
+1.    Create a data frame that includes five different properties for eight *n*-alkanes. Data can be obtained from <https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Book%3A_Basic_Principles_of_Organic_Chemistry_(Roberts_and_Caserio)/04%3A_Alkanes/4.02%3A_Physical_Properties_of_Alkanes_and_The_Concept_of_Homology> or <https://doi.org/10.1007/s40747-020-00262-0> for example. Include, at least, IUPAC name, formula number of carbons and boiling point. 
+
 
 ## Other Data Structures -- list
 
@@ -524,332 +556,383 @@ a %*% solve(a)
 ```
 :::
 
+
 # Basic Graphics in R
 
-## ¿Para qué usamos los gráficos?
+## ¿Why Using Graphics?
 
-La principales funciones de los gráficos en el análisis de datos son
+Main uses of graphics and visualization in data analysis are
 
--   explorar los datos y facilitar su comprensión,
--   permitir el descubrimiento de patrones no evidentes, y
--   comunicar efectivamente los resultados de los análisis.
+-   data exploration and interpretation,
+-   non-evident pattern discovery, and
+-   communication of analysis results.
 
-## Gráficos en R
+## Graphics in R
 
-Veremos dos paradigmas distintos para la creación de gráficos en R.
+R includes many paradigms for graphics development. These include
 
--   Gráficos creados con el paquete `base`.
--   Gráficos creados en base a la gramática de gráficos (*GoG*), usando el paquete `ggplot2`
+-   R `base` plots,
+-   Grammar Of Graphics (*GoG*) based representations, with the `ggplot2` package,
+-   Lattice charts, using the `lattice` package,
+-   A formula-based grammar of graphics, `ggformula`,
+-   `ggvis`, an interactive grammar of graphics framework, among many others.
 
-## Gráficos en `base` R
+We will here discuss the simplest charts, those from `base` R.
 
-Los gráficos en `base` R se construyen a partir de datos en vectores y usando funciones específicas en función del gráfico a realizar.
 
-Para ejemplificar algunas de estas funciones, usaremos el conjunto de datos `mtcars`, que forma de los paquetes básicos de R.
+## Graphics in `base` R
+
+Graphics in `base` R are usually constructed from vectors by using specific functions depending on the desired chart.
+
+To exemplify some of these functions we will use the `airquality` data set, one of many data sets included in `base`R.
+
+Access help for details on the data set..
+
+```{r, echo = TRUE, eval = FALSE}
+help("airquality")
+```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = TRUE}
-str(mtcars)
+str(airquality)
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = TRUE}
-head(mtcars, 10)
+head(airquality, 10)
 ```
 
 ------------------------------------------------------------------------
 
-Veremos como crear
+We will show how to make
 
--   gráficos de dispersión,
--   histogramas,
--   diagramas de barras, y
--   diagramas de caja (*boxplot*)
+-   scatterplots,
+-   histograms,
+-   bar plots, and
+-   boxplots
 
-## Gráficos en `base` R -- gráfico de dispersión
+
+## Graphics in `base` R -- scatterplot
 
 ```{r, echo = TRUE, eval = FALSE}
-plot(mtcars$disp,mtcars$hp)
+plot(airquality$Solar.R,airquality$Ozone)
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = FALSE, eval = TRUE}
-plot(mtcars$disp,mtcars$hp)
+plot(airquality$Solar.R,airquality$Ozone)
 ```
 
 ------------------------------------------------------------------------
 
-## Gráficos en `base` R -- histograma
+## Graphics in `base` R -- histogram
 
 ```{r, echo = TRUE, eval = FALSE}
-hist(mtcars$disp)
+hist(airquality$Ozone)
 ```
 
-Añadiendo una curva de densidad...
+With a density curve...
 
 ```{r, echo = TRUE, eval = FALSE}
-hist(mtcars$disp,breaks=20,freq=FALSE)
-lines(density(mtcars$disp))
+hist(airquality$Ozone, breaks = 23, freq = FALSE)
+lines(density(airquality$Ozone, na.rm=TRUE))
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = FALSE, eval = TRUE}
-hist(mtcars$disp)
+hist(airquality$Ozone)
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = FALSE, eval = TRUE}
-hist(mtcars$disp,breaks=20,freq=FALSE)
-lines(density(mtcars$disp))
+hist(airquality$Ozone, breaks = 23, freq = FALSE)
+lines(density(airquality$Ozone, na.rm=TRUE))
 ```
 
 ------------------------------------------------------------------------
 
-## Gráficos en `base` R -- diagrama de barras
+## Graphics in `base` R -- bar plot
 
 ```{r, echo = TRUE, eval = FALSE}
-barplot(table(as.factor(mtcars$cyl)))
+barplot(table(cut(airquality$Wind, breaks=seq(0,22,by=2))))
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = FALSE, eval = TRUE}
-barplot(table(as.factor(mtcars$cyl)))
+barplot(table(cut(airquality$Wind, breaks=seq(0,22,by=2))))
 ```
 
-## Gráficos en `base` R -- diagrama de caja
+## Graphics in `base` R -- boxplot
 
 ```{r, echo = TRUE, eval = FALSE}
-boxplot(mtcars$disp)
-points(mean(mtcars$disp))
+boxplot(airquality$Ozone)
+points(mean(airquality$Ozone, na.rm=TRUE),pch="+")
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = FALSE, eval = TRUE}
-boxplot(mtcars$disp)
-points(mean(mtcars$disp))
+boxplot(airquality$Ozone)
+points(mean(airquality$Ozone, na.rm=TRUE),pch="+")
 ```
+
 
 # Basic Stats with R
 
-## Funciones de la estadística
+## Statistics Goals
 
-La **estadística**, como parte de la matemática que se ocupa de la recolección, análisis e interpretación de datos, tiene dos funciones principales
+**Statistics** is the mathematics sub-discipline which covers the collection, analysis and interpretation of data. It has two main goals:
 
-1.  la descripción de conjuntos de datos (**estadística descriptiva**), y
-2.  la extracción de conclusiones a partir de estos datos (**inferencia**)
+1.  To describe a set of data (**descriptive statistics**), y
+2.  To extract conclusions about the population from the available data (**inferential statisitcs**)
 
-En este repaso de la estadística básica, usaremos (de nuevo) el conjunto de datos `mtcars`.
+In this statistics review, we will again use the `airquality` data set. Details on the data set are avalable at...
 
-------------------------------------------------------------------------
-
-```{r, echo = TRUE}
-str(mtcars)
+```{r, echo = TRUE, eval = FALSE}
+help("airquality")
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = TRUE}
-head(mtcars, 10)
+str(airquality)
 ```
 
-## Descriptiva de una variable
 
-A menudo, el primer interés que tendremos es el de describir un conjunto de datos correspondientes a una sola variable. Esta es la situación con la que empezaremos.
+## Descriptive statistics for one variable
 
-¿Cómo se describe un conjunto de datos univariante?
+Often, we need to start by exploring and describing each variable data. Let's start here. 
 
-Normalmente se consideran los siguientes aspectos
+Common aspects to consider when analyzing a single variable are 
 
--   frecuencias y cuantiles,
--   tendencia central (también llamado localización o posición),
--   dispersión, y
--   análisis de puntos extremos
+-   distribution: frequencies and quantiles,
+-   central tendency (also referred as localization o position),
+-   spread, and
+-   analysis of outliers.
 
-## Descriptiva de una variable -- frecuencias y cuantiles
 
-**Tamaño de la muestra o número de datos**
+## Descriptive statistics for one variable -- distribution
 
+### Summary 
 ```{r, echo = TRUE}
-length(mtcars$disp)
-n <- sum(!is.na(mtcars$disp))
+summary(airquality)
+```
+
+------------------------------------------------------------------------
+
+### Sample size or number of data points
+```{r, echo = TRUE}
+length(airquality$Ozone)
+n <- sum(!is.na(airquality$Ozone))
 n
 ```
 
 ------------------------------------------------------------------------
 
-**Frecuencias absolutas y relativas**
+### Absolute and relative frequencies
 
-Para una variable cuantitativa (*numeric*)...
+For a quantitative variable (`numeric`)...
 
 ```{r, echo = TRUE}
-frec_abs <- table(cut(mtcars$disp,
-      breaks=c(0,100,200,300,400,500,Inf)))
+frec_abs <- table(cut(airquality$Solar.R,
+      breaks=c(0,50,100,150,200,
+               250,300,350)))
 frec_abs
 
-frec_rel <- frec_abs / n
+frec_rel <- frec_abs / sum(frec_abs)
 frec_rel
 ```
 
 ------------------------------------------------------------------------
 
-**Cuantiles**
+For a qualitative variable (usually `factor`)...
 
 ```{r, echo = TRUE}
-quantile(mtcars$disp,.1)
-quantile(mtcars$disp,1:4*.2)
+frec_abs <- table(as.factor(airquality$Month))
+frec_abs
+
+frec_rel <- frec_abs / sum(frec_abs)
+frec_rel
 ```
 
-## Descriptiva de una variable -- tendencia central
+------------------------------------------------------------------------
+
+### Quantiles
 
 ```{r, echo = TRUE}
-mean(mtcars$disp)
-median(mtcars$disp)
-```
-
-## Descriptiva de una variable -- dispersión
-
-```{r, echo = TRUE}
-var(mtcars$disp) # el denominador es n-1
-sd(mtcars$disp)
-range(mtcars$disp)
+quantile(airquality$Wind,.1)
+quantile(airquality$Wind,0:5*.2)
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = TRUE}
-diff(range(mtcars$disp))
-IQR(mtcars$disp)
-mad(mtcars$disp) # mean absolute deviation
+# Excel PERCENTILE and R default are type 7
+c(min = min(airquality$Wind), quantile(airquality$Wind,0:5*.2),
+  max = max(airquality$Wind))    
+# Excel PERCENTILE.EXC, SPSS and Minitab default are type 6
+c(min = min(airquality$Wind), quantile(airquality$Wind,0:5*.2, type=6),
+  max = max(airquality$Wind))
+
 ```
 
-## Descriptiva de una variable -- puntos extremos
+
+## Descriptive statistics for one variable -- central tendency
 
 ```{r, echo = TRUE}
-lmin <- quantile(mtcars$disp,.25) - 1.5*IQR(mtcars$disp) 
-lmax <- quantile(mtcars$disp,.75) + 1.5*IQR(mtcars$disp) 
-mtcars$disp[mtcars$disp > lmax | mtcars$disp < lmin]
+mean(airquality$Ozone)
+mean(airquality$Ozone, na.rm = TRUE)
+median(airquality$Ozone, na.rm = TRUE)
 ```
+
+## Descriptive statistics for one variable -- spread
 
 ```{r, echo = TRUE}
-lmin <- quantile(mtcars$qsec,.25) - 1.5*IQR(mtcars$qsec) 
-lmax <- quantile(mtcars$qsec,.75) + 1.5*IQR(mtcars$qsec) 
-mtcars$qsec[mtcars$qsec > lmax | mtcars$qsec < lmin]
+var(airquality$Ozone, na.rm = TRUE) # denominator is n-1
+sd(airquality$Ozone, na.rm = TRUE)
+range(airquality$Ozone, na.rm = TRUE)
+diff(range(airquality$Ozone, na.rm = TRUE))
 ```
 
-## Descriptiva de una variable -- gráficos
+------------------------------------------------------------------------
 
-Gráficamente, son útiles para describir un conjunto de datos
+```{r, echo = TRUE}
+IQR(airquality$Ozone, na.rm = TRUE)
+mad(airquality$Ozone, na.rm = TRUE) # mean absolute deviation
+```
 
--   para variables cuantitativas: el diagrama de caja y el histograma
+## Descriptive statistics for one variable -- outliers
+
+There different methods to analyze outliers in R. A nice description can be found at <https://statsandr.com/blog/outliers-detection-in-r/>
+
+```{r, echo = TRUE}
+# Hampel filter  
+lmin <- median(airquality$Wind,.25) - 3 * mad(airquality$Wind)
+lmax <- median(airquality$Wind,.75) + 3 * mad(airquality$Wind) 
+c(as.numeric(lmin),as.numeric(lmax))
+airquality$Wind[airquality$Wind > lmax | airquality$Wind < lmin]
+```
+
+------------------------------------------------------------------------
+
+```{r, echo = TRUE}
+# IQR method
+lmin <- quantile(airquality$Wind,.25) - 1.5 * IQR(airquality$Wind)
+lmax <- quantile(airquality$Wind,.75) + 1.5 * IQR(airquality$Wind) 
+c(as.numeric(lmin),as.numeric(lmax))
+airquality$Wind[airquality$Wind > lmax | airquality$Wind < lmin]
+boxplot.stats(airquality$Wind)$out
+```
+
+
+## Descriptive statistics for one variable -- plots
+
+Plots are also useful to describe a data set.
+
+-   For quantitative variables: boxplot and histogram
 
 ```{r, echo = TRUE, eval = FALSE}
-boxplot(mtcars$qsec)
-hist(mtcars$qsec)
+boxplot(airquality$Wind)
+points(mean(airquality$Wind),pch=3)
+
+hist(airquality$Wind)
 ```
 
--   para variables cualitativas: el diagrama de barras
+-   For qualitative variables: bar plot
 
 ```{r, echo = TRUE, eval = FALSE}
-barplot(table(factor(mtcars$cyl)))
+barplot(table(airquality$Month))
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = FALSE}
-boxplot(mtcars$qsec)
-points(mean(mtcars$qsec),pch=3)
+boxplot(airquality$Wind)
+points(mean(airquality$Wind),pch=3)
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = FALSE}
-hist(mtcars$qsec)
+hist(airquality$Wind)
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = FALSE}
-barplot(table(factor(mtcars$cyl)))
+barplot(table(airquality$Month))
 ```
 
-## Descriptiva de dos variables
 
-Para el estudio y descripción de la relación entre dos variables, las técnicas más habituales incluyen
+## Descriptive statistics for two variables
 
--   las tablas de contingencia,
--   los coeficientes de correlación, y muy especialmente el producto-momento de Pearson, y
--   los gráficos de dispersión
+To study and describe the relation between two variables, common techniques include
 
-## Descriptiva de dos variables -- tabla de contingencia
+-   contingency tables,
+-   correlation coefficients, and
+-   scatterplots.
 
-Es el concepto equivalente a las tablas de frecuencias en el caso univariante.
 
-Para variables cualitativas...
+## Descriptive statistics for two variables -- cotingency table
+
+The contingency table is a two-way frequency table.
 
 ```{r, echo = TRUE}
-table(factor(mtcars$am),factor(mtcars$cyl))
+table(cut(airquality$Wind,breaks = seq(1,21,by=5)),
+      cut(airquality$Temp,breaks = seq(50,100,by=10)))
 ```
 
-------------------------------------------------------------------------
+## Descriptive statistics for two variables -- correlation coeffcient
 
-Para variables cuantitativas...
+### Pearson product-moment correlation coefficent
 
 ```{r, echo = TRUE}
-table(cut(mtcars$disp,breaks = seq(0,500,by=100)),
-      cut(mtcars$qsec,breaks = seq(13,25,by=3)))
+cor(airquality$Temp,airquality$Wind)
 ```
 
-## Descriptiva de dos variables -- coeficiente de correlación
-
-**Producto-momento de Pearson**
+### Spearman correlation coefficent
 
 ```{r, echo = TRUE}
-cor(mtcars$disp,mtcars$qsec)
+cor(airquality$Temp,airquality$Wind,method = "spearman")
 ```
 
-**Coeficiente de correlación de Spearman**
-
-```{r, echo = TRUE}
-cor(mtcars$disp,mtcars$qsec, method = "spearman")
-```
-
-## Descriptiva de dos variables -- gráfico de dispersión
+## Descriptive statistics for two variables -- scatterplot
 
 ```{r, echo = TRUE, eval = FALSE}
-plot(mtcars$disp,mtcars$qsec)
+plot(airquality$Temp,airquality$Wind)
 ```
 
 ------------------------------------------------------------------------
 
 ```{r, echo = FALSE}
-plot(mtcars$disp,mtcars$qsec)
+plot(airquality$Temp,airquality$Wind)
 ```
 
-## Distribuciones de probabilidad
 
-La distribución de probabilidad de un número aleatorio corresponde a la abstracción teórica de la densidad de los datos de una conjunto. Representa la densidad que se obtendría cunado se generasen infinitos números aleatorios de acuerdos a un mismo procedimiento o experimento.
+## Probability Distributions
 
-Un gran número de distribuciones experimentales tienen modelos teóricos con los que se relacionan. Los tres más comunes son la distribución normal (para datos de variables cuantitativas continuas), la distribución uniforme (para cualquier tipo de datos) y la distribución binomial (para el número de veces que se produce un suceso de una determinada probabilidad).
+A probability distribution of a random number corresponds to the abstraction of the density distribution of a set of infinite number of data with the same origin.
 
-------------------------------------------------------------------------
-
-En **R**, todas las distribuiciones comparten el mismo sistema de funciones
-
--   `r<dist>`: genera aleatorios deacuerdo con una distribución de probabilidad
--   `d<dist>`: devuelve la densidad de probablidad para un valor de variable
--   `q<dist>`: devuelve el valor de la variable tal que la probablidad
--   `p<dist>`: devuelve la probablidad que un valor sea inferior o igual a x
+A large number of experimental distributions have related theoretical models. The most common theoretical distributions are the normal distribution (for continuous variables), the uniform distribution (for continuous or discrete variables), and the binomial distribution (for the number of successes of a discrete event with a defined probability).
 
 ------------------------------------------------------------------------
 
-Por ejemplo, para la distribución normal estándar...
+In **R**, all theoretical distributions share the same system of functions
+
+-   `r<dist>`: to generate random numbers according to the distribution
+-   `d<dist>`: to calculate the density for a value of the variable
+-   `q<dist>`: to obtain the value of the variable (quantile) for an accumulated probability
+-   `p<dist>`: to obtain the accumulated probability for a value of the variable
+
+------------------------------------------------------------------------
+
+For example, for the normal distribution...
 
 ```{r, echo = TRUE}
 rnorm(10)
@@ -858,7 +941,7 @@ qnorm(.95)
 pnorm(1.64)
 ```
 
-## Distribuciones de probabilidad - normal
+## Probability Distributions -- normal
 
 ```{r, echo = TRUE, eval = FALSE}
 df <- data.frame(x = rnorm(1000, mean = 3, sd = 1))
@@ -888,7 +971,7 @@ qnorm(c(0.95,0.975,.99,.995,.999),mean = 0,sd = 1)
 
 ```
 
-## Distribuciones de probabilidad - uniforme
+## Probability Distributions -- uniforme
 
 ```{r, echo = TRUE, eval = FALSE}
 df <- data.frame(x = runif(1000, min = 10, max = 20))
@@ -915,7 +998,7 @@ punif(12, min=10, max=20)
 qunif(.90, min=10, max=20)
 ```
 
-## Distribuciones de probabilidad - binomial
+## Probability Distributions -- binomial
 
 ```{r, echo = TRUE, eval = FALSE}
 df <- data.frame(x = rbinom(100,5,prob=0.5))
@@ -936,15 +1019,16 @@ pbinom(2,5,prob=0.5)
 qbinom(.5,5,.5)
 ```
 
-## Distribuciones de probabilidad -- otras
+## Probability Distributions -- other
 
-**R** incorpora otras muchas distribuciones de probabilidad que pueden consultarse en la página correspondiente de la ayuda.
+**R** includes many other distributions that can be looked up in the help files.
 
 ```{r, echo = TRUE, eval = FALSE}
 ? "Distributions"
 ```
 
-## Inferencia
+
+## Inference
 
 En términos estadísticos, la **inferencia** consiste en la obtención de información sobre la población --el conjunto de los valores existentes-- a partir de una muestra representativa de la misma.
 
