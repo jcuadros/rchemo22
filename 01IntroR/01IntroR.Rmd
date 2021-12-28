@@ -451,12 +451,12 @@ Additional options exist to select rows and columns. We'll go into that later on
 
 ## YOUR TURN {data-background=#eeffcc}
 
-1.    Create a data frame that includes five different properties for eight *n*-alkanes. Data can be obtained from <https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Book%3A_Basic_Principles_of_Organic_Chemistry_(Roberts_and_Caserio)/04%3A_Alkanes/4.02%3A_Physical_Properties_of_Alkanes_and_The_Concept_of_Homology> or <https://doi.org/10.1007/s40747-020-00262-0> for example. Include, at least, IUPAC name, formula number of carbons and boiling point. 
+1.    Create a data frame that includes five different properties for eight *n*-alkanes. Data can be obtained from <https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Book%3A_Basic_Principles_of_Organic_Chemistry_(Roberts_and_Caserio)/04%3A_Alkanes/4.02%3A_Physical_Properties_of_Alkanes_and_The_Concept_of_Homology> or <https://doi.org/10.1007/s40747-020-00262-0> for example. Include, at least, IUPAC name, formula, number of carbons and boiling point. 
 
 
 ## Other Data Structures -- list
 
-Lists are one-index structures that can hold data of different types.
+Lists are one-dimensional structures that can store data of different types.
 
 ```{r, echo = TRUE}
 a <- list(2, "2", FALSE)
@@ -1019,24 +1019,27 @@ qbinom(.5,5,.5)
 
 ## Inference
 
-En términos estadísticos, la **inferencia** consiste en la obtención de información sobre la población --el conjunto de los valores existentes-- a partir de una muestra representativa de la misma.
+In statistics, inference is the determination of information about the population -- the entire set of existing values -- from a representative sample and some data model hypothesis.
 
-Si los datos que tenemos no constituyen una muestra *representativa*, cualquier información que queramos extrapolar a la población estará sesgada, es decir, desplazada de su valor real.
-
-------------------------------------------------------------------------
-
-Los resultados de la inferencia se suelen mostrar mediante una de las dos formas siguientes:
-
--   el valor de un parámetro para la población, asociado normalmente a un error o un intervalo de confianza,
--   la probabilidad (*p*) que unos datos, o cualquiera más extremo que ellos, se produzcan siendo cierta una determinada hipótesis, denominada hipótesis nula.
+In case the sample is not representative, any information inferred from it will be biased, potentially displaced from its actual value.
 
 ------------------------------------------------------------------------
 
-Presentaremos a continuación, las técnicas más comúnmente usadas para
+Inference results are commonly shown in either of the following two formats:
 
--   analizar el ajuste a una **distribución**,
--   estudiar la **dispersión** de la población, y
--   estimar o comparar valores de **tendencia central** --localización o posición--
+-   the value of population parameters, usually associated to an error or confidence interval,
+-   the probability (*p*) that the observed data, o any data more extreme than the observed, could be produced from an hypothesized data model, the null hypotesis.
+
+------------------------------------------------------------------------
+
+We will be reviewing here, while we show how to apply them in R, the most common procedures
+
+-   to discuss a fit to a  **distribution**,
+-   to study the population **spread**, and
+-   to estimate o to compare **central tendency** values
+
+
+
 
 ## Inferencia -- distribución
 
