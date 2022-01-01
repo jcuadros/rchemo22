@@ -22,7 +22,7 @@ if(!require("revealjs")) {
 
 RmdFiles <- dir(pattern="*.Rmd", recursive=TRUE)
 for(i in seq(RmdFiles)) {
-  render(RmdFiles[i],encoding ="UTF-8",output_format ="all")
+  render(RmdFiles[i],encoding ="UTF-8")
   file.remove(gsub(".Rmd",".R",RmdFiles[i],fixed=TRUE))
   purl(RmdFiles[i],gsub(".Rmd",".R",RmdFiles[i],fixed=TRUE),
        encoding ="UTF-8", documentation = 2)

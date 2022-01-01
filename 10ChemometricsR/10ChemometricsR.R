@@ -15,7 +15,7 @@
 #'       background_transition: 0
 #' ---
 #' 
-## ----setup, include=FALSE---------------------------------------------------------
+## ----setup, include=FALSE-------------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE, dev="svg")
 
 #' ##

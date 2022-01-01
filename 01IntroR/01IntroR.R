@@ -15,7 +15,7 @@
 #'       background_transition: 0
 #' ---
 #' 
-## ----setup, include=FALSE---------------------------------------------------------
+## ----setup, include=FALSE-------------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE, dev="svg")
 
 #' 
@@ -61,7 +61,7 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' Calculations can be done in the RStudio console. Enter the expression, press `Intro` to execute.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 2 + 3 
 8 ^ 10
 log(100) # Natural logarithm
@@ -81,14 +81,14 @@ log(100) # Natural logarithm
 #' 
 #' -   To look up a function
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## ? "mean"
 ## help("mean")
 
 #' 
 #' -   To search for a text in the help files
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## ?? "anova"
 ## help.search("anova")
 
@@ -112,7 +112,7 @@ log(100) # Natural logarithm
 #' 
 #' To store numerical quantities which are continuous in nature.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- 2
 a
 class(a)
@@ -138,7 +138,7 @@ print(b, digits = 10)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a+b
 a-b
 a*b
@@ -151,7 +151,7 @@ a/b
 #' 
 #' To store integer numbers, such as counts and indices.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 n <- as.integer(340000)
 class(n)
 n <- 2L
@@ -164,7 +164,7 @@ class(n)
 #' 
 #' Character-string literals are quoted (using double or single quotes).
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- "aaa"
 b <- "bbb"
 
@@ -183,7 +183,7 @@ paste(a, b, "hola", sep = ", ")
 #' 
 #' To store values that are either `r T` or `r F`. This is the result of a comparison.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 3 == 2
 b <- 3 != 2 
 b
@@ -206,7 +206,7 @@ b
 #' 
 #' For example...
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- TRUE
 b <- F
 a & b # Operator AND
@@ -220,7 +220,7 @@ any(a, b, F)
 #' 
 #' Data can be converted to a different data type by using a type conversion function. These are named `as.` followed by the destination data type in R.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 as.character(2)
 as.numeric(TRUE)
 
@@ -229,7 +229,7 @@ as.numeric(TRUE)
 #' 
 #' Be aware that not all conversions are possible.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 as.numeric("two")
 as.logical("2+2==4")
 
@@ -240,12 +240,12 @@ as.logical("2+2==4")
 #' 
 #' Some constants are readily available in R.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 pi
 LETTERS  # This is vector. We'll come back to that.
 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## Inf
 ## NaN
 ## NA
@@ -256,7 +256,7 @@ LETTERS  # This is vector. We'll come back to that.
 #' 
 #' Functions to check if a value matches one of these constants are also available.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 is.na(3/0)
 is.null(NULL)
 is.infinite(-3e999)
@@ -278,7 +278,7 @@ is.infinite(-3e999)
 #' 
 #' ## Data Structures -- vector
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- c(2, 3, 4)
 str(a)
 a[2]
@@ -288,7 +288,7 @@ a[2]
 #' 
 #' Most operations are applied to vectors element-wise.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a
 a + a 
 a > 2.5
@@ -298,7 +298,7 @@ a > 2.5
 #' 
 #' Be cautious with data recycling...
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- c(2, 3, 4)
 b <- c(10, 20)
 a * b
@@ -308,7 +308,7 @@ a * b
 #' 
 #' Most R functions take vectors and return vectors.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- c(2, 3, 4)
 abs(sin(a))
 exp(a)
@@ -318,7 +318,7 @@ exp(a)
 #' 
 #' Other returns aggregated values.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 length(a)
 sum(a)
 mean(a)
@@ -330,7 +330,7 @@ mean(a)
 #' 
 #' The presence of an element in vector can be checked with `%in%`.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- c(2, 3, 4)
 3 %in% a
 c(2,5,3,4) %in% a
@@ -342,7 +342,7 @@ c(2,5,3,4) %in% a
 #' 
 #' Sequence vectors are created with `:` or `seq`.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 1:10
 seq(1, 10, by = 2)
 seq(1, 3, length.out = 5) 
@@ -354,7 +354,7 @@ seq(1, 3, length.out = 5)
 #' 
 #' Vectors are ordered with `sort` or `order`.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- c(8, 2, 5, 3)
 sort(a)
 a[order(a)]
@@ -365,7 +365,7 @@ a[order(a,decreasing = T)]
 #' 
 #' ### Selecting elements
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- 10:40
 a[3]
 a[4:6]
@@ -391,7 +391,7 @@ length(b)
 #' 
 #' A factor is an indexed character vector. It is usually created from a character vector.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- c("hola", "adeu","hola", "adeu", "adeu", "bye")
 b <- as.factor(a)
 as.character(b)   # returns a character vector
@@ -403,7 +403,7 @@ str(b)
 #' 
 #' The `factor` function allows manually coding or re-coding the factor.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- factor(c(3, 1, 3, 1, 1, 2), labels = c("adeu", "bye", "hola"))
 a
 levels(a)
@@ -413,7 +413,7 @@ levels(a)
 #' 
 #' A data frame is a rectangular structure of data, organized such as each column is a vector. Different columns may be of different data types.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 dfA <- data.frame(int = 1:10,
                   let = sample(letters, 10, replace = TRUE), 
                   ran = rnorm(10))
@@ -422,7 +422,7 @@ dfA
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 dim(dfA) # Dimensions
 nrow(dfA) # Row count
 ncol(dfA) # Column count
@@ -430,7 +430,7 @@ ncol(dfA) # Column count
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 str(dfA)
 head(dfA, 3) # First rows, 6 by default
 tail(dfA, 2) # Last rows
@@ -440,7 +440,7 @@ tail(dfA, 2) # Last rows
 #' 
 #' To access the data in a data frame, we use indices for row and column (starting at 1). Variables can also be selected by column name by using `$`.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 dfA[2,3]
 dfA[,1]
 dfA$let
@@ -451,20 +451,20 @@ dfA$let
 #' 
 #' ## YOUR TURN {data-background=#eeffcc}
 #' 
-#' 1.    Create a data frame that includes five different properties for eight *n*-alkanes. Data can be obtained from <https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Book%3A_Basic_Principles_of_Organic_Chemistry_(Roberts_and_Caserio)/04%3A_Alkanes/4.02%3A_Physical_Properties_of_Alkanes_and_The_Concept_of_Homology> or <https://doi.org/10.1007/s40747-020-00262-0> for example. Include, at least, IUPAC name, formula number of carbons and boiling point. 
+#' 1.    Create a data frame that includes five different properties for eight *n*-alkanes. Data can be obtained from <https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Book%3A_Basic_Principles_of_Organic_Chemistry_(Roberts_and_Caserio)/04%3A_Alkanes/4.02%3A_Physical_Properties_of_Alkanes_and_The_Concept_of_Homology> or <https://doi.org/10.1007/s40747-020-00262-0> for example. Include, at least, IUPAC name, formula, number of carbons and boiling point. 
 #' 
 #' 
 #' ## Other Data Structures -- list
 #' 
-#' Lists are one-index structures that can hold data of different types.
+#' Lists are one-dimensional structures that can store data of different types.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- list(2, "2", FALSE)
 b <- list(3, "hola", c(2, 3, 4))
 
 #' 
 #' ::: {style="column-count:2;"}
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a
 
 #' 
@@ -474,7 +474,7 @@ a
 #' 
 #' </p>
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 b
 
 #' :::
@@ -482,7 +482,7 @@ b
 #' ------------------------------------------------------------------------
 #' 
 #' ::: {style="column-count:2;"}
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 length(a)
 a[[3]]
 b[[3]][1]
@@ -494,14 +494,14 @@ b[[3]][1]
 #' 
 #' </p>
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 str(b)
 
 #' :::
 #' 
 #' ## Other Data Structures -- ordered factor
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 grades <- c("Pass", "Fail", "Good", "Fail",
            "Good", "Excellent", "Pass")
 grades <- factor(grades,
@@ -516,7 +516,7 @@ levels(grades)
 #' 
 #' A matrix is a rectangular data structure where all data share the same data type.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a <- matrix(c(2, 4, -1, 5), ncol = 2)
 a
 a[2,2]
@@ -526,7 +526,7 @@ a[2,2]
 #' 
 #' ::: {style="column-count:2;"}
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 a * a # Element-wise product
 a %*% a # Matrix product
 t(a) # Transposition
@@ -539,7 +539,7 @@ det(a) # Determinant
 #' 
 #' </p>
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 solve(a) # Inverse
 a %*% solve(a)
 
@@ -577,19 +577,19 @@ a %*% solve(a)
 #' 
 #' Access help for details on the data set..
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## help("airquality")
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 str(airquality)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 head(airquality, 10)
 
 #' 
@@ -605,13 +605,13 @@ head(airquality, 10)
 #' 
 #' ## Graphics in `base` R -- scatterplot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## plot(airquality$Solar.R,airquality$Ozone)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------
 plot(airquality$Solar.R,airquality$Ozone)
 
 #' 
@@ -619,26 +619,26 @@ plot(airquality$Solar.R,airquality$Ozone)
 #' 
 #' ## Graphics in `base` R -- histogram
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## hist(airquality$Ozone)
 
 #' 
 #' With a density curve...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## hist(airquality$Ozone, breaks = 23, freq = FALSE)
 ## lines(density(airquality$Ozone, na.rm=TRUE))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------
 hist(airquality$Ozone)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------
 hist(airquality$Ozone, breaks = 23, freq = FALSE)
 lines(density(airquality$Ozone, na.rm=TRUE))
 
@@ -647,26 +647,26 @@ lines(density(airquality$Ozone, na.rm=TRUE))
 #' 
 #' ## Graphics in `base` R -- bar plot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## barplot(table(cut(airquality$Wind, breaks=seq(0,22,by=2))))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------
 barplot(table(cut(airquality$Wind, breaks=seq(0,22,by=2))))
 
 #' 
 #' ## Graphics in `base` R -- boxplot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## boxplot(airquality$Ozone)
 ## points(mean(airquality$Ozone, na.rm=TRUE),pch="+")
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------
 boxplot(airquality$Ozone)
 points(mean(airquality$Ozone, na.rm=TRUE),pch="+")
 
@@ -683,13 +683,13 @@ points(mean(airquality$Ozone, na.rm=TRUE),pch="+")
 #' 
 #' In this statistics review, we will again use the `airquality` data set. Details on the data set are avalable at...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## help("airquality")
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 str(airquality)
 
 #' 
@@ -701,7 +701,7 @@ str(airquality)
 #' Common aspects to consider when analyzing a single variable are 
 #' 
 #' -   distribution: frequencies and quantiles,
-#' -   central tendency (also referred as localization o position),
+#' -   central tendency (also referred as location o position),
 #' -   spread, and
 #' -   analysis of outliers.
 #' 
@@ -709,14 +709,14 @@ str(airquality)
 #' ## Descriptive statistics for one variable -- distribution
 #' 
 #' ### Summary 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 summary(airquality)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
 #' ### Sample size or number of data points
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 length(airquality$Ozone)
 n <- sum(!is.na(airquality$Ozone))
 n
@@ -728,7 +728,7 @@ n
 #' 
 #' For a quantitative variable (`numeric`)...
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 frec_abs <- table(cut(airquality$Solar.R,
       breaks=c(0,50,100,150,200,
                250,300,350)))
@@ -742,7 +742,7 @@ frec_rel
 #' 
 #' For a qualitative variable (usually `factor`)...
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 frec_abs <- table(as.factor(airquality$Month))
 frec_abs
 
@@ -754,14 +754,14 @@ frec_rel
 #' 
 #' ### Quantiles
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 quantile(airquality$Wind,.1)
 quantile(airquality$Wind,0:5*.2)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 # Excel PERCENTILE and R default are type 7
 c(min = min(airquality$Wind), quantile(airquality$Wind,0:5*.2),
   max = max(airquality$Wind))    
@@ -774,7 +774,7 @@ c(min = min(airquality$Wind), quantile(airquality$Wind,0:5*.2, type=6),
 #' 
 #' ## Descriptive statistics for one variable -- central tendency
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 mean(airquality$Ozone)
 mean(airquality$Ozone, na.rm = TRUE)
 median(airquality$Ozone, na.rm = TRUE)
@@ -782,7 +782,7 @@ median(airquality$Ozone, na.rm = TRUE)
 #' 
 #' ## Descriptive statistics for one variable -- spread
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 var(airquality$Ozone, na.rm = TRUE) # denominator is n-1
 sd(airquality$Ozone, na.rm = TRUE)
 range(airquality$Ozone, na.rm = TRUE)
@@ -791,7 +791,7 @@ diff(range(airquality$Ozone, na.rm = TRUE))
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 IQR(airquality$Ozone, na.rm = TRUE)
 mad(airquality$Ozone, na.rm = TRUE) # mean absolute deviation
 
@@ -800,7 +800,7 @@ mad(airquality$Ozone, na.rm = TRUE) # mean absolute deviation
 #' 
 #' There different methods to analyze outliers in R. A nice description can be found at <https://statsandr.com/blog/outliers-detection-in-r/>
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 # Hampel filter  
 lmin <- median(airquality$Wind,.25) - 3 * mad(airquality$Wind)
 lmax <- median(airquality$Wind,.75) + 3 * mad(airquality$Wind) 
@@ -810,7 +810,7 @@ airquality$Wind[airquality$Wind > lmax | airquality$Wind < lmin]
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 # IQR method
 lmin <- quantile(airquality$Wind,.25) - 1.5 * IQR(airquality$Wind)
 lmax <- quantile(airquality$Wind,.75) + 1.5 * IQR(airquality$Wind) 
@@ -826,7 +826,7 @@ boxplot.stats(airquality$Wind)$out
 #' 
 #' -   For quantitative variables: boxplot and histogram
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## boxplot(airquality$Wind)
 ## points(mean(airquality$Wind),pch=3)
 ## 
@@ -835,26 +835,26 @@ boxplot.stats(airquality$Wind)$out
 #' 
 #' -   For qualitative variables: bar plot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## barplot(table(airquality$Month))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 boxplot(airquality$Wind)
 points(mean(airquality$Wind),pch=3)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 hist(airquality$Wind)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 barplot(table(airquality$Month))
 
 #' 
@@ -872,7 +872,7 @@ barplot(table(airquality$Month))
 #' 
 #' The contingency table is a two-way frequency table.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 table(cut(airquality$Wind,breaks = seq(1,21,by=5)),
       cut(airquality$Temp,breaks = seq(50,100,by=10)))
 
@@ -881,25 +881,25 @@ table(cut(airquality$Wind,breaks = seq(1,21,by=5)),
 #' 
 #' ### Pearson product-moment correlation coefficent
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 cor(airquality$Temp,airquality$Wind)
 
 #' 
 #' ### Spearman correlation coefficent
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 cor(airquality$Temp,airquality$Wind,method = "spearman")
 
 #' 
 #' ## Descriptive statistics for two variables -- scatterplot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## plot(airquality$Temp,airquality$Wind)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 plot(airquality$Temp,airquality$Wind)
 
 #' 
@@ -923,7 +923,7 @@ plot(airquality$Temp,airquality$Wind)
 #' 
 #' For example, for the normal distribution...
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 rnorm(10)
 dnorm(0)
 qnorm(.95)
@@ -932,7 +932,7 @@ pnorm(1.64)
 #' 
 #' ## Probability Distributions -- normal
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## df <- data.frame(x = rnorm(1000, mean = 3, sd = 1))
 ## dfT <-data.frame(x = seq(0,6,length.out=101),
 ##       y = dnorm(seq(0,6,length.out=101),mean=3,sd=1))
@@ -942,7 +942,7 @@ pnorm(1.64)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 df <- data.frame(x = rnorm(1000, mean = 3, sd = 1))
 dfT <-data.frame(x = seq(0,6,length.out=101),
       y = dnorm(seq(0,6,length.out=101),mean=3,sd=1))
@@ -952,7 +952,7 @@ lines(dfT$x,dfT$y*1000*0.5)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 pnorm(5,mean = 3,sd = 1)
 qnorm(.98,mean = 3,sd = 1)
 pnorm(1:5,mean = 0,sd = 1)
@@ -962,7 +962,7 @@ qnorm(c(0.95,0.975,.99,.995,.999),mean = 0,sd = 1)
 #' 
 #' ## Probability Distributions -- uniforme
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## df <- data.frame(x = runif(1000, min = 10, max = 20))
 ## dfT <-data.frame(x = seq(10,20,length.out=101),
 ##       y = dunif(seq(10,20,length.out=101), min=10, max=20))
@@ -972,7 +972,7 @@ qnorm(c(0.95,0.975,.99,.995,.999),mean = 0,sd = 1)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 df <- data.frame(x = runif(1000, min = 10, max = 20))
 dfT <-data.frame(x = seq(10,20,length.out=101),
       y = dunif(seq(10,20,length.out=101), min=10, max=20))
@@ -982,28 +982,28 @@ lines(dfT$x,dfT$y*1000*0.5)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 punif(12, min=10, max=20)
 qunif(.90, min=10, max=20)
 
 #' 
 #' ## Probability Distributions -- binomial
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## df <- data.frame(x = rbinom(100,5,prob=0.5))
 ## barplot(table(df$x))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 df <- data.frame(x = rbinom(100,5,prob=0.5))
 barplot(table(df$x))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 pbinom(2,5,prob=0.5)
 qbinom(.5,5,.5)
 
@@ -1012,52 +1012,54 @@ qbinom(.5,5,.5)
 #' 
 #' **R** includes many other distributions that can be looked up in the help files.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## ? "Distributions"
 
 #' 
 #' 
 #' ## Inference
 #' 
-#' En términos estadísticos, la **inferencia** consiste en la obtención de información sobre la población --el conjunto de los valores existentes-- a partir de una muestra representativa de la misma.
+#' In statistics, inference is the determination of information about the population --the entire set of existing values-- from a representative sample and some data model hypothesis.
 #' 
-#' Si los datos que tenemos no constituyen una muestra *representativa*, cualquier información que queramos extrapolar a la población estará sesgada, es decir, desplazada de su valor real.
-#' 
-#' ------------------------------------------------------------------------
-#' 
-#' Los resultados de la inferencia se suelen mostrar mediante una de las dos formas siguientes:
-#' 
-#' -   el valor de un parámetro para la población, asociado normalmente a un error o un intervalo de confianza,
-#' -   la probabilidad (*p*) que unos datos, o cualquiera más extremo que ellos, se produzcan siendo cierta una determinada hipótesis, denominada hipótesis nula.
+#' In case the sample is not representative, any information inferred from it will be biased, potentially displaced from its actual value.
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Presentaremos a continuación, las técnicas más comúnmente usadas para
+#' Inference results are commonly shown in either of the following two formats:
 #' 
-#' -   analizar el ajuste a una **distribución**,
-#' -   estudiar la **dispersión** de la población, y
-#' -   estimar o comparar valores de **tendencia central** --localización o posición--
-#' 
-#' ## Inferencia -- distribución
-#' 
-#' Para contrastar la hipótesis que un conjunto de datos puede representarse mediante un determinada distribución teórica, las pruebas más comunes son la **prueba de bondad de ajuste de chi cuadrado** (`chisq.test`) y la **prueba de Kolmogorov-Smirnov** (`ks.test`). En ambos casos, los argumentos son las frecuencias absolutas de cada clase para la distribución experimental y las probabilidades esperadas de acuerdo con la distribución teórica o de referencia.
+#' -   the value of population parameters, usually associated to an error or confidence interval,
+#' -   the probability (*p*) that the observed data, o any data more extreme than the observed, could be produced from an hypothesized data model, the null hypotesis.
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' **Ejemplo**
+#' We will be reviewing here, while we show how to apply them in R, the most common procedures
 #' 
-#' Se ha tirado cien veces un dado de 10 caras, y se han obtenido cada una de las caras las veces que se muestran en la tabla siguiente.
+#' -   to discuss a fit to a  **distribution**,
+#' -   to study the population **spread**, and
+#' -   to estimate or to compare **central tendency** values
 #' 
-#' |     |     |     |     |     |     |     |     |     |     |
-#' |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+#' 
+#' ## Inference -- distribution
+#' 
+#' To test the fit to a theoretical distribution, the most common test are the **chi-squared goodness-of-fit test** (`chisq.test`) and the **test of Kolmogorov-Smirnov** (`ks.test`). In both cases, the arguments are the observed absolute frequencies and the probabilities expected according to the theoretical distribution.
+#' 
+#' *NOTE*: The `ks.test` is not appropriate when the distribution to test is fitted to the sample data --i.e. for the Lilliefors test for normality.
+#' 
+#' ------------------------------------------------------------------------
+#' 
+#' ### Example
+#' 
+#' A 10-face dice is thrown a hundred times. The table below shows the results for the experiment.
+#' 
 #' |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  |
+#' |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 #' |  9  |  6  |  7  | 15  | 11  | 11  |  9  | 13  |  9  | 10  |
 #' 
-#' Si el dado fuese normal, todas las caras tendrían la misma probabilidad de aparecer. ¿Lo es?
+#' If the dice was normal, each face should have the same probality of appearing. Is it the case?
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 obs <- c(9, 6, 7, 15, 11, 11, 9, 13, 9, 10)  
 exp <- rep(.1, 10)
  
@@ -1066,11 +1068,12 @@ chisq.test(x = obs, p = exp)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Gráficamente, y aunque sin la misma objetividad, la comparación de distribuciones también suele hacerse mediante el gráfico de cuantiles --en R, es la función `qqplot`.
+#' Although with less objectivity, graphical methods can also be used to compare distributions. This is usually done through a quantile-quantile plot --in R,  `qqplot`.
 #' 
-#' Si ambos conjuntos de datos corresponden a la misma distribución, sus cuantiles deben quedar alineados junto a la diagonal del gráfico (especialmente en la región central del mismo).
+#' If both data sets belong to the same distribution, their quantiles will appear aligned on the diagonal of the plot (especially on the central region of the chart).
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+#' 
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## exp <- rep(1:10, obs)
 ## teo <- rep(1:10, 10)
 ## qqplot(x = exp, y = quantile(teo, (1:length(exp))/length(exp)))
@@ -1080,12 +1083,12 @@ chisq.test(x = obs, p = exp)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 exp <- rep(1:10, obs)
 teo <- rep(1:10, 10)
 
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 qqplot(x = exp, y = quantile(teo, (1:length(exp))/length(exp)))
 qqline(y = exp, distribution = function(x)  quantile(teo,x),
        probs= c(1/length(exp),1))
@@ -1093,11 +1096,11 @@ qqline(y = exp, distribution = function(x)  quantile(teo,x),
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Para comprobar si un conjunto de datos puede proceder de una población aleatoria de distribución normal, existen pruebas estadísticas más específicas. Entre las muchas pruebas existentes, son de uso común las pruebas de Shapiro-Wilk y Anderson-Darling. Solo la primera está disponible R *base*.
+#' To check if a data set might be a random sample of a population following a normal distribution, there are specific tests. Among the most common ones, there are the Shapiro-Wilk normality test  and the Anderson-Darling normality test. Only the former is available in R *base*.
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x1 <- rnorm(20, mean = 4, sd = 5)
 x2 <- rbeta(20, shape1 = 5, shape2 = .5, ncp = 4)
 
@@ -1108,9 +1111,9 @@ shapiro.test(x2)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Gráficamente se puede usar el gráfico de cuantiles comentado anteriormente.
+#' Graphically, the quantile-quantile plot can also be used. In R, the `qqnorm` function provide a direct comparison with the normal distribution.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## qqnorm(x1)
 ## qqline(x1)
 ## 
@@ -1120,31 +1123,32 @@ shapiro.test(x2)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 qqnorm(x1)
 qqline(x1)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 qqnorm(x2)
 qqline(x2)
 
 #' 
-#' ## Inferencia -- dispersión
 #' 
-#' Las inferencias más habituales respecto a la dispersión de una población constituyen los siguientes casos
+#' ## Inference -- spread
 #' 
-#' -   determinar el intervalo de confianza de la varianza o la desviación típica de la distribución,
-#' -   comparar la dispersión de dos conjuntos de datos,
-#' -   comparar la dispersión de tres o más conjuntos de datos --o comprobar la homocedasticidad de distintos conjuntos de datos--.
+#' The most common inferences respect to the spread of a population fall in the following cases:
+#' 
+#' -   assessing a confidence interval for the variance or the standard deviation,
+#' -   comparing the spread of two populations,
+#' -   comparing the spread of three or more populations --or testing the homocedastacity of different data sets--.
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Cuando los datos estan normalmente distribuidos, el **intervalo de confianza de la varianza** se calcula a partir de la distribución de chi cuadrado.
+#' When sample dats come from a normal distribution, the **confidence interval for the variance** can be calculated from the chi-squared distribution.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x <- rnorm(50, mean = 0, sd = 2)
 df <- length(x) - 1
 lower <- var(x) * df / qchisq(1 - 0.05/2, df)
@@ -1154,17 +1158,17 @@ c(lower = lower, var = var(x), upper = upper)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Para obtener el **intervalo de confianza para la desviación estándar**, cuando los datos estan normalmente distribuidos, se calcula la desviación estándar a partir de las varainzas calculadas más arriba.
+#' To calculate the **confidence interval for the standard deviation**, when data come from a normal distribution, we proceed by taking the square root of the limits of the confidence interval for the variance.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 c(lower = sqrt(lower), sd = sd(x), upper = sqrt(upper))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Para la **comparación de la dispersión de las poblaciones para dos conjuntos de datos**, cuando los datos estan normalmente distribuidos, se lleva a cabo con un prueba de F --función `var.test` en R--.
+#' To compare **the spread of two populations**, when data come from normal distributions, we use an F test -- `var.test` in R--.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x <- rnorm(50, mean = 0, sd = 2)
 y <- rnorm(30, mean = 1, sd = 1)
 var.test(x, y)
@@ -1172,9 +1176,10 @@ var.test(x, y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Si los datos no estan normalmente distribuidos, la comparación de dispersiones puede hacerse mediante el test de Ansari.
+#' If the data don't come from a normally distributed population, spreads (scales) can be compared with the Ansari-Bradley test.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
 x <- rlnorm(50, meanlog = 2, sdlog = 1)
 y <- rlnorm(30, meanlog = 2, sdlog = .2)
 ansari.test(x, y)
@@ -1182,9 +1187,9 @@ ansari.test(x, y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Para comparar las dispersiones de más de un conjunto de datos para los cuáles se pueda asumir normalidad, se usa la prueba de Bartlett --`bartlett.test` en R--.
+#' To compare the spread (scales) of more than two normally distributed populations, the Bartlett test --`bartlett.test` in R-- is commonly used.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## x1 <- round(rnorm(20, mean = 1, sd = 2),1)
 ## x2 <- round(rnorm(20, mean = 3, sd = 2),1)
 ## x3 <- round(rnorm(20, mean = 5, sd = 2),1)
@@ -1194,7 +1199,7 @@ ansari.test(x, y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 x1 <- round(rnorm(20, mean = 1, sd = 2),1)
 x2 <- round(rnorm(20, mean = 3, sd = 2),1)
 x3 <- round(rnorm(20, mean = 5, sd = 2),1)
@@ -1204,13 +1209,13 @@ bartlett.test(list(x1,x2,x3))
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Si los datos no cumplen con la hipótesis de normalidad, en lugar de la prueba de Bartlett se usa la prueba de Levene o la de Brown--Forsythe --`leveneTest` en el paquete `car` de R--.
+#' In case any of the populations is not normally distributed, Fligner-Killeen test --in R, `fligner.test`--, Levene test --`leveneTest` in the R `car` package-- or Brown--Forsythe test --`bf.test` in the R `onewaytests` package-- can be useful.
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Gráficamente y aunque de forma menos objetiva, la comparación de dispersiones puede hacerse usando gráficos de caja, bien directamente, bien centrando los datos.
+#' Graphically, although with less objectivity, either boxplots or boxplots of the centered data can be used.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## x1 <- round(rnorm(20, mean = 1, sd = 2),1)
 ## x2 <- round(rnorm(20, mean = 3, sd = 2),1)
 ## x3 <- round(rnorm(20, mean = 5, sd = 2),1)
@@ -1227,7 +1232,7 @@ bartlett.test(list(x1,x2,x3))
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 x1 <- round(rnorm(20, mean = 1, sd = 2),1)
 x2 <- round(rnorm(20, mean = 3, sd = 2),1)
 x3 <- round(rnorm(20, mean = 5, sd = 2),1)
@@ -1243,88 +1248,84 @@ boxplot(y~group,data=xs)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 boxplot(centered~group,data=xs)
 
 #' 
-#' ## Inferencia -- localización
+#' ## Inference -- location
 #' 
-#' Las principales inferencias respecto a la localización --o tendencia central-- de los datos corresponden a
+#' The main inferences for location --or central tendency-- of a population correspond to
 #' 
-#' -   establecer un intervalo de confianza para la tendencia central de la distribución,
-#' -   comparar la tendencia central de un conjunto de datos con un valor preestablecido,
-#' -   comparar la tendencia central de dos conjuntos de datos,
-#' -   comparar la tendencia central de tres o más conjuntos de datos.
+#' -   establishing a confidence interval for the central tendency of the distribution,
+#' -   comparing the central tendency of a population to predefined value,
+#' -   comparing the central tendency of two populations, and
+#' -   comparing the central tendency of three or more populations.
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Para establecer el **intervalo de confianza de la media**, cuando los datos están normalmente distribuidos, se usa la distribución t. El intervalo puede calcularse a partir de la función `qt` o visualizarlo como resultado de la función `t.test`.
+#' To calculate a *confidence interval for the mean* of a normally distributed population, we use the Student (or t) distribution. In R, it can be calculates form the `qt` function, or also as one of the results of the `t.test` function.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x <- rnorm(10, mean = 2, sd = .5)
 x
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 t.test(x)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Si los datos no están normalmente distribuidos, la función `wilcox.test` ofrece entre sus resultados el **intervalo de confianza para la mediana**.
+#' If the population does not follow a normal distribution, a nonparametric **confidence interval for the median** can be calculated by using the `wilcox.test` function.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x <- rnorm(10, mean = 3, sd = .5) ^ 3
 x
-
-#' 
-#' ------------------------------------------------------------------------
-#' 
-## ---- echo = TRUE-----------------------------------------------------------------
 wilcox.test(x, conf.int = TRUE)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Las dos funciones usadas para obtener los intervalos de confianza permiten **comparar la tendencia central de un conjunto de datos con un valor preestablecido**. Como se ha indicado antes, la prueba de t require normalidad de los datos; la prueba de Wilcoxon, no.
+#' Both function presented to obtain the confidence intervals, can also **compare the central tendency of a population to a predefined value**. As already said, the t test works for a normally distributed population; the Wilcoxon test does not have this requirement.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x <- rnorm(10, mean = 2, sd = .5)
 x
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 t.test(x, mu = 1.5)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
+median(x^3)
 wilcox.test(x ^ 3, mu = 8)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Para **comparar la localización** de dos conjuntos de datos, deben tenerse en cuenta los siguientes aspectos
+#' To **compare the location** of two populations, three prior considerations should be made.
 #' 
-#' -   ¿los datos de ambas muestras están asociados?
-#' -   ¿los datos estan normalmente distribuidos?
-#' -   ¿tienen ambos conjuntos de datos la misma dispersión?
-#' 
-#' ------------------------------------------------------------------------
-#' 
-#' Si los datos están **asociados**, es decir que existen pares de datos en ambas muestras tales que comparten fuentes de variación, entonces
-#' 
-#' -   si ambas **muestras están normalmente distribuidas**, o la diferencia entre conjuntos de datos está normalmente distribuido, se usa la prueba de t sobre la diferencia de los valores entre ambos conjuntos de datos. En R, puede calcularse la diferencia y luego aplicar la función `t.test` o bien usar directamente la función `t.test` con la opción `paired = TRUE`,
-#' -   si los datos **no están normalmente distribuidos** se usa la prueba de Wilcoxon --`wilcox.test` sobre la resta o con la opción `paired = TRUE` en R--.
+#' -   Are both data samples independent or data are paired?
+#' -   Are both populations normally distributed?
+#' -   Have both populations the same scale?
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+#' Data are **associated** or **paired** when there are pairs of values --one from each data set-- that share some sources of variation (same person, same object, same date...). In this case
+#' 
+#' -   if **both populations are normally distributed** or the difference population is normally distributed, a t test on the difference of the data ca be used to compare the location of the populations. In R, one can calculate the difference and then use the `t.test` with a single vector as argument, or directly use the `t.test` with `paired = TRUE`,
+#' -   if **the populations are not normally distributed**, we use the Wilcoxon test --`wilcox.test` on the difference o with the option `paired = TRUE` in R--.
+#' 
+#' ------------------------------------------------------------------------
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
 x <- rnorm(10, mean = 3, sd = 1)
 y <- rnorm(10, mean = 3.5, sd = 1)
 list(x = x,y = y)
@@ -1332,19 +1333,19 @@ list(x = x,y = y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 t.test(x - y)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 t.test(x, y, paired = TRUE)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x <- rlnorm(10, meanlog = 3, sdlog = 1)
 y <- rlnorm(10, meanlog = 3.5, sdlog = 1)
 list(x = x,y = y)
@@ -1352,26 +1353,26 @@ list(x = x,y = y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 wilcox.test(x - y)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 wilcox.test(x, y, paired = TRUE)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Si los datos **no están asociados**, entonces
+#' If **data samples are not associated** then
 #' 
-#' -   si ambas **muestras están normalmente distribuidas**, o el conjunto de datos --escalados y centrados en cada muestra-- está normalmente distribuido, se usa la prueba de t. En R, se usa la función `t.test`; la opción `var.equal` permite escoger entre la prueba calculada con la varianza de los datos, y la aproximación de Welch, que se usa cuando la varianzas no son iguales.
-#' -   si los datos **no están normalmente distribuidos** se usa la prueba U de Mann-Whitney --`wilcox.test` en R--.
+#' -   if both **populations are normally distributed**, we use the t test. In R, we run the test with the function `t.test`; the option `var.equal` allows switching between the test assuming equality of population variances and the Welch t-test, which is the default and does not requires this assumption; 
+#' -   if **any of the populations is not normally distributed** we use the Mann- Whitney U test, also called Wilcoxon rank-sum test,  --`wilcox.test` in R--.
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x <- rnorm(10, mean = 3, sd = 1)
 y <- rnorm(14, mean = 3.5, sd = 2)
 list(x = x,y = y)
@@ -1379,13 +1380,13 @@ list(x = x,y = y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 t.test(x, y, var.equal = FALSE)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x <- rlnorm(10, meanlog = 3, sdlog = 1)
 y <- rlnorm(14, meanlog = 3.5, sdlog = 2)
 list(x = x,y = y)
@@ -1393,21 +1394,21 @@ list(x = x,y = y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 wilcox.test(x, y)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Para la **comparación de tres o más grupos**, las técnicas más habituales son
+#' To **compare locations for three o more populations**, the most used procedures are 
 #' 
-#' -   si los datos de los distintos conjuntos de datos están **normalmente distribuidos** y presentan dispersiones comparables --homocedasticidad--, la técnica recomendada es el análisis de la varianza --`aov` en R--;
-#' -   si los datos de los distintos conjuntos de datos están **normalmente distribuidos** y no presentan dispersiones comparables, la técnica recomendada es el análisis de la varianza de Welch --`oneway.test` en R--;
-#' -   si los **datos no están normalmente distribuidos** pero las distribuciones tienen formas parecidas y se mantiene la homocedaticidad, se usa la prueba de Kruskal-Wallis --en R, `krukal.test`--.
+#' -   if **distributions are normally distributed** and **they have the same scale** --homocedasticity--, analysis of variance (ANOVA) is used --`aov` in R--;
+#' -   if **distributions are normally distributed** but **they don't have the same scale**, Welch ANOVA is to be used --`oneway.test` in R--;
+#' -   if **distributions not are normally distributed** but distributions have similar shapes, we use the Kruskal-Wallis test --in R, `krukal.test`--. More details can be found at <https://rcompanion.org/handbook/F_08.html>.
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x <- c(rnorm(10, mean = 3, sd = 1),
        rnorm(8, mean = 3.2, sd = 1),
        rnorm(10, mean = 4, sd = 1))
@@ -1418,7 +1419,7 @@ summary(test)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x <- c(rnorm(10, mean = 3, sd = 1),
        rnorm(8, mean = 3.2, sd = 4),
        rnorm(10, mean = 4, sd = 2))
@@ -1428,7 +1429,7 @@ oneway.test(x ~ g)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 x <- c(runif(10, min = 2, max = 4),
        runif(8, min = 1.5, max = 3.5),
        runif(10, min = 3, max = 5))
@@ -1438,18 +1439,18 @@ kruskal.test(x ~ g)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Tanto el análisis de la varianza como la prueba de Kruskal-Wallis solo permiten contrastar si algún par de grupos presentan valores de localización distintos, pero no permiten identificar cuál o cuáles.
+#' Either the ANOVA or the Kruskal-Wallis test only whether there is a difference among the populations or not, but they can not identify what populations (groups) differ in location.
 #' 
-#' Para identificar qué pares de grupos presentan diferencias estadísticamente significativos se usan pruebas *post-hoc*
+#' To test which pairs of populations have different locations, we use *post-hoc* tests.
 #' 
-#' -   En el caso del análisis de varianza (o Welch ANOVA), se puede usar la prueba de Tukey --`TukeyHSD` en R,
-#' -   Para la prueba de Kruskal-Wallis, se puede usar la prueba de Dunn --`dunn.test` en el paquete `dunn.test` de R--
+#' -   In the ANOVA or Welch ANOVA case, we can use the Tukey's HSD test --`TukeyHSD` in R,
+#' -   For the Kruskal-Wallis test, Dunn's test is a commonly used option --`dunn.test` in  the `dunn.test` R package--
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Gráficamente y aunque con menos objetividad, la comparación de la loclización puede hacerse usando gráficos de caja.
+#' Graphically, although with less objectivity, a boxplot can be used to compare location of different data sets.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## x <- c(rnorm(10, mean = 3, sd = 1),
 ##        rnorm(8, mean = 3.2, sd = 1),
 ##        rnorm(10, mean = 4, sd = 1))
@@ -1463,7 +1464,7 @@ kruskal.test(x ~ g)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 x <- c(rnorm(10, mean = 3, sd = 1),
        rnorm(8, mean = 3.2, sd = 1),
        rnorm(10, mean = 4, sd = 1))
@@ -1474,330 +1475,306 @@ xs <- data.frame(y = x, group = g)
 boxplot(y~group, data=xs)
 
 #' 
-#' ## Ajuste de modelos
 #' 
-#' El ajuste de modelos se expresa de forma habitual en R mediante un objeto `formula`.
+#' ## Model fitting
 #' 
-#' En esta notación, se indica la relación entre variables mediante una expresión de tres términos donde la variable dependiente se indica a la izquierda y las variables dependientes a la derecha.
+#' A model is commonly expressed in R with a `formula` object.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+#' In this notation, relation among variables is indicated through a three-term expression, with the dependent variable on the left, a tilde operator (`~`) and a combination of independent variables on the right side
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
 form1 <- y ~ x              # recta
 class(form1)
 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## form1 <- y ~ log(x)         # logaritmo
 ## form1 <- y ~ poly(x,4)      # polinomio de grado 4
 ## form1 <- y ~ x + 0          # recta que pasa por el origen
 ## form1 <- y ~ I(x^.5)        # raíz cuadrada
 
 #' 
-#' ## Ajuste de modelos -- regresión lineal
 #' 
-#' El ajuste de un modelo lineal por mínimos cuadrados ordinarios se hace en R mediante la función `lm`.
+#' ## Model fitting -- linear regression
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
-## fit1 <- lm(mpg ~ wt, data=mtcars)
+#' Ordinary least square (OLS) fit can be produced in R, by using the `lm` function. They can also be used for factors; in this case, dummy variables are produced for the levels of the factors (all but the first one). 
+#' 
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## fit1 <- lm(Ozone ~ Solar.R, data=airquality)
 ## summary(fit1)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
-fit1 <- lm(mpg ~ wt, data=mtcars)
+## ---- echo = FALSE--------------------------------------------------------------
+fit1 <- lm(Ozone ~ Solar.R, data=airquality)
 summary(fit1)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Una vez ajustado el modelo, este puede usarse para predecir nuevos datos (o calcular los valores ajustados) mediante la función `predict`.
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## fit2 <- lm(Ozone ~ Solar.R + Temp, data=airquality)
+## summary(fit2)
+
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
-df <- data.frame(x=mtcars$wt, y=mtcars$mpg,
-  predict(fit1, newdata=mtcars, interval="prediction"))
+#' ------------------------------------------------------------------------
+#' 
+## ---- echo = FALSE--------------------------------------------------------------
+fit2 <- lm(Ozone ~ Solar.R + Temp, data=airquality)
+summary(fit2)
+
+#' 
+#' 
+#' ------------------------------------------------------------------------
+#' 
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## df <- airquality
+## df$Month <- factor(df$Month)
+## fit3<- lm(Temp ~ Month, data=df)
+## summary(fit3)
+
+#' 
+#' ------------------------------------------------------------------------
+#' 
+## ---- echo = FALSE--------------------------------------------------------------
+df <- airquality
+df$Month <- factor(df$Month)
+fit3<- lm(Temp ~ Month, data=df)
+summary(fit3)
+
+#' 
+#' ------------------------------------------------------------------------
+#' 
+#' Once fitted, the model can be used to predict the dependent variable with the `predict` function. To search for help, look up `predict.lm`.
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
+df <- na.omit(data.frame(x=airquality$Solar.R, y=airquality$Ozone,
+  predict(fit1, newdata=airquality, interval="prediction")))
 head(df)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' El modelo se puede visualizar gráficamente a partir de estas predicciones.
+#' The model can be represented from the predictions.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## df2 <- data.frame(
-##   wt = seq(min(mtcars$wt), max(mtcars$wt), length.out = 201),
-##   predict(fit1,
-##   newdata = data.frame(wt = seq(min(mtcars$wt), max(mtcars$wt),
-##                              length.out = 201)),
-##   interval="prediction"))
+##   Solar.R = seq(min(airquality$Solar.R,na.rm=TRUE),
+##                 max(airquality$Solar.R,na.rm=TRUE), length.out = 201))
+## df2 <- cbind(df2, predict(fit1,
+##   newdata = df2, interval="prediction"))
 ## 
-## plot(range(df2$wt),range(c(df2$lwr,df2$upr)),type="n")
-## lines(df2$wt,df2$fit,type="l",lwd=2)
-## lines(df2$wt,df2$upr,col="grey",lwd=1)
-## lines(df2$wt,df2$lwr,col="grey",lwd=1)
+## plot(range(df2$Solar.R),range(c(df2$lwr,df2$upr)),type="n")
+## lines(df2$Solar.R,df2$fit,type="l",lwd=2)
+## lines(df2$Solar.R,df2$upr,col="grey",lwd=1)
+## lines(df2$Solar.R,df2$lwr,col="grey",lwd=1)
+## points(airquality$Solar.R,airquality$Ozone,pch="+")
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 df2 <- data.frame(
-  wt = seq(min(mtcars$wt), max(mtcars$wt), length.out = 201),
-  predict(fit1, 
-  newdata = data.frame(wt = seq(min(mtcars$wt), max(mtcars$wt),
-                             length.out = 201)), 
-  interval="prediction"))
+  Solar.R = seq(min(airquality$Solar.R,na.rm=TRUE),
+                max(airquality$Solar.R,na.rm=TRUE), length.out = 201))
+df2 <- cbind(df2, predict(fit1, 
+  newdata = df2, interval="prediction"))
 
-plot(range(df2$wt),range(c(df2$lwr,df2$upr)),type="n")
-lines(df2$wt,df2$fit,type="l",lwd=2)
-lines(df2$wt,df2$upr,col="grey",lwd=1)
-lines(df2$wt,df2$lwr,col="grey",lwd=1)
+plot(range(df2$Solar.R),range(c(df2$lwr,df2$upr)),type="n")
+lines(df2$Solar.R,df2$fit,type="l",lwd=2)
+lines(df2$Solar.R,df2$upr,col="grey",lwd=1)
+lines(df2$Solar.R,df2$lwr,col="grey",lwd=1)
+points(airquality$Solar.R,airquality$Ozone,pch="+")
 
 #' 
-#' ## Ajuste de modelos -- comprobación
+#' ## Model fitting -- checking
 #' 
-#' Para comprobar la adecuación del modelo y del método de ajuste usado (OLS) deben analizarse los residuales.
+#' To check the goodness and correctness of the fitted model and the fitting approach (OLS), the residuals should be analyzed. They should be random, normally distributed, homocedastic and high-leverage points should not be present.
 #' 
-#' Estos deben ser aleatorios, estar normalmente distribuidos, mostrar homocedasticidad y no mostrar evidencia de puntos especialmente influyentes.
+#' These checks can be made from the residuals data and the required statistical tests.
 #' 
-#' Estas comprobaciones pueden hacerse a partir de los datos de los residuales y las pruebas estadísticas oportunas.
-#' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## fit1$residuals
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
-fit1$residuals
+## ---- echo = TRUE---------------------------------------------------------------
+df <- na.omit(airquality[,c(2,1)])
+head(cbind(df,fit=fit1$fitted.values, res=fit1$residuals))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Gráficamente, los mismas comprobaciones pueden hacerse a partir de la representación gráfica del modelo.
+## ---- echo = TRUE---------------------------------------------------------------
+shapiro.test(fit1$residuals)
+
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+#' ------------------------------------------------------------------------
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
+fligner.test(fit1$residuals, cut(1:length(fit1$residuals),breaks=3))
+fligner.test(fit1$residuals,
+             cut(fit1$fitted.values-median(fit1$fitted.values),breaks=3))
+
+#' 
+#' ------------------------------------------------------------------------
+#' 
+#' Graphically, the same aspects can be informed from the plots of the model.
+#' 
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
 ## plot(fit1, which=1:6)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 plot(fit1, which=1)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 plot(fit1, which=2)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 plot(fit1, which=3)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 plot(fit1, which=4)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 plot(fit1, which=5)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------
 plot(fit1, which=6)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Estas mismas ideas son la base de la aplicación en R de las técnicas de ajuste multilineal (`lm`), ajuste lineal generalizado (`glm`) y ajuste no lineal por mínimos cuadrados (`nls`).
+#' Parallel approaches are followed when fitting more complex multilinear models  (`lm`), generalized linear models (`glm`), or non-linear models by least-squares (`nls`), among other options.
 #' 
 #' 
-#' # Manipulación avanzada de tablas de datos
+#' # Advanced manipulation of data frames (part 1 - `base` functions)
 #' 
 #' ## Tabla de datos o *data frame*
 #' 
-#' Com se ha viso anteriormente, el *data frame* es el tipo de dato más usado para almacenar tablas de datos.
+#' As introduced above, data frames are the most common data structure to store data sets.
 #' 
-#' A menudo, para poder realizar gráficos y/o aplicar distintos procedimientos estadísticos, es necesario manipular la tabla de datos. A esto dedicaremos este apartado.
-#' 
-#' ------------------------------------------------------------------------
-#' 
-#' Entre las operaciones habituales que haremos sobre una tabla de datos, hay
-#' 
-#' -   renombrar filas o columnas,
-#' -   añadir columnas o filas,
-#' -   segmentar,
-#' -   eliminar filas o columnas,
-#' -   cambiar el formato de un conjunto de datos,
-#' -   crear tablas de datos de resumen, y
-#' -   unir tablas
-#' 
-#' Terminaremos este bloque introduciendo los funciones básicas del paquete `dplyr` que facilita la realización de algunas de estas operaciones.
+#' Often preparing the data in specific formats is a requirement for producing data visualizations or running statistical procedures. We will dedicate this block to discuss some common operations in data wrangling. Additional operations will be discussed later on. 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Partimos de una tabla de datos sintética...
+#' Common operations on data frame are
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
-df <- data.frame(1:5, letters[1:5], c(rep("a", 3), rep("b", 2)))
+#' -   renaming columns or files,
+#' -   adding columns or files,
+#' -   segmenting (selecting columns or rows),
+#' -   removing columns or rows,
+#' -   creating a date frame from combining vectors, 
+#' -   joining data frames,
+#' -   reshaping data tables, and
+#' -   summarizing or aggregating the data.
+#' 
+#' We will discuss the first six operations here, as these are often done with `base` R functions.
+#' 
+#' The last two operations will be explained when introducing the `dplyr` R package.
+#' 
+#' ------------------------------------------------------------------------
+#' 
+#' Let's start synthetic data frame...
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
+df <- data.frame(number=1:5, letters[1:5], c(rep("a", 3), rep("b", 2)))
 df
 
 #' 
-#' ## Renombrar filas o columnas
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+#' ## Renaming columns or files
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
 colnames(df) <- c("var1", "var2", "var3") 
 rownames(df) <- paste("subject00", 1:5, sep = "")
 df
 
 #' 
-#' ## Añadir columnas o filas
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
-df2 <- cbind(df, rnorm(5)) # añadir un vector al data frame
-df2$var5 <- 5:1 # assignando valores a una nueva variable
+#' ## Adding columns or files
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
+df2 <- cbind(df, rnorm(5)) # adding a vector to the data frame
+df2$var5 <- 5:1 # assigning values to a new named column
 df2
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 df2 <- rbind(df, list(6, "e", "b"))
 df2
 
 #' 
-#' ## Segmentar
 #' 
-#' Existen tres formas básicas de seleccionar filas o columnas de una tablas de datos
+#' ## Segmenting
 #' 
-#' -   mediante índices numéricos,
-#' -   usando los nombres de filas y columnas, y
-#' -   mediante vectores lógicos
+#' There are three basic ways to segment a data frame by selecting rows and columns 
 #' 
-#' ## Segmentar -- mediante índices
+#' -   by numerical **indices** or subscripts,
+#' -   using column and row **names**, and
+#' -   through **logical vectors**.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+#' 
+#' ## Segmenting -- indices
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
 df[1:3,]
 df[,c(1,3)]
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
-df[-3,-2]
+#' Using negative indices removes rows or columns
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
+df[-(3:4),-2]
 
 #' 
-#' ## Segmentar -- usando nombres
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+#' ## Segmenting -- names
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
 df[,"var2"]
 df$var3
 df[,c("var2","var3")]
 
 #' 
-#' ## Segmentar -- mediante vectores lógicos
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+#' ## Segmenting -- logical vectors
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
 df[c(T,T,F,T,F), c(T,F,T)]
 df[df[,1] == 3 | df[,3] == "b",]
 
 #' 
 #' 
+#' ## Removing columns or rows
 #' 
+#' The most common way of removing columns or rows is segmenting the data frame. However a column can also be removed by assign it to `NULL`.
 #' 
-#' ## Cambiar el formato de un conjunto de datos
-#' 
-#' Un mismo conjunto de datos puede representar en una tabla de datos de acuerdo con distintas oragnizaciones o formatos.
-#' 
-#' Se denomina formato ordenado, *tidy*, aquella organización en la que las filas representan individuos, las columnas, variables de medidas, y las intersecciones los valores de dichas medidas.
-#' 
-#' ------------------------------------------------------------------------
-#' 
-#' Cuando existen más de una variable que corresponde al mismo tipo de medida, entonces los datos pueden organizarse de dos formas
-#' 
-#' -   usando una columna distinta para cada variable, formato ancho y *tidy*, o
-#' -   usando una columna para los valores y otra para indicar cuál es la variable representada en esta fila.
-#' 
-#' El formato más adecuado dependerá de los análisis y visualizaciones que quieran hacerse.
-#' 
-#' ------------------------------------------------------------------------
-#' 
-#' Partiremos de un subconjunto de `flights`...
-#' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
-## if(!require("nycflights13")) {
-##   install.packages("nycflights13")
-##   library("nycflights13")
-## }
-
-#' 
-## ---- echo = FALSE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE----
-if(!require("nycflights13")) {
-  install.packages("nycflights13", repos="https://cloud.r-project.org/",
-         quiet=TRUE, type="binary")
-  library("nycflights13")
-}
-
-#' 
-#' ------------------------------------------------------------------------
-#' 
-## ---- echo = TRUE-----------------------------------------------------------------
-fl_ny2ws_W <- flights[flights$dest %in% c("IAD","BWI"),
-                    c("origin","dest","carrier","arr_delay","dep_delay")]
-fl_ny2ws_W <- cbind(key = 1:nrow(fl_ny2ws_W), fl_ny2ws_W)
-head(fl_ny2ws_W)
-
-#' 
-#' ## Cambiar el formato de un conjunto de datos -- ancho a largo
-#' 
-## ---- echo = TRUE-----------------------------------------------------------------
-fl_ny2ws_L <- rbind(
-  cbind(edge = rep("origin", nrow(fl_ny2ws_W)), fl_ny2ws_W[,c(1,4)],
-        airport = fl_ny2ws_W[,2], delay = fl_ny2ws_W[,6]),
-  cbind(edge = rep("dest", nrow(fl_ny2ws_W)), fl_ny2ws_W[,c(1,4)],
-        airport = fl_ny2ws_W[,3], delay = fl_ny2ws_W[,5]))
-colnames(fl_ny2ws_L) <- c("edge","key","carrier","airport","delay")
-
-#' 
-#' ------------------------------------------------------------------------
-#' 
-## ---- echo = TRUE-----------------------------------------------------------------
-head(fl_ny2ws_L)
-tail(fl_ny2ws_L)
-
-#' 
-#' ## Cambiar el formato de un conjunto de datos -- largo a ancho
-#' 
-## ---- echo = TRUE-----------------------------------------------------------------
-fl_ny2ws_W2p1 <- fl_ny2ws_L[fl_ny2ws_L$edge=="origin",]
-fl_ny2ws_W2p2 <- fl_ny2ws_L[fl_ny2ws_L$edge=="dest",]
-fl_ny2ws_W2p1 <- fl_ny2ws_W2p1[order(fl_ny2ws_W2p1$key),-1]
-fl_ny2ws_W2p2 <- fl_ny2ws_W2p2[order(fl_ny2ws_W2p2$key),-c(1,2)]
-fl_ny2ws_W2 <- cbind(fl_ny2ws_W2p1,fl_ny2ws_W2p2[,-1])
-colnames(fl_ny2ws_W2) <- c("key", "carrier", "origin", "dep_delay",
-                           "dest","arr_delay")
-
-
-#' 
-#' ------------------------------------------------------------------------
-#' 
-## ---- echo = TRUE-----------------------------------------------------------------
-head(fl_ny2ws_W2)
-tail(fl_ny2ws_W2)
-
-#' 
-#' ## Eliminar filas o columnas
-#' 
-#' La forma más habitual de eliminar filas o columnas es segmentando la tabla de datos. Sin embargo, una columna también puede eliminarse asignando la misma a `NULL`.
-#' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 df <- data.frame(1:5, letters[1:5], c(rep("a", 3), rep("b", 2)))
 colnames(df) <- c("var1", "var2", "var3") 
 rownames(df) <- paste("subject00", 1:5, sep = "")
@@ -1807,87 +1784,56 @@ df$var2 <- NULL
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------
 df
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Si lo que se desea es eliminar una variable del entorno de trabajo entonces se usa la función `rm`.
+#' Rows with `NA` values can be removed with the `na.omit` function.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
-rm(df)
+## ---- echo = TRUE---------------------------------------------------------------
+df[2,2] <- NA
+df <- na.omit(df)
 
-#' 
-#' ## Creación de resúmenes a partir de datos en formato ancho
-#' 
-## ---- echo = TRUE-----------------------------------------------------------------
-sum_fl_ny2ws <- data.frame(edge=c("origin","dest"))
-
-sum_fl_ny2ws$mean_delay <- apply(fl_ny2ws_W[,c("dep_delay","arr_delay")],2,
-                                 mean,na.rm=TRUE)
-sum_fl_ny2ws$r_delay <- apply(fl_ny2ws_W[,c("dep_delay","arr_delay")],2,
-                      function(x) diff(range(x,na.rm=TRUE)))
-sum_fl_ny2ws$s_delay <- apply(fl_ny2ws_W[,c("dep_delay","arr_delay")],2,
-                              sd,na.rm=TRUE)
-sum_fl_ny2ws
-
-#' 
-#' ## Creación de una tabla de resumen a partir de datos en formato largo
-#' 
-## ---- echo = TRUE-----------------------------------------------------------------
-sum_fl_ny2ws <- data.frame(edge=c("origin","dest"))
-sum_fl_ny2ws$mean_delay <- by(fl_ny2ws_L$delay,fl_ny2ws_L$edge,
-                              mean,na.rm=TRUE)
-sum_fl_ny2ws$r_delay <- by(fl_ny2ws_L$delay,fl_ny2ws_L$edge,
-                           function(x) diff(range(x,na.rm=TRUE)))
-sum_fl_ny2ws$s_delay <- by(fl_ny2ws_L$delay,fl_ny2ws_L$edge,sd,na.rm=TRUE)
-sum_fl_ny2ws
-
-#' 
-#' ## `dplyr`
-#' 
-#' Estas mismas operaciones que se han comentado más arriba, se pueden llevar a cabo también a partir de un sistema coherente de métodos creado como una gramática para la manipulación de datos, el paquete `dplyr` --que forma parte de `tidyverse`--.
-#' 
-#' <http://dplyr.tidyverse.org/>
-#' 
-## ---- echo = FALSE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE----
-if(!require("tidyverse")) {
-  install.packages("tidyverse", repos="https://cloud.r-project.org/",
-         quiet=TRUE, type="binary")
-  library("tidyverse")
-}
-
-#' 
-#' ------------------------------------------------------------------------
-#' 
-#' En `dplyr` las operaciones básicas, se realizan mediante cuatro métodos:
-#' 
-#' -   `select`: segmentar columnas,
-#' -   `filter`: segmentar filas,
-#' -   `mutate`: crear nuevas columnas, y
-#' -   `arrange`: ordenar.
-#' 
-#' Estas se encadenan usando el operador pipe, `%>%`.
-#' 
-#' ------------------------------------------------------------------------
-#' 
-## ---- echo = TRUE-----------------------------------------------------------------
-df <- flights %>% dplyr::select(origin, dest, arr_delay) %>% 
-  filter(origin == "LGA" & (dest == "IAD" | dest == "BWI")) %>%
-  mutate(arr_delay_h=arr_delay/60) %>% 
-  arrange(-arr_delay_h)
 df
 
-#' 
-#' ------------------------------------------------------------------------
-#' 
-#' Para la creación de resúmenes a partir de tablas en formato largo, es muy útil y cómoda la combinación `group_by` y `summarize`.
-#' 
-## ---- echo = TRUE-----------------------------------------------------------------
-df %>% group_by(dest) %>% summarise(mean_delay = mean(arr_delay, na.rm=TRUE))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-#' Por último, las conversiones entre formatos también pueden hacerse a partir de las funciones `spread` y `gather` del paquete `tidyr` --incluido en `tidyverse` y que se integra de forma natural en la gramática propuestas por `dplyr`--.
+#' In case we want to remove a variable from the environment, we use the `rm` function.
+#' 
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## rm(df)
+## rm(list=ls())   # Remove all variables from environment
+## 
+
+#' 
+#' 
+#' ## Creating a date frame from combining vectors 
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
+dfExp <- expand.grid(A=c(-1,1),B=c(-1,1), C=c(0,1,2))
+dfExp
+
+#' 
+#' 
+#' ## Joining data frames
+#' 
+#' Data frames can be joined on common values for the combining variables by using the `merge` function. By default, they are merged on the variables with same names.
+#' 
+## ---- echo = TRUE---------------------------------------------------------------
+dfC <- data.frame(C=c(0,1,2),
+    condC=c("hexane","cyclohexane","THF"))
+dfExp <- merge(dfExp, dfC)
+head(dfExp)
+
+#' 
+#' 
+#' ## YOUR TURN {data-background=#eeffcc}
+#' 
+#' 1.    Describe and analyze the data of an experiment conducted to assess the potency of lime sulphur in orchard sprays. The data is available in the `OrchardSprays` data set.
+#' 
+#' Run `help("OrchardSprays")` to know more about the experiment and the data set.
+#' 
