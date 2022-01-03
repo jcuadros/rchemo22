@@ -34,7 +34,7 @@ position:absolute;margin:0;top:20px;left:20px;max-width:200px;height:auto;" />
 
 ## R
 
-R is a software environment for statistical computing and graphics. It is open source, free to use, and has a really large and active community. There more than 10000 packages with additional functions, tools and data sets. It is among the most used tools in data analysis and data science.
+R is a software environment for statistical computing and graphics. It is open source, free to use, and has a really large and active community. There are more than 10000 packages with additional functions, tools and data sets. It is among the most used tools in data analysis and data science.
 
 <https://www.r-project.org/about.html><br/>
 <https://www.rdocumentation.org/><br/>
@@ -64,14 +64,13 @@ Calculations can be done in the RStudio console. Enter the expression, press `In
 ```{r, echo = TRUE}
 2 + 3 
 8 ^ 10
-log(100) # Natural logarithm
+log(100)    # Natural logarithm (this is a comment)
 ```
 
-[\# introduces a single-line comment]{.bibref}
 
 ## Using Scripts
 
-A script is a text file that contains a set or R instructions. This allows saving and restoring workflows as well as running them in unmanned mode. In R, they are commonly saved with the `.R` extension.
+A script is a text file that contains a set of R instructions. This allows saving and restoring workflows as well as running them in unmanned mode. In R, they are commonly saved with the `.R` extension.
 
 **RStudio** is a highly recommended editor for R. It allows creating, executing and debugging these scripts. Scripts are edited on the top-left pane.
 
@@ -99,14 +98,14 @@ In **RStudio**, `F1` can be used to search for the selected text in help. This w
 
 ## Basic Data Types
 
-Basic or atomic data type are
+Basic or atomic data types are
 
 -   `numeric`: 15-digit decimal number
 -   `integer`: 32-bit integer (to \~2·10^9^)
--   `logical`: `TRUE` or `FALSE`
 -   `character`: character string of undefined length
+-   `logical`: `TRUE` or `FALSE`
 
-Although less common in science, there also `complex` and `raw` data types.
+Although less common in science, there are also `complex` and `raw` data types.
 
 ## Basic Data Types -- `numeric`
 
@@ -131,7 +130,7 @@ print(b, digits = 10)
 | Subtraction         |        `-`        |
 | Product             |        `*`        |
 | Division            |        `/`        |
-| Power               |    `^` o `**`     |
+| Power               |    `^` or `**`     |
 | Modulus (remainder) |       `%%`        |
 | Integer division    |       `%/%`       |
 | Comparisons         | `== > < >= <= !=` |
@@ -798,7 +797,7 @@ mad(airquality$Ozone, na.rm = TRUE) # mean absolute deviation
 
 ## Descriptive statistics for one variable -- outliers
 
-There different methods to analyze outliers in R. A nice description can be found at <https://statsandr.com/blog/outliers-detection-in-r/>
+There are different methods to analyze outliers in R. A nice description can be found at <https://statsandr.com/blog/outliers-detection-in-r/>
 
 ```{r, echo = TRUE}
 # Hampel filter  
@@ -1028,7 +1027,7 @@ In case the sample is not representative, any information inferred from it will 
 Inference results are commonly shown in either of the following two formats:
 
 -   the value of population parameters, usually associated to an error or confidence interval,
--   the probability (*p*) that the observed data, o any data more extreme than the observed, could be produced from an hypothesized data model, the null hypotesis.
+-   the probability (*p*) that the observed data, or any data more extreme than the observed, could be produced from an hypothesized data model, the null hypotesis.
 
 ------------------------------------------------------------------------
 
@@ -1036,7 +1035,7 @@ We will be reviewing here, while we show how to apply them in R, the most common
 
 -   to discuss a fit to a  **distribution**,
 -   to study the population **spread**, and
--   to estimate or to compare **central tendency** values
+-   to estimate or to compare **central tendency** values.
 
 
 ## Inference -- distribution
@@ -1680,8 +1679,8 @@ Often preparing the data in specific formats is a requirement for producing data
 
 Common operations on data frame are
 
--   renaming columns or files,
--   adding columns or files,
+-   renaming columns or rows,
+-   adding columns or rows,
 -   segmenting (selecting columns or rows),
 -   removing columns or rows,
 -   creating a date frame from combining vectors, 
@@ -1703,7 +1702,7 @@ df
 ```
 
 
-## Renaming columns or files
+## Renaming columns or rows
 
 ```{r, echo = TRUE}
 colnames(df) <- c("var1", "var2", "var3") 
@@ -1712,7 +1711,7 @@ df
 ```
 
 
-## Adding columns or files
+## Adding columns or rows
 
 ```{r, echo = TRUE}
 df2 <- cbind(df, rnorm(5)) # adding a vector to the data frame
@@ -1836,4 +1835,5 @@ head(dfExp)
 1.    Describe and analyze the data of an experiment conducted to assess the potency of lime sulphur in orchard sprays. The data is available in the `OrchardSprays` data set.
 
 Run `help("OrchardSprays")` to know more about the experiment and the data set.
+
 

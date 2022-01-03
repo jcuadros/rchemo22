@@ -15,7 +15,7 @@
 #'       background_transition: 0
 #' ---
 #' 
-## ----setup, include=FALSE-------------------------------------------------------
+## ----setup, include=FALSE-------------------------------------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE, dev="svg")
 
 #' ##
@@ -34,7 +34,7 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' ## Instalación y carga de paquetes en R
 #' R tiene muchos paquetes para resolver problemas específicos. Para usar un paquete adicional este debe instalarse y cargarse en memoria.
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## installed.packages()[,1] # Lista los paquetes instalados
 ## (.packages()) # Lista los paquetes en memoria
 
@@ -46,11 +46,11 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' ----
 #' 
 #' Para instalar un paquete, por ejemplo "nycflights13"
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## install.packages("nycflights13")
 
 #' Para cargar un paquete en memoria, se usa
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## library("nycflights13")
 
 #' 
@@ -60,7 +60,7 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' En un script y para garantizar la disponibilidad de un paquete
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## if(!require("nycflights13")) {
 ##   install.packages("nycflights13")
 ##   library("nycflights13")
@@ -70,7 +70,7 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' ----
 #' 
 #' Para acceder a la documentación de un paquete
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## help(package="nycflights13")
 
 #' 
@@ -92,14 +92,14 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' Para los distintos ejemplos usaremos el conjunto de datos `flights` del paquete `nycflights13`.
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## if(!require("nycflights13")) {
 ##   install.packages("nycflights13")
 ##   library("nycflights13")
 ## }
 
 #' 
-## ---- echo = FALSE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE----
+## ---- echo = FALSE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE-------------------
 if(!require("nycflights13")) {
   install.packages("nycflights13", repos="https://cloud.r-project.org/",
          quiet=TRUE, type="binary")
@@ -107,13 +107,13 @@ if(!require("nycflights13")) {
 }
 
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## str(flights)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE--------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------------------------------
 str(flights)
 
 #' 
@@ -121,7 +121,7 @@ str(flights)
 #' 
 #' Partiremos de un subconjunto de `flights`, para ello empezamos segmentando el `data.frame`.
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 fl_ny2ws <- flights[flights$dest %in% c("IAD","BWI"),
                     c("origin","dest","carrier","arr_delay","air_time")]
 head(fl_ny2ws)
@@ -130,12 +130,12 @@ head(fl_ny2ws)
 #' ## Escribir y leer archivos de texto
 #' Para escribir un archivo de texto (delimitado) desde un `data.frame` se usa la función `write.table` o cualquiera de sus derivadas. Para leer, la función es `read.table`.
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## write.table(fl_ny2ws, file="fl_ny2ws.csv", sep=",", dec=".",
 ##             quote=TRUE, fileEncoding="UTF-8", row.names=FALSE)
 
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## fl_ny2ws <- read.table("fl_ny2ws.csv", sep=",", dec=".",
 ##            quote="\"", fileEncoding="UTF-8", header=TRUE)
 
@@ -146,11 +146,11 @@ head(fl_ny2ws)
 #' ## Escribir y leer archivos de datos de R
 #' Para leer y guardar datos en el formato propio de R, se usan las funciones `save` y `load`. Estas permiten almacenar y recuperar cualquier conjunto de variables del entorno de trabajo. Al recuperarlas se recuperan con el mismo nombre con el que se almacenaron.  
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## save(fl_ny2ws, file="fl_ny2ws.rda")
 
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## print(load("fl_ny2ws.rda"))   #print muestra el nombre de los objetos
 
 #' 
@@ -180,14 +180,14 @@ head(fl_ny2ws)
 #' 
 #' Partimos de una tabla de datos sintética...
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 df <- data.frame(1:5, letters[1:5], c(rep("a", 3), rep("b", 2)))
 df
 
 #' 
 #' ## Renombrar filas o columnas
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 colnames(df) <- c("var1", "var2", "var3") 
 rownames(df) <- paste("subject00", 1:5, sep = "")
 df
@@ -195,7 +195,7 @@ df
 #' 
 #' ## Añadir columnas o filas
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 df2 <- cbind(df, rnorm(5)) # añadir un vector al data frame
 df2$var5 <- 5:1 # assignando valores a una nueva variable
 df2
@@ -203,7 +203,7 @@ df2
 #' 
 #' ----
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 df2 <- rbind(df, list(6, "e", "b"))
 df2
 
@@ -218,20 +218,20 @@ df2
 #' 
 #' ## Segmentar -- mediante índices
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 df[1:3,]
 df[,c(1,3)]
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 df[-3,-2]
 
 #' 
 #' ## Segmentar -- usando nombres
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 df[,"var2"]
 df$var3
 df[,c("var2","var3")]
@@ -239,7 +239,7 @@ df[,c("var2","var3")]
 #' 
 #' ## Segmentar -- mediante vectores lógicos
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 df[c(T,T,F,T,F), c(T,F,T)]
 df[df[,1] == 3 | df[,3] == "b",]
 
@@ -263,14 +263,14 @@ df[df[,1] == 3 | df[,3] == "b",]
 #' 
 #' Partiremos de un subconjunto de `flights`...
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## if(!require("nycflights13")) {
 ##   install.packages("nycflights13")
 ##   library("nycflights13")
 ## }
 
 #' 
-## ---- echo = FALSE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE----
+## ---- echo = FALSE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE-------------------
 if(!require("nycflights13")) {
   install.packages("nycflights13", repos="https://cloud.r-project.org/",
          quiet=TRUE, type="binary")
@@ -280,7 +280,7 @@ if(!require("nycflights13")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 fl_ny2ws_W <- flights[flights$dest %in% c("IAD","BWI"),
                     c("origin","dest","carrier","arr_delay","dep_delay")]
 fl_ny2ws_W <- cbind(key = 1:nrow(fl_ny2ws_W), fl_ny2ws_W)
@@ -288,7 +288,7 @@ head(fl_ny2ws_W)
 
 #' 
 #' ## Cambiar el formato de un conjunto de datos -- ancho a largo
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 fl_ny2ws_L <- rbind(
   cbind(edge = rep("origin", nrow(fl_ny2ws_W)), fl_ny2ws_W[,c(1,4)],
         airport = fl_ny2ws_W[,2], delay = fl_ny2ws_W[,6]),
@@ -299,13 +299,13 @@ colnames(fl_ny2ws_L) <- c("edge","key","carrier","airport","delay")
 #' 
 #' ----
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 head(fl_ny2ws_L)
 tail(fl_ny2ws_L)
 
 #' 
 #' ## Cambiar el formato de un conjunto de datos -- largo a ancho
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 fl_ny2ws_W2p1 <- fl_ny2ws_L[fl_ny2ws_L$edge=="origin",]
 fl_ny2ws_W2p2 <- fl_ny2ws_L[fl_ny2ws_L$edge=="dest",]
 fl_ny2ws_W2p1 <- fl_ny2ws_W2p1[order(fl_ny2ws_W2p1$key),-1]
@@ -318,7 +318,7 @@ colnames(fl_ny2ws_W2) <- c("key", "carrier", "origin", "dep_delay",
 #' 
 #' ----
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 head(fl_ny2ws_W2)
 tail(fl_ny2ws_W2)
 
@@ -326,7 +326,7 @@ tail(fl_ny2ws_W2)
 #' ## Eliminar filas o columnas
 #' La forma más habitual de eliminar filas o columnas es segmentando la tabla de datos. Sin embargo, una columna también puede eliminarse asignando la misma a `NULL`.
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 df <- data.frame(1:5, letters[1:5], c(rep("a", 3), rep("b", 2)))
 colnames(df) <- c("var1", "var2", "var3") 
 rownames(df) <- paste("subject00", 1:5, sep = "")
@@ -336,7 +336,7 @@ df$var2 <- NULL
 #' 
 #' ----
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 df
 
 #' 
@@ -344,12 +344,12 @@ df
 #' 
 #' Si lo que se desea es eliminar una variable del entorno de trabajo entonces se usa la función `rm`.
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 rm(df)
 
 #' 
 #' ## Creación de resúmenes a partir de datos en formato ancho
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 sum_fl_ny2ws <- data.frame(edge=c("origin","dest"))
 
 sum_fl_ny2ws$mean_delay <- apply(fl_ny2ws_W[,c("dep_delay","arr_delay")],2,
@@ -362,7 +362,7 @@ sum_fl_ny2ws
 
 #' 
 #' ## Creación de una tabla de resumen a partir de datos en formato largo
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 sum_fl_ny2ws <- data.frame(edge=c("origin","dest"))
 sum_fl_ny2ws$mean_delay <- by(fl_ny2ws_L$delay,fl_ny2ws_L$edge,
                               mean,na.rm=TRUE)
@@ -378,7 +378,7 @@ sum_fl_ny2ws
 #' http://dplyr.tidyverse.org/
 #' 
 #' 
-## ---- echo = FALSE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE----
+## ---- echo = FALSE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE-------------------
 if(!require("tidyverse")) {
   install.packages("tidyverse", repos="https://cloud.r-project.org/",
          quiet=TRUE, type="binary")
@@ -399,7 +399,7 @@ if(!require("tidyverse")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 df <- flights %>% dplyr::select(origin, dest, arr_delay) %>% 
   filter(origin == "LGA" & (dest == "IAD" | dest == "BWI")) %>%
   mutate(arr_delay_h=arr_delay/60) %>% 
@@ -411,7 +411,7 @@ df
 #' 
 #' Para la creación de resúmenes a partir de tablas en formato largo, es muy útil y cómoda la combinación `group_by` y `summarize`.
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 df %>% group_by(dest) %>% summarise(mean_delay = mean(arr_delay, na.rm=TRUE))
 
 #' 
@@ -443,7 +443,7 @@ df %>% group_by(dest) %>% summarise(mean_delay = mean(arr_delay, na.rm=TRUE))
 #' ----
 #' 
 #' `ggplot2` forma parte del paquete `tidyverse` (aunque también puede instalarse y cargarse autónomamente).
-## ---- echo = TRUE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE----
+## ---- echo = TRUE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE--------------------
 if(!require("tidyverse")) {
   install.packages("tidyverse", repos="https://cloud.r-project.org/",
          quiet=TRUE, type="binary")
@@ -466,7 +466,7 @@ if(!require("tidyverse")) {
 #' 
 #' Por ejemplo,
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## grafico <- ggplot(data = anscombe,
 ##         mapping = aes(x = x1, y = y1))  # Datos y mapeado estético
 ## grafico <- grafico + geom_point()       # Geometría
@@ -476,7 +476,7 @@ if(!require("tidyverse")) {
 #' 
 #' ----
 #' 
-## ---- echo = FALSE--------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------------------------------
 grafico <- ggplot(data = anscombe,
         mapping = aes(x = x1, y = y1))  # Datos y mapeado estético 
 grafico <- grafico + geom_point()       # Geometría
@@ -487,14 +487,14 @@ grafico
 #' ## `ggplot2` -- datos
 #' En `ggplot2`, el elemento `data` (datos) se introduce como primer argumento de la función `ggplot`. Debe corresponder a una tabla de datos o un tipo de datos convertible a tabla de datos.
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## grafico <- ggplot(data = anscombe,
 
 #' 
 #' ## `ggplot2` -- mapeado estético
 #' El `mapping` (mapeado estético) corresponde al establecimiento de relaciones entre variables de los datos y variables del gráfico. Es el segundo argumento de la función `ggplot`y debe crearse con al función de apoyo `aes`. 
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ##         mapping = aes(x = x1, y = y1))
 
 #' 
@@ -518,7 +518,7 @@ grafico
 #' ## `ggplot2` -- geometrías
 #' Las geometrías (`geom_`) indican la forma que debe tener el gráfico, es decir, cómo se articulan las variables del gráfico. Se añaden al gráfico sumándose al objeto creado por `ggplot`.
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## grafico <- grafico + geom_point()
 
 #' 
@@ -549,19 +549,19 @@ grafico
 #' 
 #' Usaremos 1000 datos del conjunto de datos `diamonds` para crear los distintos ejemplos.
 #' 
-## ---- echo = TRUE---------------------------------------------------------------
+## ---- echo = TRUE---------------------------------------------------------------------------------------
 diaM <- diamonds[sample(1:nrow(diamonds),1000),]
 str(diaM)
 
 #' 
 #' ## Gráficos en `ggplot2` -- gráfico de dispersión
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=carat,y=price)) + geom_point()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=carat,y=price)) + geom_point()
 
 #' 
@@ -569,14 +569,14 @@ ggplot(diaM, aes(x=carat,y=price)) + geom_point()
 #' 
 #' Añadiendo una tercera variable (`cut`) y modificando algunos aspectos de formato...
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=carat,y=price,color=cut)) +
 ##   geom_point(alpha=.8,shape=21,size=3)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=carat,y=price,color=cut)) + 
   geom_point(alpha=.8,shape=21,size=3)
 
@@ -585,7 +585,7 @@ ggplot(diaM, aes(x=carat,y=price,color=cut)) +
 #' 
 #' Añadiendo líneas de tendencia...
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=carat,y=price,color=cut)) +
 ##   geom_point(alpha=.8,shape=21,size=3) +
 ##   geom_smooth(method="lm",se=FALSE)
@@ -593,20 +593,20 @@ ggplot(diaM, aes(x=carat,y=price,color=cut)) +
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=carat,y=price,color=cut)) + 
   geom_point(alpha=.8,shape=21,size=3) +
   geom_smooth(method="lm",se=FALSE)
 
 #' 
 #' ## Gráficos en `ggplot2` -- histograma
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=price)) + geom_histogram(binwidth=1000)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=price)) + geom_histogram(binwidth=1000)
 
 #' 
@@ -614,14 +614,14 @@ ggplot(diaM, aes(x=price)) + geom_histogram(binwidth=1000)
 #' 
 #' Y en función del corte...
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=price,fill=cut)) +
 ##   geom_histogram(position='dodge',binwidth=1000)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=price,fill=cut)) +
   geom_histogram(position='dodge',binwidth=1000)
 
@@ -630,14 +630,14 @@ ggplot(diaM, aes(x=price,fill=cut)) +
 #' 
 #' En frecuencias relativas (por grupo)...
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=price,y=..density..,fill=cut)) +
 ##   geom_histogram(position='dodge',binwidth=1000)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=price,y=..density..,fill=cut)) +
   geom_histogram(position='dodge',binwidth=1000)
 
@@ -646,27 +646,27 @@ ggplot(diaM, aes(x=price,y=..density..,fill=cut)) +
 #' 
 #' Quizás funcione mejor un gráfico de densidades...
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=price,fill=cut)) +
 ##   geom_density(alpha=.3)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=price,fill=cut)) +
   geom_density(alpha=.3)
 
 #' 
 #' ## Gráficos en `ggplot2` -- diagrama de barras
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=clarity)) + geom_bar()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=clarity)) + geom_bar()
 
 #' 
@@ -674,13 +674,13 @@ ggplot(diaM, aes(x=clarity)) + geom_bar()
 #' 
 #' En función de la claridad...
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar()
 
 #' 
@@ -688,13 +688,13 @@ ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar()
 #' 
 #' Para comparar entre frecuencias absolutas, funcionan mejor las barras separadas.
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar(position="dodge")
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar(position="dodge")
 
 #' 
@@ -702,13 +702,13 @@ ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar(position="dodge")
 #' 
 #' Para comparar entre frecuencias relativas acumuladas, son mejores las barras apiladas en frecuencia relativa (para cada clase).
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar(position="fill")
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar(position="fill")
 
 #' 
@@ -718,7 +718,7 @@ ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar(position="fill")
 #' 
 #' ## Gráficos en `ggplot2` -- diagrama de caja
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=1, y=price)) + geom_boxplot()
 
 #' 
@@ -726,7 +726,7 @@ ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar(position="fill")
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=1, y=price)) + geom_boxplot()
 
 #' 
@@ -734,13 +734,13 @@ ggplot(diaM, aes(x=1, y=price)) + geom_boxplot()
 #' 
 #' Y en función del corte...
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=cut, y=price)) + geom_boxplot()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=cut, y=price)) + geom_boxplot()
 
 #' 
@@ -748,7 +748,7 @@ ggplot(diaM, aes(x=cut, y=price)) + geom_boxplot()
 #' 
 #' El gráfico se puede mejorar mostrando todos los puntos, con una posición aleatorizada.
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=cut, y=price)) +
 ##   geom_boxplot(outlier.shape = NA) +
 ##   geom_jitter(shape = 21, alpha=.5,height=0,width=.2)
@@ -756,7 +756,7 @@ ggplot(diaM, aes(x=cut, y=price)) + geom_boxplot()
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 ggplot(diaM, aes(x=cut, y=price)) + 
   geom_boxplot(outlier.shape = NA) +
   geom_jitter(shape = 21, alpha=.5,height=0,width=.2)
@@ -766,7 +766,7 @@ ggplot(diaM, aes(x=cut, y=price)) +
 #' 
 #' O incluyendo un *violin plot* y un punto para la media...
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## medias <- diaM %>% group_by(cut) %>%
 ##   summarise(price=mean(price))
 ## 
@@ -778,7 +778,7 @@ ggplot(diaM, aes(x=cut, y=price)) +
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE-------------------------------------------------
+## ---- echo = FALSE, eval = TRUE-------------------------------------------------------------------------
 medias <- diaM %>% group_by(cut) %>%
   summarise(price=mean(price))
 
@@ -802,7 +802,7 @@ ggplot(diaM, aes(x=cut, y=price)) +
 #' 
 #' Un ejemplo para terminar...
 #' 
-## ---- echo = TRUE, eval = FALSE-------------------------------------------------
+## ---- echo = TRUE, eval = FALSE-------------------------------------------------------------------------
 ## ggplot(diaM, aes(x=carat, y = price, shape = cut, col = clarity)) +
 ##   geom_point(alpha=.6) +
 ##   scale_x_continuous(breaks=1:3) +
@@ -817,7 +817,7 @@ ggplot(diaM, aes(x=cut, y=price)) +
 #' ----
 #' 
 #' 
-## ---- echo = FALSE--------------------------------------------------------------
+## ---- echo = FALSE--------------------------------------------------------------------------------------
 ggplot(diaM, aes(x=carat, y = price, shape = cut, col = clarity)) +
   geom_point(alpha=.8) +
   scale_x_continuous(breaks=1:3) +
