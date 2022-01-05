@@ -87,14 +87,16 @@ div.sourceCode {
 .reveal .small p,
 .reveal .small table,
 .reveal .small li,
-.reveal .small pre {
+.reveal .small pre,
+.reveal .small code {
   font-size:0.75em;
 }
 
 .reveal .smaller p,
 .reveal .smaller table,
 .reveal .smaller li,
-.reveal .smaller pre {
+.reveal .smaller pre,
+.reveal .smaller code {
   font-size:0.6em;
 }
 

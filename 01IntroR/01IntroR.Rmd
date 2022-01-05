@@ -34,7 +34,7 @@ position:absolute;margin:0;top:20px;left:20px;max-width:200px;height:auto;" />
 
 ## R
 
-R is a software environment for statistical computing and graphics. It is open source, free to use, and has a really large and active community. There are more than 10000 packages with additional functions, tools and data sets. It is among the most used tools in data analysis and data science.
+R is a software environment for statistical computing and graphics. It is open source, free to use, and has a really large and active community. There are more than 20000 packages with additional functions, tools and data sets. It is among the most used tools in data analysis and data science.
 
 <https://www.r-project.org/about.html><br/>
 <https://www.rdocumentation.org/><br/>
@@ -1669,7 +1669,7 @@ Parallel approaches are followed when fitting more complex multilinear models  (
 
 # Advanced manipulation of data frames (part 1 - `base` functions)
 
-## Tabla de datos o *data frame*
+## Data frame
 
 As introduced above, data frames are the most common data structure to store data sets.
 
@@ -1683,7 +1683,7 @@ Common operations on data frame are
 -   adding columns or rows,
 -   segmenting (selecting columns or rows),
 -   removing columns or rows,
--   creating a date frame from combining vectors, 
+-   creating a data frame from combining vectors, 
 -   joining data frames,
 -   reshaping data tables, and
 -   summarizing or aggregating the data.
@@ -1810,7 +1810,7 @@ rm(list=ls())   # Remove all variables from environment
 ```
 
 
-## Creating a date frame from combining vectors 
+## Creating a data frame from combining vectors 
 
 ```{r, echo = TRUE}
 dfExp <- expand.grid(A=c(-1,1),B=c(-1,1), C=c(0,1,2))

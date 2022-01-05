@@ -15,7 +15,7 @@
 #'       background_transition: 0
 #' ---
 #' 
-## ----setup, include=FALSE-------------------------------------------------------------------------------
+## ----setup, include=FALSE------------------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE, dev="svg")
 
 #' ##
@@ -34,7 +34,7 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' 
 #' 
-#' ## R packages for Chemometrics
+#' ## R packages for Chemistry and Chemometrics
 #' 
 #' - `chemometrics`, https://cran.r-project.org/web/packages/chemometrics/index.html
 #' - `ChemometricsWithR`, https://github.com/rwehrens/ChemometricsWithR/
@@ -50,15 +50,6 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' - Kucheryavskiy, s. (2021). mda.tools: make chemometrics easy. https://mdatools.com/
 #' - Varmuza, K., & Filzmoser, P. (2016). Introduction to multivariate statistical analysis in chemometrics. CRC press.
 #' - Wehrens, R. (2011). Chemometrics with R. Heidelberg, Germany: Springer.
-#' 
-#' 
-#' ## Chemical Data Formats
-#' 
-#' - Tabular data
-#' - JCAMP-DX, http://jcamp-dx.org/ 
-#' - AnIML, https://www.animl.org/
-#' - ICARTT, https://www-air.larc.nasa.gov/missions/etc/IcarttDataFormat.htm
-#' - Allotrope Data Format, https://www.allotrope.org/
 #' 
 #' 
 #' # Chemical Data Preprocessing

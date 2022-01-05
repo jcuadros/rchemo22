@@ -34,7 +34,7 @@ position:absolute;margin:0;top:20px;left:20px;max-width:200px;height:auto;" />
 
 
 
-## R packages for Chemometrics
+## R packages for Chemistry and Chemometrics
 
 - `chemometrics`, https://cran.r-project.org/web/packages/chemometrics/index.html
 - `ChemometricsWithR`, https://github.com/rwehrens/ChemometricsWithR/
@@ -50,15 +50,6 @@ Updated information can be found following the CRAN Task View: Chemometrics and 
 - Kucheryavskiy, s. (2021). mda.tools: make chemometrics easy. https://mdatools.com/
 - Varmuza, K., & Filzmoser, P. (2016). Introduction to multivariate statistical analysis in chemometrics. CRC press.
 - Wehrens, R. (2011). Chemometrics with R. Heidelberg, Germany: Springer.
-
-
-## Chemical Data Formats
-
-- Tabular data
-- JCAMP-DX, http://jcamp-dx.org/ 
-- AnIML, https://www.animl.org/
-- ICARTT, https://www-air.larc.nasa.gov/missions/etc/IcarttDataFormat.htm
-- Allotrope Data Format, https://www.allotrope.org/
 
 
 # Chemical Data Preprocessing
