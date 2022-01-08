@@ -17,7 +17,7 @@
 #'   chunk_output_type: console
 #' ---
 #' 
-## ----setup, include=FALSE------------------------------------------------------------
+## ----setup, include=FALSE--------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE, dev="svg")
 
 #' ##
@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' In all cases, to make use of a package, it has to be installed and loaded in memory. 
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## installed.packages()[,1] # Lists the installed packages
 ## (.packages())            # Lists the packages currently loaded
 
@@ -52,11 +52,11 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' ----
 #' 
 #' To install a package, we use
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## install.packages("dplyr")
 
 #' To load a package in memory, we use
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## library("dplyr")
 
 #' 
@@ -67,7 +67,7 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' In a script, to avoid repeated installations of a package and to ensure its availability, we can use
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## if(!require("dplyr")) {
 ##   install.packages("dplyr",
 ##                    repos="https://cloud.r-project.org/")
@@ -79,14 +79,14 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' If the package is installed but not loaded, we can still access its functions by using the `::`operator.
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## dplyr::band_instruments
 
 #' 
 #' ----
 #' 
 #' To browse the help files for a packages, run
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## help(package="dplyr")
 
 #' 
@@ -111,12 +111,18 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' - some data files which are specific for chemistry and chemical analysis.
 #' 
 #' 
-#' ## Text Files
+#' ## A Previous: Set the Working Directory
 #' 
+#' Before working with external files, it is important to set the working directory. `setwd` and `getwd` functions can be used to set the working directory from the R code, although its use is not recommended in scripts that may need to be shared.
+#' 
+#' RStudio allows setting the working directory from the *Session* menu and form the *Files* pane.
+#' 
+#' 
+#' ## Text Files
 #' 
 #' Let's start from the `wine` data set in the `FactoMineR` package. 
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## if(!require("FactoMineR")) {
 ##   install.packages("FactoMineR",
 ##                    repos="https://cloud.r-project.org/")
@@ -139,7 +145,7 @@ data("wine")
 #' 
 #' ----
 #' 
-## ---- echo = FALSE-------------------------------------------------------------------
+## ---- echo = FALSE---------------------------------------------------------
 str(wine)
 
 #' 
@@ -147,12 +153,12 @@ str(wine)
 #' 
 #' To write a delimited text file from a data frame, we use the `write.table` function or any of its derivative functions. To read, `read.table` is to be used.
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## write.table(wine, file="wine.csv", sep=",", dec=".",
 ##             quote=TRUE, fileEncoding="UTF-8", row.names=FALSE)
 
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## wine2 <- read.table("wine.csv", sep=",", dec=".",
 ##            quote="\"", fileEncoding="UTF-8", header=TRUE)
 
@@ -172,7 +178,7 @@ str(wine)
 #' 
 #' An example of an XML file containing the structure of caffeine can be found at <https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/CID/2519/record/XML>. It can be read in R with `read_xml` from the `xml2` package.
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## if(!require("xml2")) {
 ##   install.packages("xml2",
 ##                    repos="https://cloud.r-project.org/")
@@ -192,7 +198,7 @@ if(!require("xml2")) {
 #' 
 #' Information can be extracted using XPath selectors, <https://www.w3schools.com/xml/xpath_intro.asp>.
 #' 
-## ---- echo = TRUE--------------------------------------------------------------------
+## ---- echo = TRUE----------------------------------------------------------
 xmlObj <- read_xml(
   "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/CID/2519/record/XML",
   options = "RECOVER")
@@ -213,7 +219,7 @@ as.character(xmlObj_Name)
 #' 
 #' JSON files are another common format for data storage and transmission. In R, the `jsonlite`package offers functions to import and convert this files to list or data frames.
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## if(!require("jsonlite")) {
 ##   install.packages("jsonlite",
 ##                    repos="https://cloud.r-project.org/")
@@ -231,7 +237,7 @@ if(!require("jsonlite")) {
 #' 
 #' ## {.small}
 #' 
-## ---- echo = TRUE--------------------------------------------------------------------
+## ---- echo = TRUE----------------------------------------------------------
 jsBz <- fromJSON(
   "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/241/JSON")
 jsBz_NI <- jsBz$Record$Section[
@@ -248,15 +254,16 @@ table(unlist(CAS$Information[[1]]$Value$StringWithMarkup))
 #' 
 #' Let's use the `wine` data set again.
 #' 
-## ---- echo = TRUE--------------------------------------------------------------------
+## ---- echo = TRUE----------------------------------------------------------
 str(wine)
 
+#' 
 #' ----
 #' 
 #' To write a data.frame to Excel, we can use the `write_xlsx` from the `writexl` package. To read an Excel file, `read_xlsx` from the `readxl` package can be used.
 #' 
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## if(!require("writexl")) {
 ##   install.packages("writexl",
 ##                    repos="https://cloud.r-project.org/")
@@ -286,7 +293,7 @@ if(!require("readxl")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## write_xlsx(list(wineSheet = wine),
 ##                   path = "wine.xlsx")
 ## wineExcel <- readxl::read_xlsx(path = "wine.xlsx")
@@ -296,7 +303,7 @@ if(!require("readxl")) {
 #' 
 #' To open and write Matlab data files, we can use the `R.matlab` package. Relevant functions are called `readMat` and `writeMat`.
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## if(!require("R.matlab")) {
 ##   install.packages("R.matlab",
 ##                    repos="https://cloud.r-project.org/")
@@ -314,7 +321,7 @@ if(!require("R.matlab")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## writeMat("wine.mat", wine = wine)
 ## wineMat <-readMat("wine.mat")
 ## wineMat <- data.frame(as.character(unlist(wineMat[[1]][[1]])),
@@ -330,11 +337,11 @@ if(!require("R.matlab")) {
 #' 
 #' To save and read data in the R data format, we use `save` and `load`. These allow storing and restoring any set of variables of the environment. When loaded, variables are recovered with the same names they had on saving.  
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## save(wine, file="wine.rda")
 
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## print(load("wine.rda"))          # print shows the name of the loaded objects
 ## wineR <- get(load("wine.rda"))   # get allows storing the loaded information
 ##                                  # with a different name
@@ -362,7 +369,7 @@ if(!require("R.matlab")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## if (!require("BiocManager", quietly = TRUE))
 ##   install.packages("BiocManager",
 ##                    repos="https://cloud.r-project.org/")
@@ -384,7 +391,7 @@ if (!require("ChemmineR", quietly = TRUE)) {
 }
 
 #' 
-## ---- echo = TRUE, eval=FALSE--------------------------------------------------------
+## ---- echo = TRUE, eval=FALSE----------------------------------------------
 ## sdf1 <- read.SDFset(
 ##   "https://cactus.nci.nih.gov/chemical/structure/CCCC/file?format=sdf")
 ## draw_sdf(sdf1[[1]], filename=NULL)
@@ -392,7 +399,7 @@ if (!require("ChemmineR", quietly = TRUE)) {
 #' 
 #' ----
 #' 
-## ---- echo = FALSE-------------------------------------------------------------------
+## ---- echo = FALSE---------------------------------------------------------
 sdf1 <- read.SDFset("https://cactus.nci.nih.gov/chemical/structure/CCCC/file?format=sdf")
 draw_sdf(sdf1[[1]], filename=NULL)
 
@@ -400,7 +407,7 @@ draw_sdf(sdf1[[1]], filename=NULL)
 #' 
 #' ----
 #' 
-## ---- echo = TRUE--------------------------------------------------------------------
+## ---- echo = TRUE----------------------------------------------------------
 header(sdf1)
 MW(sdf1[[1]])
 
@@ -410,7 +417,7 @@ MW(sdf1[[1]])
 #' 
 #' JCAMP-DX is an text-based open standard to store and distribute spectral data. Currently the best way to read these files in R is the `readJDX` function in the `readJDX` package.
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## if (!require("readJDX")) {
 ##   install.packages("readJDX",
 ##                    repos="https://cloud.r-project.org/")
@@ -425,11 +432,12 @@ if (!require("readJDX")) {
   library("readJDX")
 }
 
+#' 
 #' ----
 #' 
 #' ### Acetone IR
 #' 
-## ---- echo = TRUE, eval=FALSE--------------------------------------------------------
+## ---- echo = TRUE, eval=FALSE----------------------------------------------
 ## jdx1 <- readJDX ("../data/67-64-1-IR.jdx")
 ## plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
 ##      xlab="wave number", ylab="T")
@@ -441,7 +449,7 @@ if (!require("readJDX")) {
 #' 
 #' ----
 #' 
-## ---- echo = FALSE-------------------------------------------------------------------
+## ---- echo = FALSE---------------------------------------------------------
 jdx1 <- readJDX ("../data/67-64-1-IR.jdx")
 plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
      xlab="wave number", ylab="T")
@@ -463,7 +471,7 @@ plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
 #' While a functional package to read MSP files doesn't seem to be available, these files can be read with standard functions for text files.
 #' 
 #' 
-## ---- echo = TRUE--------------------------------------------------------------------
+## ---- echo = TRUE----------------------------------------------------------
     msp1 <- readLines("../data/MSMS-Neg-MassBankEU.msp")
     msp1 <- paste(msp1, collapse="\n")
     msp1 <- unlist(strsplit(msp1, "\n\n"))
@@ -477,7 +485,7 @@ plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ##     spectrum <- data.frame(m_z=rep(spectrum$m_z,each=3),
 ##                           int=rep(spectrum$int,each=3),
 ##                           i=1:3)
@@ -489,7 +497,7 @@ plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
 #' 
 #' ----
 #' 
-## ---- echo = FALSE-------------------------------------------------------------------
+## ---- echo = FALSE---------------------------------------------------------
     spectrum <- data.frame(m_z=rep(spectrum$m_z,each=3),
                           int=rep(spectrum$int,each=3),
                           i=1:3)
@@ -503,376 +511,394 @@ plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
 #' `MSMS-Neg-MassBankEU.msp` downloaded from http://prime.psc.riken.jp/compms/msdial/main.html#MSP 
 #' 
 #' 
-#' # Manipulación avanzada de tablas de datos
+#' ## YOUR TURN {data-background="#eeffcc"}
 #' 
-#' ## Tabla de datos o *data frame*
-#' Com se ha viso anteriormente, el *data frame* es el tipo de dato más usado para almacenar tablas de datos.
+#' 1.    Import the classical wine data of Forina et al. It is available at <http://archive.ics.uci.edu/ml/datasets/wine>.
+#' 2.    Load the data from the NIR spectra for diesel fuels which is described and available at <https://eigenvector.com/resources/data-sets/>.
+#' 3.    Import the data from mango aroma components available at <https://figshare.com/articles/dataset/Mango_Mangifera_indica_Aroma_Discriminate_Cultivars_and_Ripeness_Stages/14303913>. Warning: it needs some cleaning!
+#' 4.    Extract the MS of lactic acid from the Golm database, at <http://gmd.mpimp-golm.mpg.de/download/> and plot it. It is available in the MDN35 ALK data set.
 #' 
-#' A menudo, para poder realizar gráficos y/o aplicar distintos procedimientos estadísticos, es necesario manipular la tabla de datos. A esto dedicaremos este apartado.
 #' 
-#' ----
+#' # Advanced manipulation of data frames (part 2 - the tidy way)
 #' 
-#' Entre las operaciones habituales que haremos sobre una tabla de datos, hay
+#' ## Data frame {.small}
 #' 
-#' - renombrar filas o columnas,
-#' - añadir columnas o filas,
-#' - segmentar,
-#' - cambiar el formato de un conjunto de datos,
-#' - eliminar filas o columnas,
-#' - crear tablas de datos de resumen, y
-#' - unir tablas
+#' As already presented, we usually have to arrange data we have in a data frame by
 #' 
-#' Terminaremos este bloque introduciendo los funciones básicas del paquete `dplyr` que facilita la realización de algunas de estas operaciones.
+#' -   renaming columns or rows,
+#' -   adding columns or rows,
+#' -   segmenting (selecting columns or rows),
+#' -   removing columns or rows,
+#' -   creating a data frame from combining vectors, 
+#' -   joining data frames,
+#' -   reshaping data tables, and
+#' -   summarizing or aggregating the data.
 #' 
-#' ----
+#' Many of these operations can be performed by using a set of functions that operate in a single common paradigm, sometimes defined as grammar for data manipulation, implemented in the `dplyr` and `tidyr` R packages.
 #' 
-#' Partimos de una tabla de datos sintética...
+#' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE--------------------------------------------------------------------
-df <- data.frame(1:5, letters[1:5], c(rep("a", 3), rep("b", 2)))
-df
-
+#' We usually install and load both packages jointly with some other packages that work nicely together. These are grouped in the `tidyverse` package.
 #' 
-#' ## Renombrar filas o columnas
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-colnames(df) <- c("var1", "var2", "var3") 
-rownames(df) <- paste("subject00", 1:5, sep = "")
-df
-
-#' 
-#' ## Añadir columnas o filas
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-df2 <- cbind(df, rnorm(5)) # añadir un vector al data frame
-df2$var5 <- 5:1 # assignando valores a una nueva variable
-df2
-
-#' 
-#' ----
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-df2 <- rbind(df, list(6, "e", "b"))
-df2
-
-#' 
-#' ## Segmentar
-#' 
-#' Existen tres formas básicas de seleccionar filas o columnas de una tablas de datos
-#' 
-#' - mediante índices numéricos,
-#' - usando los nombres de filas y columnas, y
-#' - mediante vectores lógicos
-#' 
-#' ## Segmentar -- mediante índices
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-df[1:3,]
-df[,c(1,3)]
-
-#' 
-#' ----
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-df[-3,-2]
-
-#' 
-#' ## Segmentar -- usando nombres
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-df[,"var2"]
-df$var3
-df[,c("var2","var3")]
-
-#' 
-#' ## Segmentar -- mediante vectores lógicos
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-df[c(T,T,F,T,F), c(T,F,T)]
-df[df[,1] == 3 | df[,3] == "b",]
-
-#' 
-#' ## Cambiar el formato de un conjunto de datos
-#' 
-#' Un mismo conjunto de datos puede representar en una tabla de datos de acuerdo con distintas oragnizaciones o formatos.
-#' 
-#' Se denomina formato ordenado, *tidy*, aquella organización en la que las filas representan individuos, las columnas, variables de medidas, y las intersecciones los valores de dichas medidas.  
-#' 
-#' ----
-#' 
-#' Cuando existen más de una variable que corresponde al mismo tipo de medida, entonces los datos pueden organizarse de dos formas
-#' 
-#' - usando una columna distinta para cada variable, formato ancho y *tidy*, o
-#' - usando una columna para los valores y otra para indicar cuál es la variable representada en esta fila.
-#' 
-#' El formato más adecuado dependerá de los análisis y visualizaciones que quieran hacerse.
-#' 
-#' ----
-#' 
-#' Partiremos de un subconjunto de `flights`...
-#' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
-## if(!require("nycflights13")) {
-##   install.packages("nycflights13")
-##   library("nycflights13")
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## if (!require("tidyverse")) {
+##   install.packages("tidyverse",
+##                    repos="https://cloud.r-project.org/")
+##   library("tidyverse")
 ## }
 
 #' 
 ## ---- echo = FALSE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE----
-if(!require("nycflights13")) {
-  install.packages("nycflights13", repos="https://cloud.r-project.org/",
-         quiet=TRUE, type="binary")
-  library("nycflights13")
-}
-
-#' 
-#' ----
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-fl_ny2ws_W <- flights[flights$dest %in% c("IAD","BWI"),
-                    c("origin","dest","carrier","arr_delay","dep_delay")]
-fl_ny2ws_W <- cbind(key = 1:nrow(fl_ny2ws_W), fl_ny2ws_W)
-head(fl_ny2ws_W)
-
-#' 
-#' ## Cambiar el formato de un conjunto de datos -- ancho a largo
-## ---- echo = TRUE--------------------------------------------------------------------
-fl_ny2ws_L <- rbind(
-  cbind(edge = rep("origin", nrow(fl_ny2ws_W)), fl_ny2ws_W[,c(1,4)],
-        airport = fl_ny2ws_W[,2], delay = fl_ny2ws_W[,6]),
-  cbind(edge = rep("dest", nrow(fl_ny2ws_W)), fl_ny2ws_W[,c(1,4)],
-        airport = fl_ny2ws_W[,3], delay = fl_ny2ws_W[,5]))
-colnames(fl_ny2ws_L) <- c("edge","key","carrier","airport","delay")
-
-#' 
-#' ----
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-head(fl_ny2ws_L)
-tail(fl_ny2ws_L)
-
-#' 
-#' ## Cambiar el formato de un conjunto de datos -- largo a ancho
-## ---- echo = TRUE--------------------------------------------------------------------
-fl_ny2ws_W2p1 <- fl_ny2ws_L[fl_ny2ws_L$edge=="origin",]
-fl_ny2ws_W2p2 <- fl_ny2ws_L[fl_ny2ws_L$edge=="dest",]
-fl_ny2ws_W2p1 <- fl_ny2ws_W2p1[order(fl_ny2ws_W2p1$key),-1]
-fl_ny2ws_W2p2 <- fl_ny2ws_W2p2[order(fl_ny2ws_W2p2$key),-c(1,2)]
-fl_ny2ws_W2 <- cbind(fl_ny2ws_W2p1,fl_ny2ws_W2p2[,-1])
-colnames(fl_ny2ws_W2) <- c("key", "carrier", "origin", "dep_delay",
-                           "dest","arr_delay")
-
-
-#' 
-#' ----
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-head(fl_ny2ws_W2)
-tail(fl_ny2ws_W2)
-
-#' 
-#' ## Eliminar filas o columnas
-#' La forma más habitual de eliminar filas o columnas es segmentando la tabla de datos. Sin embargo, una columna también puede eliminarse asignando la misma a `NULL`.
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-df <- data.frame(1:5, letters[1:5], c(rep("a", 3), rep("b", 2)))
-colnames(df) <- c("var1", "var2", "var3") 
-rownames(df) <- paste("subject00", 1:5, sep = "")
-df <- df[-2,]
-df$var2 <- NULL
-
-#' 
-#' ----
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-df
-
-#' 
-#' ----
-#' 
-#' Si lo que se desea es eliminar una variable del entorno de trabajo entonces se usa la función `rm`.
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-rm(df)
-
-#' 
-#' ## Creación de resúmenes a partir de datos en formato ancho
-## ---- echo = TRUE--------------------------------------------------------------------
-sum_fl_ny2ws <- data.frame(edge=c("origin","dest"))
-
-sum_fl_ny2ws$mean_delay <- apply(fl_ny2ws_W[,c("dep_delay","arr_delay")],2,
-                                 mean,na.rm=TRUE)
-sum_fl_ny2ws$r_delay <- apply(fl_ny2ws_W[,c("dep_delay","arr_delay")],2,
-                      function(x) diff(range(x,na.rm=TRUE)))
-sum_fl_ny2ws$s_delay <- apply(fl_ny2ws_W[,c("dep_delay","arr_delay")],2,
-                              sd,na.rm=TRUE)
-sum_fl_ny2ws
-
-#' 
-#' ## Creación de una tabla de resumen a partir de datos en formato largo
-## ---- echo = TRUE--------------------------------------------------------------------
-sum_fl_ny2ws <- data.frame(edge=c("origin","dest"))
-sum_fl_ny2ws$mean_delay <- by(fl_ny2ws_L$delay,fl_ny2ws_L$edge,
-                              mean,na.rm=TRUE)
-sum_fl_ny2ws$r_delay <- by(fl_ny2ws_L$delay,fl_ny2ws_L$edge,
-                           function(x) diff(range(x,na.rm=TRUE)))
-sum_fl_ny2ws$s_delay <- by(fl_ny2ws_L$delay,fl_ny2ws_L$edge,sd,na.rm=TRUE)
-sum_fl_ny2ws
-
-#' 
-#' ## `dplyr`
-#' Estas mismas operaciones que se han comentado más arriba, se pueden llevar a cabo también a partir de un sistema coherente de métodos creado como una gramática para la manipulación de datos, el paquete `dplyr` --que forma parte de `tidyverse`--.
-#' 
-#' http://dplyr.tidyverse.org/
-#' 
-#' 
-## ---- echo = FALSE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE----
-if(!require("tidyverse")) {
-  install.packages("tidyverse", repos="https://cloud.r-project.org/",
-         quiet=TRUE, type="binary")
+if (!require("tidyverse")) {
+  install.packages("tidyverse",
+                   repos="https://cloud.r-project.org/")
   library("tidyverse")
 }
 
 #' 
-#' ----
 #' 
-#' En `dplyr` las operaciones básicas, se realizan mediante cuatro métodos:
+#' ## Functions
 #' 
-#' - `select`: segmentar columnas,
-#' - `filter`: segmentar filas,
-#' - `mutate`: crear nuevas columnas, y
-#' - `arrange`: ordenar.
+#' R supports a functional approach to programming where functions can be defined and transferred as arguments. Many calculations in R are integrated as functions. Functions are a critical concept in a tidy data management.
 #' 
-#' Estas se encadenan usando el operador pipe, `%>%`.
+#' Functions are defined with the `function` reserved word (or `\` since R 4.1.0).
 #' 
-#' ----
+## ---- echo = TRUE----------------------------------------------------------
+sq <- function(x) {x ^ 2}
+pow <- \(x,y) {x ^ y}
+
+sq(4)
+pow(3,4)
+
 #' 
-## ---- echo = TRUE--------------------------------------------------------------------
-df <- flights %>% dplyr::select(origin, dest, arr_delay) %>% 
-  filter(origin == "LGA" & (dest == "IAD" | dest == "BWI")) %>%
-  mutate(arr_delay_h=arr_delay/60) %>% 
-  arrange(-arr_delay_h)
-df
+#' 
+#' ## Pipe Operators, `%>%` and `|>`
+#' 
+#' Pipes are a syntax variant for transferring arguments to functions. It allows for a more process oriented organization of the code. R includes two types of pipes: `%>%` form the `magrittr` package and `|>` included in R 4.1.0.
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+sq(4)
+4 %>% sq    # With %>%, parenthesis are not required when there is no arguments
+4 |> sq()
 
 #' 
 #' ----
 #' 
-#' Para la creación de resúmenes a partir de tablas en formato largo, es muy útil y cómoda la combinación `group_by` y `summarize`.
-#' 
-## ---- echo = TRUE--------------------------------------------------------------------
-df %>% group_by(dest) %>% summarise(mean_delay = mean(arr_delay, na.rm=TRUE))
+## ---- echo = TRUE----------------------------------------------------------
+pow(sq(sq(2)),3)
+2 %>% sq %>% sq %>% pow(3)
 
 #' 
 #' ----
 #' 
-#' Por último, las conversiones entre formatos también pueden hacerse a partir de las funciones `spread` y `gather` del paquete `tidyr` --incluido en `tidyverse` y que se integra de forma natural en la gramática propuestas por `dplyr`--.
+#' By default, the left operand of the pipe is sent as the first argument of the function on the right. It can be sent to a different position in the calculation by including a dot (`.`) in the right-hand side of the pipe.
 #' 
+## ---- echo = TRUE----------------------------------------------------------
+pow(sq(sq(2)),sq(sq(2))/100)
+2 %>% sq %>% sq(.) %>% pow(.,./100)
+
+#' 
+#' 
+#' ## `dplyr` and `tidyr`
+#' 
+#' `dplyr` and `tidyr` are two packages of the `tidyverse` designd for manipulating and tidying data. A full description of both packages can be found at <https://dplyr.tidyverse.org/> and <https://tidyr.tidyverse.org/>.
+#' 
+#' Current cheatsheets for both packages can be found at <https://www.rstudio.com/resources/cheatsheets/>.
+#' 
+#' ----
+#' 
+#' Data manipulation in these packages in commonly done using a limited set of functions. The most important are
+#' 
+#' - `select` and `filter`, for subsetting,
+#' - `mutate`, for creating or updating calculated columns,
+#' - `arrange`, for sorting,
+#' - `pivot_wider` and `pivot_longer`, for reshaping, and
+#' - `group by` and `summarize`, for aggregating. 
+#' 
+#' 
+#' ----
+#' 
+#' Let's see how we operate in this logic, using as an example the `wine` data set.
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+str(wine) 
+
+#' 
+#' ## Renaming columns or rows
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+newColnames <- c("label", "soil", "odorBf", "aromaBf",
+                 "fruityBf", "flowerBf", "spiceBf",
+                 "visual", "nuance", "surface", "odorI",
+                 "odorQ", "fruity", "flower", "spice",
+                 "plante", "phenolic", "aromaI", "aromaP",
+                 "aromaQ","attackI", "acidity", "astringency",
+                 "alcohol", "balance", "smooth", "bitterness",
+                 "intensity", "harmony", "overall", "typical")
+wine2 <- wine %>% rename_with(function(x) newColnames)
+colnames(wine2)
+
+
+#' 
+#' ----
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+wine2 <- wine2 %>% rownames_to_column() %>%
+  mutate(rowname = paste0("W",sprintf("%0.2d",1:21)))
+wine2$rowname
+
+#' 
+#' 
+#' ## Adding columns or rows
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+wine2 <- wine2 %>% mutate(newCol=1:21)
+head(wine2[,c(1,30:33)])
+
+#' 
+#' ------------------------------------------------------------------------
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+wine2 <- wine2 %>% add_row(wine2[21,])
+tail(wine2[,c(1,30:33)])
+
+#' 
+#' ## Segmenting
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+wine2 %>% select(rowname,label,soil,overall) %>% 
+  filter(overall>3.6)
+
+#' 
+#' ----
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+wine2 %>% rowwise() %>% mutate(worse=min(c_across(4:30))) %>% 
+  filter(worse<1.5) %>% select(rowname, worse)
+
+#' 
+#' ----
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+wine2 %>% select(overall) %>% str
+wine2 %>% pull(overall) %>% str
+
+#' 
+#' 
+#' ## Removing columns or rows
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+wine2 <- wine2 %>% select(-newCol)
+tail(wine2[,30:ncol(wine2)])
+
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+wine3 <- wine2 %>% filter(overall<3.5)
+wine3 %>% pull(rowname)
+
+
+#' 
+#' 
+#' ## Joining data frames
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+qualityLevel <- data.frame(level=1:4,
+  qualityNom = c("Horrendous","Bad", "Good", "Excellent"))
+wine2 <- wine2 %>% mutate(level=round(overall,0)) %>% 
+  inner_join(qualityLevel)
+head(wine2[,30:ncol(wine2)])
+
+#' 
+#' ## Reshaping data tables
+#' 
+#' The same information can be presented in many different ways, even in a data table. These are commonly referred as formats o shapes. 
+#' 
+#' A data frame is considered **tidy** when every row refers to an individual or observational unit and the columns to the variables being meaured.  
+#' 
+#' ----
+#' 
+#' When we have many variables that correspond to the same type of measurement, a data frame can be organized in two formats: a long format and a wide format.
+#' 
+#' In **wide** format, rows are observational units and there are different columns for the different variables being measured.
+#' 
+#' In **long** format, rows are observations and there is a column for the values and a column for for the variable being measured.
+#' 
+#' Different analyses and visualizations will require having the data organized in one or other format.
+#' 
+#' ----
+#' 
+#' The data set `wine` is available in a wide format. Each row is a type of wine.
+#' 
+#' Let's convert it to long...
+#' 
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## wineL <- wine %>% rownames_to_column() %>%
+##   pivot_longer(4:32,
+##                names_to = "determination",
+##                values_to = "value")
+## str(wineL)
+
+#' 
+#' ----
+#' 
+## ---- echo = FALSE---------------------------------------------------------
+wineL <- wine %>% rownames_to_column() %>% 
+  pivot_longer(4:32,
+               names_to = "determination",
+               values_to = "value")
+str(wineL)
+
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+head(wineL)
+
+#' 
+#' ----
+#' 
+#' Let's go back to wide...
+#' 
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## wineW <- pivot_wider(wineL, id_cols = 1:3,
+##                       names_from = "determination",
+##                       values_from = "value")
+## str(wineW)
+
+#' 
+#' ----
+#' 
+## ---- echo = FALSE---------------------------------------------------------
+wineW <- pivot_wider(wineL, id_cols = 1:3,
+                      names_from = "determination",
+                      values_from = "value")
+str(wineW)
+
+#' 
+#' ----
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+head(wineW,2)
+
+#' 
+#' 
+#' ## Summarizing or Aggregating the Data.
+#' 
+#' ### For wide data frames
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+wineW %>% select(4:32) %>% summarize(across(
+  everything(),list(mean=mean,sd=sd))) %>% t
+
+#' 
+#' ----
+#' 
+#' ### For long data frames
+#' 
+## ---- echo = TRUE----------------------------------------------------------
+wineL %>% group_by(determination) %>% 
+  summarize(mean=mean(value), sd=sd(value))
+
 #' 
 #' 
 #' # Advanced Graphics in R
 #' 
-#' ## Gramática de gráficos (*GoG*)
-#' La **gramática de gráficos** es una aproximación teórica al estudio de los componentes de un gráfico. De acuerdo con este análisis, un gráfico se puede construir mediante la especificación de un conjunto de capas y componentes que definen los datos, la asociación de los mismos a aspectos del gráfico, la especificación de la relación entre los valores de las variables de los datos con las del gráfico, la estructura geométrica del gráfico...
+#' ## Grammar of Graphics (GoG)
 #' 
-#' <p class="bibref">Wilkinson, L. (2006). The grammar of graphics. Springer Science & Business Media.</p>
+#' The **grammar of graphics** is a theoretical approximation to the study of the graphics components. According to this, a graphical representation can be built from layers, by defining different elements
+#' 
+#' - the identification of the data to be represented,
+#' - the association of the data variables to the graphical elements, and
+#' - the definition of the graphical geometry. 
+#' 
+#' Additional elements of the representation can also be adjusted like scales, formats, annotations..., after the basic structure of the graphics is established.
+#' 
+#' ::: {.bibref}
+#' Wilkinson, L. (2006). The grammar of graphics. Springer Science & Business Media.
+#' :::
 #' 
 #' ## `ggplot2`
-#' `ggplot2` es un paquete de R que implementa de la gramática de gráficos.
+#' `ggplot2` is an R package which implements the grammar of graphics. A full reference can be found at <http://ggplot2.tidyverse.org>.
 #' 
-#' <p class="bibref">Wickham, H. (2010). A layered grammar of graphics. *Journal of Computational and Graphical Statistics*, 19(1), 3-28.</p>
+#' A current cheatsheet is available at <https://www.rstudio.com/resources/cheatsheets/>.
 #' 
-#' Referencias:
-#' 
-#' - http://ggplot2.tidyverse.org/reference/
-#' - https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf
-#' - http://www.ling.upenn.edu/~joseff/avml2012/
-#' - http://r-statistics.co/Complete-Ggplot2-Tutorial-Part1-With-R-Code.html
+#' ::: {.bibref}
+#' Wickham, H. (2010). A layered grammar of graphics. *Journal of Computational and Graphical Statistics*, 19(1), 3-28.
+#' :::
 #' 
 #' ----
 #' 
-#' `ggplot2` forma parte del paquete `tidyverse` (aunque también puede instalarse y cargarse autónomamente).
+#' `ggplot2` is part of `tidyverse` package (although it can be installed and loaded independently).
+#' 
 ## ---- echo = TRUE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE----
 if(!require("tidyverse")) {
-  install.packages("tidyverse", repos="https://cloud.r-project.org/",
-         quiet=TRUE, type="binary")
+  install.packages("tidyverse", repos="https://cloud.r-project.org/")
   library("tidyverse")
 }
 
 #' 
-#' ## `ggplot2` -- capas y elementos del gráfico
-#' En `ggplot2` cada elemento gráfico que representa un conjunto de datos constituye una capa. Una o más capas constituyen un gráfico.
+#' ## `ggplot2` -- Layers and Graphical Elements
 #' 
-#' Cada capa queda definida mediante la especificación de sus elementos. Los principales son 
+#' In `ggplot2`, each graphical element constituting the presentation of a data set is a layer. One or more layers make a graph.
 #' 
-#' - datos,
-#' - mapeado estético, y
-#' - geometrías
+#' Each layer is defined by the specification of its elements. The main ones are the data, the aesthetic mapping --the relation between the data and the graphical elements--, and the geometry.
 #' 
 #' ----
 #' 
-#' En `ggplot2`, los gráficos constituyen un objeto de R y se construyen de forma aditiva.
+#' In `ggplot2`, a plot is an R object a it can be stored. It is constructed additively, by summing different elements to the `gg` object constructed by the `ggplot2` function.
 #' 
-#' Por ejemplo,
+#' For example,
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
-## grafico <- ggplot(data = anscombe,
-##         mapping = aes(x = x1, y = y1))  # Datos y mapeado estético
-## grafico <- grafico + geom_point()       # Geometría
-## 
-## grafico
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## plot1 <- ggplot(data = anscombe,
+##         mapping = aes(x = x1, y = y1))  # Data and aesthetic mapping
+## plot1 <- plot1 + geom_point()       # Geometry
+## plot1
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE-------------------------------------------------------------------
-grafico <- ggplot(data = anscombe,
-        mapping = aes(x = x1, y = y1))  # Datos y mapeado estético 
-grafico <- grafico + geom_point()       # Geometría
-
-grafico
-
-#' 
-#' ## `ggplot2` -- datos
-#' En `ggplot2`, el elemento `data` (datos) se introduce como primer argumento de la función `ggplot`. Debe corresponder a una tabla de datos o un tipo de datos convertible a tabla de datos.
-#' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
-## grafico <- ggplot(data = anscombe,
+## ---- echo = FALSE---------------------------------------------------------
+plot1 <- ggplot(data = anscombe,
+        mapping = aes(x = x1, y = y1))  # Data and aesthetic mapping 
+plot1 <- plot1 + geom_point()       # Geometry
+plot1
 
 #' 
-#' ## `ggplot2` -- mapeado estético
-#' El `mapping` (mapeado estético) corresponde al establecimiento de relaciones entre variables de los datos y variables del gráfico. Es el segundo argumento de la función `ggplot`y debe crearse con al función de apoyo `aes`. 
+#' ## `ggplot2` -- Data
+#' In `ggplot2`, the data is the first argument of the `ggplot` function. It is usually a data frame --or an object that can be converted to one--.
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## plot1 <- ggplot(data = anscombe,
+
+#' 
+#' ## `ggplot2` -- Aesthetic mapping
+#' 
+#' The aesthetic mapping establishes the relationships between data variables and graphical elements. It is the second argument of the  `ggplot`function and it must be created form the `aes` support function.
+#' 
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ##         mapping = aes(x = x1, y = y1))
 
 #' 
 #' ----
 #' 
-#' Para variables cuantitativas, los mapeados más comunes corresponden a
+#' The most adequate mappings will depend on the type of variable and the type of plot --geometry--.
 #' 
-#' - posiciones: `x`, `y`...
-#' - tamaño: `size`
-#' - color: `color`, `fill`
+#' For quantitative variables, the most usual mappings are positions --`x`, `y`...--, `size`, and colors --`color`, `fill`--.
 #' 
-#' ----
-#' 
-#' Para variable cualitativas, los mapeados más frecuentes son
-#' 
-#' - posiciones: `x`, `y`...
-#' - color: `color`, `fill`
-#' - forma: `shape`
+#' For qualitative variables cualitativas, we opt for positions --`x`, `y`...--, colors --`color`, `fill`--, and `shape` as the mappings of preference.
 #' 
 #' 
-#' ## `ggplot2` -- geometrías
-#' Las geometrías (`geom_`) indican la forma que debe tener el gráfico, es decir, cómo se articulan las variables del gráfico. Se añaden al gráfico sumándose al objeto creado por `ggplot`.
+#' ## `ggplot2` -- Geometry
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
-## grafico <- grafico + geom_point()
+#' The geometries (`geom_...`) indicate the format --type-- of the plot, 
+#' meaning how the graphical variables are put together. One or more geometries (each will be a layer) can be included in a plot by adding them to the `gg` object. 
+#' 
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## plot1 <- plot1 + geom_point()
 
 #' 
 #' ----
 #' 
-#' Son geometrías de uso común
+#' Common geometries are
 #' 
 #' - `geom_point`
 #' - `geom_line`, `geom_vline`, `geom_hline`
@@ -880,60 +906,64 @@ grafico
 #' - `geom_histogram`
 #' - `geom_boxplot`
 #' 
-#' Un resumen de las geometrías y su relación con las variables del gráfico que reconoce cada una de ellas figura en  https://github.com/rstudio/cheatsheets/raw/master/data-visualization-2.1.pdf.
+#' For each geometry, it is important to check what are the required and available mappings. This is available in the help pages and in the cheatsheet available at <https://www.rstudio.com/resources/cheatsheets/>.
 #' 
 #' 
-#' ## Gráficos en `ggplot2`
-#' Veremos cómo crear en `ggplot2` los gráficos más habituales, añadiendo algunas consideraciones para aquellos casos donde los gráficos realizados con `base` tienen prestaciones insuficientes.
+#' ## `ggplot2` Graphs
 #' 
-#' - gráficos de dispersión,
-#' - histogramas,
-#' - diagramas de barras, y 
-#' - diagramas de caja (*boxplot*).
+#' We will discuss here how to create the most common graphs in `ggplot2`. We will be adding specific considerations where required.
+#' We will explore
 #' 
-#' De forma general, los gráficos en `ggplot2` se construyen a partir de tablas de datos (*data frames*), de los cuales se seleccionan las variables a representar.
+#' - scatter plots,
+#' - histograms,
+#' - bar plots, and  
+#' - boxplots.
+#' 
+#' By default, the plots in `ggplot2` are constructed from a data frame from which the variables to be represented are selected.
 #' 
 #' ----
 #' 
-#' Usaremos 1000 datos del conjunto de datos `diamonds` para crear los distintos ejemplos.
+#' We will use a sample of 1000 points from the `diamonds` data set --included in the `ggplot2` package-- to create the examples.
 #' 
-## ---- echo = TRUE--------------------------------------------------------------------
+## ---- echo = TRUE----------------------------------------------------------
 diaM <- diamonds[sample(1:nrow(diamonds),1000),]
 str(diaM)
 
 #' 
-#' ## Gráficos en `ggplot2` -- gráfico de dispersión
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+#' 
+#' ## `ggplot2` Graphs -- Scatter Plot
+#' 
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## ggplot(diaM, aes(x=carat,y=price)) + geom_point()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
 ggplot(diaM, aes(x=carat,y=price)) + geom_point()
 
 #' 
 #' ----
 #' 
-#' Añadiendo una tercera variable (`cut`) y modificando algunos aspectos de formato...
+#' Adding a third variable and adjusting formats...
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## ggplot(diaM, aes(x=carat,y=price,color=cut)) +
 ##   geom_point(alpha=.8,shape=21,size=3)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
 ggplot(diaM, aes(x=carat,y=price,color=cut)) + 
   geom_point(alpha=.8,shape=21,size=3)
 
 #' 
 #' -----
 #' 
-#' Añadiendo líneas de tendencia...
+#' With a trend line...
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## ggplot(diaM, aes(x=carat,y=price,color=cut)) +
 ##   geom_point(alpha=.8,shape=21,size=3) +
 ##   geom_smooth(method="lm",se=FALSE)
@@ -941,162 +971,177 @@ ggplot(diaM, aes(x=carat,y=price,color=cut)) +
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
 ggplot(diaM, aes(x=carat,y=price,color=cut)) + 
   geom_point(alpha=.8,shape=21,size=3) +
   geom_smooth(method="lm",se=FALSE)
 
 #' 
-#' ## Gráficos en `ggplot2` -- histograma
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+#' ## `ggplot2` Graphs -- Histogram
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## ggplot(diaM, aes(x=price)) + geom_histogram(binwidth=1000)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
 ggplot(diaM, aes(x=price)) + geom_histogram(binwidth=1000)
 
 #' 
 #' ----
 #' 
-#' Y en función del corte...
+#' Adding the cut variable...
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## ggplot(diaM, aes(x=price,fill=cut)) +
 ##   geom_histogram(position='dodge',binwidth=1000)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
 ggplot(diaM, aes(x=price,fill=cut)) +
   geom_histogram(position='dodge',binwidth=1000)
 
 #' 
 #' ----
 #' 
-#' En frecuencias relativas (por grupo)...
+#' In relative frequencies, per group...
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## ggplot(diaM, aes(x=price,y=..density..,fill=cut)) +
 ##   geom_histogram(position='dodge',binwidth=1000)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
 ggplot(diaM, aes(x=price,y=..density..,fill=cut)) +
   geom_histogram(position='dodge',binwidth=1000)
 
 #' 
 #' ----
 #' 
-#' Quizás funcione mejor un gráfico de densidades...
+#' Let's try with a density plot...
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## ggplot(diaM, aes(x=price,fill=cut)) +
 ##   geom_density(alpha=.3)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
 ggplot(diaM, aes(x=price,fill=cut)) +
   geom_density(alpha=.3)
 
 #' 
-#' ## Gráficos en `ggplot2` -- diagrama de barras
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
-## ggplot(diaM, aes(x=clarity)) + geom_bar()
+#' ## `ggplot2` Graphs -- Bar Plot
+#' 
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## ggplot(diaM, aes(x=clarity)) +
+##   geom_bar()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
-ggplot(diaM, aes(x=clarity)) + geom_bar()
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
+ggplot(diaM, aes(x=clarity)) +
+  geom_bar()
 
 #' 
 #' ----
 #' 
-#' En función de la claridad...
+#' Adding the cut variable...
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
-## ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar()
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## ggplot(diaM, aes(x=clarity, fill=cut)) +
+##   geom_bar()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
-ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar()
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
+ggplot(diaM, aes(x=clarity, fill=cut)) +
+  geom_bar()
 
 #' 
 #' ----
 #' 
-#' Para comparar entre frecuencias absolutas, funcionan mejor las barras separadas.
+#' To compare absolute frequencies, dodged bars work better...
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
-## ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar(position="dodge")
+#' 
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## ggplot(diaM, aes(x=clarity, fill=cut)) +
+##   geom_bar(position="dodge")
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
-ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar(position="dodge")
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
+ggplot(diaM, aes(x=clarity, fill=cut)) +
+  geom_bar(position="dodge")
 
 #' 
 #' ----
 #' 
-#' Para comparar entre frecuencias relativas acumuladas, son mejores las barras apiladas en frecuencia relativa (para cada clase).
+#' To compare cumulative relative frequencies, per-class stacked bars are more useful.
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
-## ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar(position="fill")
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## ggplot(diaM, aes(x=clarity, fill=cut)) +
+##   geom_bar(position="fill")
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
-ggplot(diaM, aes(x=clarity, fill=cut)) + geom_bar(position="fill")
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
+ggplot(diaM, aes(x=clarity, fill=cut)) +
+  geom_bar(position="fill")
 
 #' 
 #' ----
 #' 
-#' Los diagramas de barras también pueden crearse a partir de tablas de datos agrupados. En este caso, debe indicarse qué variable es la `y` e incluir `stat="identity"` en el `geom_bar`.
+#' Bar plots can also be constructed from frequency counts. In this case, the `y` variable has to be stated and the argument `stat="identity"` has to be added to the `geom_bar`.
 #' 
-#' ## Gráficos en `ggplot2` -- diagrama de caja
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
-## ggplot(diaM, aes(x=1, y=price)) + geom_boxplot()
+#' ## `ggplot2` Graphs -- Boxplot
+#' 
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## ggplot(diaM, aes(x=1, y=price)) +
+##   geom_boxplot()
 
 #' 
-#' *NOTA: Para el `geom_boxplot` se requieren dos variables. Si no hay variable independiente se puede incluir `x=1`.*
+#' *NOTE*: For the `geom_boxplot`, both `x` and `y` are required. If there isn't an independent variable `x=1` should be included.
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
-ggplot(diaM, aes(x=1, y=price)) + geom_boxplot()
-
-#' 
-#' ----
-#' 
-#' Y en función del corte...
-#' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
-## ggplot(diaM, aes(x=cut, y=price)) + geom_boxplot()
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
+ggplot(diaM, aes(x=1, y=price)) +
+  geom_boxplot()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
-ggplot(diaM, aes(x=cut, y=price)) + geom_boxplot()
+#' Adding the cut variable...
+#' 
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## ggplot(diaM, aes(x=cut, y=price)) +
+##   geom_boxplot()
 
 #' 
 #' ----
 #' 
-#' El gráfico se puede mejorar mostrando todos los puntos, con una posición aleatorizada.
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
+ggplot(diaM, aes(x=cut, y=price)) +
+  geom_boxplot()
+
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+#' ----
+#' 
+#' The chart can be improved by showing all the data points with the position modified with some random noise --jittered--.
+#' 
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## ggplot(diaM, aes(x=cut, y=price)) +
 ##   geom_boxplot(outlier.shape = NA) +
 ##   geom_jitter(shape = 21, alpha=.5,height=0,width=.2)
@@ -1104,7 +1149,7 @@ ggplot(diaM, aes(x=cut, y=price)) + geom_boxplot()
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
 ggplot(diaM, aes(x=cut, y=price)) + 
   geom_boxplot(outlier.shape = NA) +
   geom_jitter(shape = 21, alpha=.5,height=0,width=.2)
@@ -1112,9 +1157,9 @@ ggplot(diaM, aes(x=cut, y=price)) +
 #' 
 #' ----
 #' 
-#' O incluyendo un *violin plot* y un punto para la media...
+#' Or including a violin plot, `geom_violin`, and an addtional point with the the mean.
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
 ## medias <- diaM %>% group_by(cut) %>%
 ##   summarise(price=mean(price))
 ## 
@@ -1126,7 +1171,7 @@ ggplot(diaM, aes(x=cut, y=price)) +
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE--------------------------------------------
 medias <- diaM %>% group_by(cut) %>%
   summarise(price=mean(price))
 
@@ -1136,44 +1181,70 @@ ggplot(diaM, aes(x=cut, y=price)) +
   geom_point(data=medias,shape=3)
 
 #' 
-#' ## `ggplot2` -- elementos adicionales
 #' 
-#' Además de los elementos ya presentados (datos, mapeado estético y geometrías), otros elementos de `ggplot2` permiten controlar aspectos adicionales del gráfico, por ejemplo
+#' ## `ggplot2` -- Additional Elements
 #' 
-#' - `scale_...`: controlan los aspectos relativos a la presentación de las variables del gráfico,
-#' - `coord_...`: establecen el sistema de coordenadas usado en la geometría,
-#' - `labs`: establece los títulos del gráfico,
-#' - `theme`, `theme_...`: controlan la part del gráfico que no corresponde a datos (*non-data ink*), y
-#' - `facet_`: permite la creació de secuencia de gráficos en función de una o dos variables
+#' Beyond the already presented elements --data, aesthetic mapping, and geometries--, other `ggplot2` elements help adjust many other aspects of the plots, for example
+#' 
+#' - `scale_...` controls aspects related to the presentation of the graphical variables,
+#' - `coord_...` adjustes the coordinate system used in the plot,
+#' - `labs` sets plot and axes titles,
+#' - `theme`, `theme_...` control the non-data ink elements of the plot, and
+#' - `facet_` facilitates the creation of multiple plots.
 #' 
 #' ----
 #' 
-#' Un ejemplo para terminar...
+#' One last example...
 #' 
-## ---- echo = TRUE, eval = FALSE------------------------------------------------------
-## ggplot(diaM, aes(x=carat, y = price, shape = cut, col = clarity)) +
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## ggplot(diaM, aes(x=carat, y = price,
+##                  shape = cut, col = clarity)) +
+##   geom_point(alpha=.6)
+## 
+
+#' 
+#' ----
+#' 
+## ---- echo = FALSE---------------------------------------------------------
+ggplot(diaM, aes(x=carat, y = price,
+                 shape = cut, col = clarity)) +
+  geom_point(alpha=.6)
+
+
+#' 
+#' ----
+#' 
+## ---- echo = TRUE, eval = FALSE--------------------------------------------
+## ggplot(diaM, aes(x=carat, y = price,
+##                  shape = cut, col = clarity)) +
 ##   geom_point(alpha=.6) +
 ##   scale_x_continuous(breaks=1:3) +
 ##   scale_y_continuous(trans="log10") +
 ##   scale_color_brewer(palette="Spectral")+
 ##   facet_grid(cut ~ clarity) +
 ##   theme_bw() +
-##   theme(legend.position = "none",text = element_text(size=10))
+##   theme(legend.position = "none",
+##         text = element_text(size=10))
 ## 
 
 #' 
 #' ----
 #' 
-#' 
-## ---- echo = FALSE-------------------------------------------------------------------
-ggplot(diaM, aes(x=carat, y = price, shape = cut, col = clarity)) +
+## ---- echo = FALSE---------------------------------------------------------
+ggplot(diaM, aes(x=carat, y = price,
+                 shape = cut, col = clarity)) +
   geom_point(alpha=.8) +
   scale_x_continuous(breaks=1:3) +
   scale_y_continuous(trans="log10") +
   scale_color_brewer(palette="Spectral")+
   facet_grid(cut ~ clarity) + 
   theme_bw() + 
-  theme(legend.position = "none",text = element_text(size=10))
+  theme(legend.position = "none",
+        text = element_text(size=10))
 
 
+#' 
+#' ## YOUR TURN {data-background="#eeffcc"}
+#' 
+#' 1.    Revisit the `OrchardSprays` data set and make two plots that highlight the conclusions that can be reached from analyzing it.
 #' 

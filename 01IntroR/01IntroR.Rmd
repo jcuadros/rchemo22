@@ -375,7 +375,7 @@ length(b)
 ```
 
 
-## YOUR TURN {data-background=#eeffcc}
+## YOUR TURN {data-background="#eeffcc"}
 
 1.    Create a numerical vector that includes all multiples of seven up to 1000.
 
@@ -448,7 +448,7 @@ dfA$let
 Additional options exist to select rows and columns. We'll go into that later on.
 
 
-## YOUR TURN {data-background=#eeffcc}
+## YOUR TURN {data-background="#eeffcc"}
 
 1.    Create a data frame that includes five different properties for eight *n*-alkanes. Data can be obtained from <https://chem.libretexts.org/Bookshelves/Organic_Chemistry/Book%3A_Basic_Principles_of_Organic_Chemistry_(Roberts_and_Caserio)/04%3A_Alkanes/4.02%3A_Physical_Properties_of_Alkanes_and_The_Concept_of_Homology> or <https://doi.org/10.1007/s40747-020-00262-0> for example. Include, at least, IUPAC name, formula, number of carbons and boiling point. 
 
@@ -1830,7 +1830,7 @@ head(dfExp)
 ```
 
 
-## YOUR TURN {data-background=#eeffcc}
+## YOUR TURN {data-background="#eeffcc"}
 
 1.    Describe and analyze the data of an experiment conducted to assess the potency of lime sulphur in orchard sprays. The data is available in the `OrchardSprays` data set.
 
