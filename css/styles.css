@@ -79,11 +79,6 @@ div.sourceCode {
   box-shadow:none;
 }
 
-.reveal .bibref {
-  font-size:0.6em;
-  line-height: normal;
-}
-
 .reveal .small p,
 .reveal .small table,
 .reveal .small li,
@@ -103,4 +98,10 @@ div.sourceCode {
 p > .math {
   text-align: center;
   margin:auto;
+}
+
+.reveal .bibref,
+.reveal .small .bibref {
+  font-size:0.6em;
+  line-height: normal;
 }
