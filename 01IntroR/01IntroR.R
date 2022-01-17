@@ -15,7 +15,7 @@
 #'       background_transition: 0
 #' ---
 #' 
-## ----setup, include=FALSE---------------------------------------------------------------
+## ----setup, include=FALSE---------------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE, dev="svg")
 
 #' 
@@ -61,7 +61,7 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' Calculations can be done in the RStudio console. Enter the expression, press `Intro` to execute.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 2 + 3 
 8 ^ 10
 log(100)    # Natural logarithm (this is a comment)
@@ -80,14 +80,14 @@ log(100)    # Natural logarithm (this is a comment)
 #' 
 #' -   To look up a function
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ? "mean"
 ## help("mean")
 
 #' 
 #' -   To search for a text in the help files
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ?? "anova"
 ## help.search("anova")
 
@@ -111,7 +111,7 @@ log(100)    # Natural logarithm (this is a comment)
 #' 
 #' To store numerical quantities which are continuous in nature.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- 2
 a
 class(a)
@@ -137,7 +137,7 @@ print(b, digits = 10)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a+b
 a-b
 a*b
@@ -150,7 +150,7 @@ a/b
 #' 
 #' To store integer numbers, such as counts and indices.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 n <- as.integer(340000)
 class(n)
 n <- 2L
@@ -163,7 +163,7 @@ class(n)
 #' 
 #' Character-string literals are quoted (using double or single quotes).
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- "aaa"
 b <- "bbb"
 
@@ -182,7 +182,7 @@ paste(a, b, "hola", sep = ", ")
 #' 
 #' To store values that are either `r T` or `r F`. This is the result of a comparison.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 3 == 2
 b <- 3 != 2 
 b
@@ -205,7 +205,7 @@ b
 #' 
 #' For example...
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- TRUE
 b <- F
 a & b # Operator AND
@@ -219,7 +219,7 @@ any(a, b, F)
 #' 
 #' Data can be converted to a different data type by using a type conversion function. These are named `as.` followed by the destination data type in R.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 as.character(2)
 as.numeric(TRUE)
 
@@ -228,7 +228,7 @@ as.numeric(TRUE)
 #' 
 #' Be aware that not all conversions are possible.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 as.numeric("two")
 as.logical("2+2==4")
 
@@ -239,12 +239,12 @@ as.logical("2+2==4")
 #' 
 #' Some constants are readily available in R.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 pi
 LETTERS  # This is vector. We'll come back to that.
 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## Inf
 ## NaN
 ## NA
@@ -255,7 +255,7 @@ LETTERS  # This is vector. We'll come back to that.
 #' 
 #' Functions to check if a value matches one of these constants are also available.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 is.na(3/0)
 is.null(NULL)
 is.infinite(-3e999)
@@ -277,7 +277,7 @@ is.infinite(-3e999)
 #' 
 #' ## Data Structures -- vector
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- c(2, 3, 4)
 str(a)
 a[2]
@@ -287,7 +287,7 @@ a[2]
 #' 
 #' Most operations are applied to vectors element-wise.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a
 a + a 
 a > 2.5
@@ -297,7 +297,7 @@ a > 2.5
 #' 
 #' Be cautious with data recycling...
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- c(2, 3, 4)
 b <- c(10, 20)
 a * b
@@ -307,7 +307,7 @@ a * b
 #' 
 #' Most R functions take vectors and return vectors.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- c(2, 3, 4)
 abs(sin(a))
 exp(a)
@@ -317,7 +317,7 @@ exp(a)
 #' 
 #' Other returns aggregated values.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 length(a)
 sum(a)
 mean(a)
@@ -329,7 +329,7 @@ mean(a)
 #' 
 #' The presence of an element in vector can be checked with `%in%`.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- c(2, 3, 4)
 3 %in% a
 c(2,5,3,4) %in% a
@@ -341,7 +341,7 @@ c(2,5,3,4) %in% a
 #' 
 #' Sequence vectors are created with `:` or `seq`.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 1:10
 seq(1, 10, by = 2)
 seq(1, 3, length.out = 5) 
@@ -353,7 +353,7 @@ seq(1, 3, length.out = 5)
 #' 
 #' Vectors are ordered with `sort` or `order`.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- c(8, 2, 5, 3)
 sort(a)
 a[order(a)]
@@ -364,7 +364,7 @@ a[order(a,decreasing = T)]
 #' 
 #' ### Selecting elements
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- 10:40
 a[3]
 a[4:6]
@@ -390,7 +390,7 @@ length(b)
 #' 
 #' A factor is an indexed character vector. It is usually created from a character vector.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- c("hola", "adeu","hola", "adeu", "adeu", "bye")
 b <- as.factor(a)
 as.character(b)   # returns a character vector
@@ -402,7 +402,7 @@ str(b)
 #' 
 #' The `factor` function allows manually coding or re-coding the factor.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- factor(c(3, 1, 3, 1, 1, 2), labels = c("adeu", "bye", "hola"))
 a
 levels(a)
@@ -412,7 +412,7 @@ levels(a)
 #' 
 #' A data frame is a rectangular structure of data, organized such as each column is a vector. Different columns may be of different data types.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 dfA <- data.frame(int = 1:10,
                   let = sample(letters, 10, replace = TRUE), 
                   ran = rnorm(10))
@@ -421,7 +421,7 @@ dfA
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 dim(dfA) # Dimensions
 nrow(dfA) # Row count
 ncol(dfA) # Column count
@@ -429,7 +429,7 @@ ncol(dfA) # Column count
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 str(dfA)
 head(dfA, 3) # First rows, 6 by default
 tail(dfA, 2) # Last rows
@@ -439,7 +439,7 @@ tail(dfA, 2) # Last rows
 #' 
 #' To access the data in a data frame, we use indices for row and column (starting at 1). Variables can also be selected by column name by using `$`.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 dfA[2,3]
 dfA[,1]
 dfA$let
@@ -457,13 +457,13 @@ dfA$let
 #' 
 #' Lists are one-dimensional structures that can store data of different types.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- list(2, "2", FALSE)
 b <- list(3, "hola", c(2, 3, 4))
 
 #' 
 #' ::: {style="column-count:2;"}
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a
 
 #' 
@@ -473,7 +473,7 @@ a
 #' 
 #' </p>
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 b
 
 #' :::
@@ -481,7 +481,7 @@ b
 #' ------------------------------------------------------------------------
 #' 
 #' ::: {style="column-count:2;"}
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 length(a)
 a[[3]]
 b[[3]][1]
@@ -493,14 +493,14 @@ b[[3]][1]
 #' 
 #' </p>
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 str(b)
 
 #' :::
 #' 
 #' ## Other Data Structures -- ordered factor
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 grades <- c("Pass", "Fail", "Good", "Fail",
            "Good", "Excellent", "Pass")
 grades <- factor(grades,
@@ -515,7 +515,7 @@ levels(grades)
 #' 
 #' A matrix is a rectangular data structure where all data share the same data type.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a <- matrix(c(2, 4, -1, 5), ncol = 2)
 a
 a[2,2]
@@ -525,7 +525,7 @@ a[2,2]
 #' 
 #' ::: {style="column-count:2;"}
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 a * a # Element-wise product
 a %*% a # Matrix product
 t(a) # Transposition
@@ -538,7 +538,7 @@ det(a) # Determinant
 #' 
 #' </p>
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 solve(a) # Inverse
 a %*% solve(a)
 
@@ -576,19 +576,19 @@ a %*% solve(a)
 #' 
 #' Access help for details on the data set..
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## help("airquality")
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 str(airquality)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 head(airquality, 10)
 
 #' 
@@ -604,13 +604,13 @@ head(airquality, 10)
 #' 
 #' ## Graphics in `base` R -- scatterplot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## plot(airquality$Solar.R,airquality$Ozone)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 plot(airquality$Solar.R,airquality$Ozone)
 
 #' 
@@ -618,26 +618,26 @@ plot(airquality$Solar.R,airquality$Ozone)
 #' 
 #' ## Graphics in `base` R -- histogram
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## hist(airquality$Ozone)
 
 #' 
 #' With a density curve...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## hist(airquality$Ozone, breaks = 23, freq = FALSE)
 ## lines(density(airquality$Ozone, na.rm=TRUE))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 hist(airquality$Ozone)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 hist(airquality$Ozone, breaks = 23, freq = FALSE)
 lines(density(airquality$Ozone, na.rm=TRUE))
 
@@ -646,26 +646,26 @@ lines(density(airquality$Ozone, na.rm=TRUE))
 #' 
 #' ## Graphics in `base` R -- bar plot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## barplot(table(cut(airquality$Wind, breaks=seq(0,22,by=2))))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 barplot(table(cut(airquality$Wind, breaks=seq(0,22,by=2))))
 
 #' 
 #' ## Graphics in `base` R -- boxplot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## boxplot(airquality$Ozone)
 ## points(mean(airquality$Ozone, na.rm=TRUE),pch="+")
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 boxplot(airquality$Ozone)
 points(mean(airquality$Ozone, na.rm=TRUE),pch="+")
 
@@ -682,13 +682,13 @@ points(mean(airquality$Ozone, na.rm=TRUE),pch="+")
 #' 
 #' In this statistics review, we will again use the `airquality` data set. Details on the data set are avalable at...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## help("airquality")
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 str(airquality)
 
 #' 
@@ -708,14 +708,14 @@ str(airquality)
 #' ## Descriptive statistics for one variable -- distribution
 #' 
 #' ### Summary 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 summary(airquality)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
 #' ### Sample size or number of data points
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 length(airquality$Ozone)
 n <- sum(!is.na(airquality$Ozone))
 n
@@ -727,7 +727,7 @@ n
 #' 
 #' For a quantitative variable (`numeric`)...
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 frec_abs <- table(cut(airquality$Solar.R,
       breaks=c(0,50,100,150,200,
                250,300,350)))
@@ -741,7 +741,7 @@ frec_rel
 #' 
 #' For a qualitative variable (usually `factor`)...
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 frec_abs <- table(as.factor(airquality$Month))
 frec_abs
 
@@ -753,14 +753,14 @@ frec_rel
 #' 
 #' ### Quantiles
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 quantile(airquality$Wind,.1)
 quantile(airquality$Wind,0:5*.2)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 # Excel PERCENTILE and R default are type 7
 c(min = min(airquality$Wind), quantile(airquality$Wind,0:5*.2),
   max = max(airquality$Wind))    
@@ -773,7 +773,7 @@ c(min = min(airquality$Wind), quantile(airquality$Wind,0:5*.2, type=6),
 #' 
 #' ## Descriptive statistics for one variable -- central tendency
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 mean(airquality$Ozone)
 mean(airquality$Ozone, na.rm = TRUE)
 median(airquality$Ozone, na.rm = TRUE)
@@ -781,7 +781,7 @@ median(airquality$Ozone, na.rm = TRUE)
 #' 
 #' ## Descriptive statistics for one variable -- spread
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 var(airquality$Ozone, na.rm = TRUE) # denominator is n-1
 sd(airquality$Ozone, na.rm = TRUE)
 range(airquality$Ozone, na.rm = TRUE)
@@ -790,7 +790,7 @@ diff(range(airquality$Ozone, na.rm = TRUE))
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 IQR(airquality$Ozone, na.rm = TRUE)
 mad(airquality$Ozone, na.rm = TRUE) # mean absolute deviation
 
@@ -799,7 +799,7 @@ mad(airquality$Ozone, na.rm = TRUE) # mean absolute deviation
 #' 
 #' There are different methods to analyze outliers in R. A nice description can be found at <https://statsandr.com/blog/outliers-detection-in-r/>
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 # Hampel filter  
 lmin <- median(airquality$Wind,.25) - 3 * mad(airquality$Wind)
 lmax <- median(airquality$Wind,.75) + 3 * mad(airquality$Wind) 
@@ -809,7 +809,7 @@ airquality$Wind[airquality$Wind > lmax | airquality$Wind < lmin]
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 # IQR method
 lmin <- quantile(airquality$Wind,.25) - 1.5 * IQR(airquality$Wind)
 lmax <- quantile(airquality$Wind,.75) + 1.5 * IQR(airquality$Wind) 
@@ -825,7 +825,7 @@ boxplot.stats(airquality$Wind)$out
 #' 
 #' -   For quantitative variables: boxplot and histogram
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## boxplot(airquality$Wind)
 ## points(mean(airquality$Wind),pch=3)
 ## 
@@ -834,26 +834,26 @@ boxplot.stats(airquality$Wind)$out
 #' 
 #' -   For qualitative variables: bar plot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## barplot(table(airquality$Month))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 boxplot(airquality$Wind)
 points(mean(airquality$Wind),pch=3)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 hist(airquality$Wind)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 barplot(table(airquality$Month))
 
 #' 
@@ -871,7 +871,7 @@ barplot(table(airquality$Month))
 #' 
 #' The contingency table is a two-way frequency table.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 table(cut(airquality$Wind,breaks = seq(1,21,by=5)),
       cut(airquality$Temp,breaks = seq(50,100,by=10)))
 
@@ -880,25 +880,25 @@ table(cut(airquality$Wind,breaks = seq(1,21,by=5)),
 #' 
 #' ### Pearson product-moment correlation coefficent
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 cor(airquality$Temp,airquality$Wind)
 
 #' 
 #' ### Spearman correlation coefficent
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 cor(airquality$Temp,airquality$Wind,method = "spearman")
 
 #' 
 #' ## Descriptive statistics for two variables -- scatterplot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## plot(airquality$Temp,airquality$Wind)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 plot(airquality$Temp,airquality$Wind)
 
 #' 
@@ -922,7 +922,7 @@ plot(airquality$Temp,airquality$Wind)
 #' 
 #' For example, for the normal distribution...
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 rnorm(10)
 dnorm(0)
 qnorm(.95)
@@ -931,7 +931,7 @@ pnorm(1.64)
 #' 
 #' ## Probability Distributions -- normal
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## df <- data.frame(x = rnorm(1000, mean = 3, sd = 1))
 ## dfT <-data.frame(x = seq(0,6,length.out=101),
 ##       y = dnorm(seq(0,6,length.out=101),mean=3,sd=1))
@@ -941,7 +941,7 @@ pnorm(1.64)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 df <- data.frame(x = rnorm(1000, mean = 3, sd = 1))
 dfT <-data.frame(x = seq(0,6,length.out=101),
       y = dnorm(seq(0,6,length.out=101),mean=3,sd=1))
@@ -951,7 +951,7 @@ lines(dfT$x,dfT$y*1000*0.5)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 pnorm(5,mean = 3,sd = 1)
 qnorm(.98,mean = 3,sd = 1)
 pnorm(1:5,mean = 0,sd = 1)
@@ -961,7 +961,7 @@ qnorm(c(0.95,0.975,.99,.995,.999),mean = 0,sd = 1)
 #' 
 #' ## Probability Distributions -- uniforme
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## df <- data.frame(x = runif(1000, min = 10, max = 20))
 ## dfT <-data.frame(x = seq(10,20,length.out=101),
 ##       y = dunif(seq(10,20,length.out=101), min=10, max=20))
@@ -971,7 +971,7 @@ qnorm(c(0.95,0.975,.99,.995,.999),mean = 0,sd = 1)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 df <- data.frame(x = runif(1000, min = 10, max = 20))
 dfT <-data.frame(x = seq(10,20,length.out=101),
       y = dunif(seq(10,20,length.out=101), min=10, max=20))
@@ -981,28 +981,28 @@ lines(dfT$x,dfT$y*1000*0.5)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 punif(12, min=10, max=20)
 qunif(.90, min=10, max=20)
 
 #' 
 #' ## Probability Distributions -- binomial
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## df <- data.frame(x = rbinom(100,5,prob=0.5))
 ## barplot(table(df$x))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 df <- data.frame(x = rbinom(100,5,prob=0.5))
 barplot(table(df$x))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 pbinom(2,5,prob=0.5)
 qbinom(.5,5,.5)
 
@@ -1011,7 +1011,7 @@ qbinom(.5,5,.5)
 #' 
 #' **R** includes many other distributions that can be looked up in the help files.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ? "Distributions"
 
 #' 
@@ -1058,7 +1058,7 @@ qbinom(.5,5,.5)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 obs <- c(9, 6, 7, 15, 11, 11, 9, 13, 9, 10)  
 exp <- rep(.1, 10)
  
@@ -1072,7 +1072,7 @@ chisq.test(x = obs, p = exp)
 #' If both data sets belong to the same distribution, their quantiles will appear aligned on the diagonal of the plot (especially on the central region of the chart).
 #' 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## exp <- rep(1:10, obs)
 ## teo <- rep(1:10, 10)
 ## qqplot(x = exp, y = quantile(teo, (1:length(exp))/length(exp)))
@@ -1082,12 +1082,12 @@ chisq.test(x = obs, p = exp)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 exp <- rep(1:10, obs)
 teo <- rep(1:10, 10)
 
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 qqplot(x = exp, y = quantile(teo, (1:length(exp))/length(exp)))
 qqline(y = exp, distribution = function(x)  quantile(teo,x),
        probs= c(1/length(exp),1))
@@ -1099,7 +1099,7 @@ qqline(y = exp, distribution = function(x)  quantile(teo,x),
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x1 <- rnorm(20, mean = 4, sd = 5)
 x2 <- rbeta(20, shape1 = 5, shape2 = .5, ncp = 4)
 
@@ -1112,7 +1112,7 @@ shapiro.test(x2)
 #' 
 #' Graphically, the quantile-quantile plot can also be used. In R, the `qqnorm` function provide a direct comparison with the normal distribution.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## qqnorm(x1)
 ## qqline(x1)
 ## 
@@ -1122,14 +1122,14 @@ shapiro.test(x2)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 qqnorm(x1)
 qqline(x1)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 qqnorm(x2)
 qqline(x2)
 
@@ -1147,7 +1147,7 @@ qqline(x2)
 #' 
 #' When sample dats come from a normal distribution, the **confidence interval for the variance** can be calculated from the chi-squared distribution.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- rnorm(50, mean = 0, sd = 2)
 df <- length(x) - 1
 lower <- var(x) * df / qchisq(1 - 0.05/2, df)
@@ -1159,7 +1159,7 @@ c(lower = lower, var = var(x), upper = upper)
 #' 
 #' To calculate the **confidence interval for the standard deviation**, when data come from a normal distribution, we proceed by taking the square root of the limits of the confidence interval for the variance.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 c(lower = sqrt(lower), sd = sd(x), upper = sqrt(upper))
 
 #' 
@@ -1167,7 +1167,7 @@ c(lower = sqrt(lower), sd = sd(x), upper = sqrt(upper))
 #' 
 #' To compare **the spread of two populations**, when data come from normal distributions, we use an F test -- `var.test` in R--.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- rnorm(50, mean = 0, sd = 2)
 y <- rnorm(30, mean = 1, sd = 1)
 var.test(x, y)
@@ -1178,7 +1178,7 @@ var.test(x, y)
 #' If the data don't come from a normally distributed population, spreads (scales) can be compared with the Ansari-Bradley test.
 #' 
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- rlnorm(50, meanlog = 2, sdlog = 1)
 y <- rlnorm(30, meanlog = 2, sdlog = .2)
 ansari.test(x, y)
@@ -1188,7 +1188,7 @@ ansari.test(x, y)
 #' 
 #' To compare the spread (scales) of more than two normally distributed populations, the Bartlett test --`bartlett.test` in R-- is commonly used.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## x1 <- round(rnorm(20, mean = 1, sd = 2),1)
 ## x2 <- round(rnorm(20, mean = 3, sd = 2),1)
 ## x3 <- round(rnorm(20, mean = 5, sd = 2),1)
@@ -1198,7 +1198,7 @@ ansari.test(x, y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 x1 <- round(rnorm(20, mean = 1, sd = 2),1)
 x2 <- round(rnorm(20, mean = 3, sd = 2),1)
 x3 <- round(rnorm(20, mean = 5, sd = 2),1)
@@ -1214,7 +1214,7 @@ bartlett.test(list(x1,x2,x3))
 #' 
 #' Graphically, although with less objectivity, either boxplots or boxplots of the centered data can be used.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## x1 <- round(rnorm(20, mean = 1, sd = 2),1)
 ## x2 <- round(rnorm(20, mean = 3, sd = 2),1)
 ## x3 <- round(rnorm(20, mean = 5, sd = 2),1)
@@ -1231,7 +1231,7 @@ bartlett.test(list(x1,x2,x3))
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 x1 <- round(rnorm(20, mean = 1, sd = 2),1)
 x2 <- round(rnorm(20, mean = 3, sd = 2),1)
 x3 <- round(rnorm(20, mean = 5, sd = 2),1)
@@ -1247,7 +1247,7 @@ boxplot(y~group,data=xs)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 boxplot(centered~group,data=xs)
 
 #' 
@@ -1264,14 +1264,14 @@ boxplot(centered~group,data=xs)
 #' 
 #' To calculate a *confidence interval for the mean* of a normally distributed population, we use the Student (or t) distribution. In R, it can be calculates form the `qt` function, or also as one of the results of the `t.test` function.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- rnorm(10, mean = 2, sd = .5)
 x
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 t.test(x)
 
 #' 
@@ -1279,7 +1279,7 @@ t.test(x)
 #' 
 #' If the population does not follow a normal distribution, a nonparametric **confidence interval for the median** can be calculated by using the `wilcox.test` function.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- rnorm(10, mean = 3, sd = .5) ^ 3
 x
 wilcox.test(x, conf.int = TRUE)
@@ -1289,20 +1289,20 @@ wilcox.test(x, conf.int = TRUE)
 #' 
 #' Both function presented to obtain the confidence intervals, can also **compare the central tendency of a population to a predefined value**. As already said, the t test works for a normally distributed population; the Wilcoxon test does not have this requirement.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- rnorm(10, mean = 2, sd = .5)
 x
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 t.test(x, mu = 1.5)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 median(x^3)
 wilcox.test(x ^ 3, mu = 8)
 
@@ -1324,7 +1324,7 @@ wilcox.test(x ^ 3, mu = 8)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- rnorm(10, mean = 3, sd = 1)
 y <- rnorm(10, mean = 3.5, sd = 1)
 list(x = x,y = y)
@@ -1332,19 +1332,19 @@ list(x = x,y = y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 t.test(x - y)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 t.test(x, y, paired = TRUE)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- rlnorm(10, meanlog = 3, sdlog = 1)
 y <- rlnorm(10, meanlog = 3.5, sdlog = 1)
 list(x = x,y = y)
@@ -1352,13 +1352,13 @@ list(x = x,y = y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wilcox.test(x - y)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wilcox.test(x, y, paired = TRUE)
 
 #' 
@@ -1371,7 +1371,7 @@ wilcox.test(x, y, paired = TRUE)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- rnorm(10, mean = 3, sd = 1)
 y <- rnorm(14, mean = 3.5, sd = 2)
 list(x = x,y = y)
@@ -1379,13 +1379,13 @@ list(x = x,y = y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 t.test(x, y, var.equal = FALSE)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- rlnorm(10, meanlog = 3, sdlog = 1)
 y <- rlnorm(14, meanlog = 3.5, sdlog = 2)
 list(x = x,y = y)
@@ -1393,7 +1393,7 @@ list(x = x,y = y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wilcox.test(x, y)
 
 #' 
@@ -1407,7 +1407,7 @@ wilcox.test(x, y)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- c(rnorm(10, mean = 3, sd = 1),
        rnorm(8, mean = 3.2, sd = 1),
        rnorm(10, mean = 4, sd = 1))
@@ -1418,7 +1418,7 @@ summary(test)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- c(rnorm(10, mean = 3, sd = 1),
        rnorm(8, mean = 3.2, sd = 4),
        rnorm(10, mean = 4, sd = 2))
@@ -1428,7 +1428,7 @@ oneway.test(x ~ g)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 x <- c(runif(10, min = 2, max = 4),
        runif(8, min = 1.5, max = 3.5),
        runif(10, min = 3, max = 5))
@@ -1449,7 +1449,7 @@ kruskal.test(x ~ g)
 #' 
 #' Graphically, although with less objectivity, a boxplot can be used to compare location of different data sets.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## x <- c(rnorm(10, mean = 3, sd = 1),
 ##        rnorm(8, mean = 3.2, sd = 1),
 ##        rnorm(10, mean = 4, sd = 1))
@@ -1463,7 +1463,7 @@ kruskal.test(x ~ g)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 x <- c(rnorm(10, mean = 3, sd = 1),
        rnorm(8, mean = 3.2, sd = 1),
        rnorm(10, mean = 4, sd = 1))
@@ -1481,12 +1481,12 @@ boxplot(y~group, data=xs)
 #' 
 #' In this notation, relation among variables is indicated through a three-term expression, with the dependent variable on the left, a tilde operator (`~`) and a combination of independent variables on the right side
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 form1 <- y ~ x              # recta
 class(form1)
 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## form1 <- y ~ log(x)         # logaritmo
 ## form1 <- y ~ poly(x,4)      # polinomio de grado 4
 ## form1 <- y ~ x + 0          # recta que pasa por el origen
@@ -1498,28 +1498,28 @@ class(form1)
 #' 
 #' Ordinary least square (OLS) fit can be produced in R, by using the `lm` function. They can also be used for factors; in this case, dummy variables are produced for the levels of the factors (all but the first one). 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## fit1 <- lm(Ozone ~ Solar.R, data=airquality)
 ## summary(fit1)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 fit1 <- lm(Ozone ~ Solar.R, data=airquality)
 summary(fit1)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## fit2 <- lm(Ozone ~ Solar.R + Temp, data=airquality)
 ## summary(fit2)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 fit2 <- lm(Ozone ~ Solar.R + Temp, data=airquality)
 summary(fit2)
 
@@ -1527,7 +1527,7 @@ summary(fit2)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## df <- airquality
 ## df$Month <- factor(df$Month)
 ## fit3<- lm(Temp ~ Month, data=df)
@@ -1536,7 +1536,7 @@ summary(fit2)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 df <- airquality
 df$Month <- factor(df$Month)
 fit3<- lm(Temp ~ Month, data=df)
@@ -1547,7 +1547,7 @@ summary(fit3)
 #' 
 #' Once fitted, the model can be used to predict the dependent variable with the `predict` function. To search for help, look up `predict.lm`.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df <- na.omit(data.frame(x=airquality$Solar.R, y=airquality$Ozone,
   predict(fit1, newdata=airquality, interval="prediction")))
 head(df)
@@ -1557,7 +1557,7 @@ head(df)
 #' 
 #' The model can be represented from the predictions.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## df2 <- data.frame(
 ##   Solar.R = seq(min(airquality$Solar.R,na.rm=TRUE),
 ##                 max(airquality$Solar.R,na.rm=TRUE), length.out = 201))
@@ -1573,7 +1573,7 @@ head(df)
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 df2 <- data.frame(
   Solar.R = seq(min(airquality$Solar.R,na.rm=TRUE),
                 max(airquality$Solar.R,na.rm=TRUE), length.out = 201))
@@ -1593,26 +1593,26 @@ points(airquality$Solar.R,airquality$Ozone,pch="+")
 #' 
 #' These checks can be made from the residuals data and the required statistical tests.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## fit1$residuals
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df <- na.omit(airquality[,c(2,1)])
 head(cbind(df,fit=fit1$fitted.values, res=fit1$residuals))
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 shapiro.test(fit1$residuals)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 fligner.test(fit1$residuals, cut(1:length(fit1$residuals),breaks=3))
 fligner.test(fit1$residuals,
              cut(fit1$fitted.values-median(fit1$fitted.values),breaks=3))
@@ -1622,43 +1622,43 @@ fligner.test(fit1$residuals,
 #' 
 #' Graphically, the same aspects can be informed from the plots of the model.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## plot(fit1, which=1:6)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 plot(fit1, which=1)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 plot(fit1, which=2)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 plot(fit1, which=3)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 plot(fit1, which=4)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 plot(fit1, which=5)
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 plot(fit1, which=6)
 
 #' 
@@ -1696,7 +1696,7 @@ plot(fit1, which=6)
 #' 
 #' Let's start synthetic data frame...
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df <- data.frame(number=1:5, letters[1:5], c(rep("a", 3), rep("b", 2)))
 df
 
@@ -1704,7 +1704,7 @@ df
 #' 
 #' ## Renaming columns or rows
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 colnames(df) <- c("var1", "var2", "var3") 
 rownames(df) <- paste("subject00", 1:5, sep = "")
 df
@@ -1713,7 +1713,7 @@ df
 #' 
 #' ## Adding columns or rows
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df2 <- cbind(df, rnorm(5)) # adding a vector to the data frame
 df2$var5 <- 5:1 # assigning values to a new named column
 df2
@@ -1721,7 +1721,7 @@ df2
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df2 <- rbind(df, list(6, "e", "b"))
 df2
 
@@ -1738,7 +1738,7 @@ df2
 #' 
 #' ## Segmenting -- indices
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df[1:3,]
 df[,c(1,3)]
 
@@ -1747,14 +1747,14 @@ df[,c(1,3)]
 #' 
 #' Using negative indices removes rows or columns
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df[-(3:4),-2]
 
 #' 
 #' 
 #' ## Segmenting -- names
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df[,"var2"]
 df$var3
 df[,c("var2","var3")]
@@ -1763,7 +1763,7 @@ df[,c("var2","var3")]
 #' 
 #' ## Segmenting -- logical vectors
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df[c(T,T,F,T,F), c(T,F,T)]
 df[df[,1] == 3 | df[,3] == "b",]
 
@@ -1773,7 +1773,7 @@ df[df[,1] == 3 | df[,3] == "b",]
 #' 
 #' The most common way of removing columns or rows is segmenting the data frame. However a column can also be removed by assign it to `NULL`.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df <- data.frame(1:5, letters[1:5], c(rep("a", 3), rep("b", 2)))
 colnames(df) <- c("var1", "var2", "var3") 
 rownames(df) <- paste("subject00", 1:5, sep = "")
@@ -1783,7 +1783,7 @@ df$var2 <- NULL
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df
 
 #' 
@@ -1791,7 +1791,7 @@ df
 #' 
 #' Rows with `NA` values can be removed with the `na.omit` function.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 df[2,2] <- NA
 df <- na.omit(df)
 
@@ -1803,7 +1803,7 @@ df
 #' 
 #' In case we want to remove a variable from the environment, we use the `rm` function.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## rm(df)
 ## rm(list=ls())   # Remove all variables from environment
 ## 
@@ -1812,7 +1812,7 @@ df
 #' 
 #' ## Creating a data frame from combining vectors 
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 dfExp <- expand.grid(A=c(-1,1),B=c(-1,1), C=c(0,1,2))
 dfExp
 
@@ -1822,7 +1822,7 @@ dfExp
 #' 
 #' Data frames can be joined on common values for the combining variables by using the `merge` function. By default, they are merged on the variables with same names.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 dfC <- data.frame(C=c(0,1,2),
     condC=c("hexane","cyclohexane","THF"))
 dfExp <- merge(dfExp, dfC)

@@ -17,7 +17,7 @@
 #'   chunk_output_type: console
 #' ---
 #' 
-## ----setup, include=FALSE---------------------------------------------------------------
+## ----setup, include=FALSE---------------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE, dev="svg")
 
 #' ##
@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' In all cases, to make use of a package, it has to be installed and loaded in memory. 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## installed.packages()[,1] # Lists the installed packages
 ## (.packages())            # Lists the packages currently loaded
 
@@ -52,11 +52,11 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' ----
 #' 
 #' To install a package, we use
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## install.packages("dplyr")
 
 #' To load a package in memory, we use
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## library("dplyr")
 
 #' 
@@ -67,7 +67,7 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' In a script, to avoid repeated installations of a package and to ensure its availability, we can use
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## if(!require("dplyr")) {
 ##   install.packages("dplyr",
 ##                    repos="https://cloud.r-project.org/")
@@ -79,14 +79,14 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' If the package is installed but not loaded, we can still access its functions by using the `::`operator.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## dplyr::band_instruments
 
 #' 
 #' ----
 #' 
 #' To browse the help files for a packages, run
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## help(package="dplyr")
 
 #' 
@@ -122,7 +122,7 @@ knitr::opts_chunk$set(echo = FALSE, dev="svg")
 #' 
 #' Let's start from the `wine` data set in the `FactoMineR` package. 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## if(!require("FactoMineR")) {
 ##   install.packages("FactoMineR",
 ##                    repos="https://cloud.r-project.org/")
@@ -145,7 +145,7 @@ data("wine")
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 str(wine)
 
 #' 
@@ -153,12 +153,12 @@ str(wine)
 #' 
 #' To write a delimited text file from a data frame, we use the `write.table` function or any of its derivative functions. To read, `read.table` is to be used.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## write.table(wine, file="wine.csv", sep=",", dec=".",
 ##             quote=TRUE, fileEncoding="UTF-8", row.names=FALSE)
 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## wine2 <- read.table("wine.csv", sep=",", dec=".",
 ##            quote="\"", fileEncoding="UTF-8", header=TRUE)
 
@@ -178,7 +178,7 @@ str(wine)
 #' 
 #' An example of an XML file containing the structure of caffeine can be found at <https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/CID/2519/record/XML>. It can be read in R with `read_xml` from the `xml2` package.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## if(!require("xml2")) {
 ##   install.packages("xml2",
 ##                    repos="https://cloud.r-project.org/")
@@ -198,7 +198,7 @@ if(!require("xml2")) {
 #' 
 #' Information can be extracted using XPath selectors, <https://www.w3schools.com/xml/xpath_intro.asp>.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 xmlObj <- read_xml(
   "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/CID/2519/record/XML",
   options = "RECOVER")
@@ -219,7 +219,7 @@ as.character(xmlObj_Name)
 #' 
 #' JSON files are another common format for data storage and transmission. In R, the `jsonlite` package offers functions to import and convert this files to list or data frames.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## if(!require("jsonlite")) {
 ##   install.packages("jsonlite",
 ##                    repos="https://cloud.r-project.org/")
@@ -237,7 +237,7 @@ if(!require("jsonlite")) {
 #' 
 #' ## {.small}
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 jsBz <- fromJSON(
   "https://pubchem.ncbi.nlm.nih.gov/rest/pug_view/data/compound/241/JSON")
 jsBz_NI <- jsBz$Record$Section[
@@ -254,7 +254,7 @@ table(unlist(CAS$Information[[1]]$Value$StringWithMarkup))
 #' 
 #' Let's use the `wine` data set again.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 str(wine)
 
 #' 
@@ -263,7 +263,7 @@ str(wine)
 #' To write a data.frame to Excel, we can use the `write_xlsx` from the `writexl` package. To read an Excel file, `read_xlsx` from the `readxl` package can be used.
 #' 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## if(!require("writexl")) {
 ##   install.packages("writexl",
 ##                    repos="https://cloud.r-project.org/")
@@ -293,7 +293,7 @@ if(!require("readxl")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## write_xlsx(list(wineSheet = wine),
 ##                   path = "wine.xlsx")
 ## wineExcel <- readxl::read_xlsx(path = "wine.xlsx")
@@ -303,7 +303,7 @@ if(!require("readxl")) {
 #' 
 #' To open and write Matlab data files, we can use the `R.matlab` package. Relevant functions are called `readMat` and `writeMat`.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## if(!require("R.matlab")) {
 ##   install.packages("R.matlab",
 ##                    repos="https://cloud.r-project.org/")
@@ -321,7 +321,7 @@ if(!require("R.matlab")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## writeMat("wine.mat", wine = wine)
 ## wineMat <-readMat("wine.mat")
 ## wineMat <- data.frame(as.character(unlist(wineMat[[1]][[1]])),
@@ -337,11 +337,11 @@ if(!require("R.matlab")) {
 #' 
 #' To save and read data in the R data format, we use `save` and `load`. These allow storing and restoring any set of variables of the environment. When loaded, variables are recovered with the same names they had on saving.  
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## save(wine, file="wine.rda")
 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## print(load("wine.rda"))          # print shows the name of the loaded objects
 ## wineR <- get(load("wine.rda"))   # get allows storing the loaded information
 ##                                  # with a different name
@@ -369,7 +369,7 @@ if(!require("R.matlab")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## if (!require("BiocManager", quietly = TRUE))
 ##   install.packages("BiocManager",
 ##                    repos="https://cloud.r-project.org/")
@@ -391,7 +391,7 @@ if (!require("ChemmineR", quietly = TRUE)) {
 }
 
 #' 
-## ---- echo = TRUE, eval=FALSE-----------------------------------------------------------
+## ---- echo = TRUE, eval=FALSE-----------------------------------------------------
 ## sdf1 <- read.SDFset(
 ##   "https://cactus.nci.nih.gov/chemical/structure/CCCC/file?format=sdf")
 ## draw_sdf(sdf1[[1]], filename=NULL)
@@ -399,16 +399,17 @@ if (!require("ChemmineR", quietly = TRUE)) {
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
-sdf1 <- read.SDFset("https://cactus.nci.nih.gov/chemical/structure/CCCC/file?format=sdf")
+## ---- echo = FALSE----------------------------------------------------------------
+# sdf1 <- read.SDFset("https://cactus.nci.nih.gov/chemical/structure/CCCC/file?format=sdf")
+base::load(file="sdf1.rda")
 draw_sdf(sdf1[[1]], filename=NULL)
 
 #' 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
-header(sdf1)
+## ---- echo = TRUE-----------------------------------------------------------------
+ChemmineR::header(sdf1)
 MW(sdf1[[1]])
 
 
@@ -417,7 +418,7 @@ MW(sdf1[[1]])
 #' 
 #' JCAMP-DX is an text-based open standard to store and distribute spectral data. Currently the best way to read these files in R is the `readJDX` function in the `readJDX` package.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## if (!require("readJDX")) {
 ##   install.packages("readJDX",
 ##                    repos="https://cloud.r-project.org/")
@@ -437,7 +438,7 @@ if (!require("readJDX")) {
 #' 
 #' ### Acetone IR
 #' 
-## ---- echo = TRUE, eval=FALSE-----------------------------------------------------------
+## ---- echo = TRUE, eval=FALSE-----------------------------------------------------
 ## jdx1 <- readJDX ("../data/67-64-1-IR.jdx")
 ## plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
 ##      xlab="wave number", ylab="T")
@@ -449,7 +450,7 @@ if (!require("readJDX")) {
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 jdx1 <- readJDX ("../data/67-64-1-IR.jdx")
 plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
      xlab="wave number", ylab="T")
@@ -471,7 +472,7 @@ plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
 #' While a functional package to read MSP files doesn't seem to be available, these files can be read with standard functions for text files.
 #' 
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
     msp1 <- readLines("../data/MSMS-Neg-MassBankEU.msp")
     msp1 <- paste(msp1, collapse="\n")
     msp1 <- unlist(strsplit(msp1, "\n\n"))
@@ -485,7 +486,7 @@ plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ##     spectrum <- data.frame(m_z=rep(spectrum$m_z,each=3),
 ##                           int=rep(spectrum$int,each=3),
 ##                           i=1:3)
@@ -497,7 +498,7 @@ plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
     spectrum <- data.frame(m_z=rep(spectrum$m_z,each=3),
                           int=rep(spectrum$int,each=3),
                           i=1:3)
@@ -540,7 +541,7 @@ plot(jdx1$Acetone$x,jdx1$Acetone$y, type="l",
 #' 
 #' We usually install and load both packages jointly with some other packages that work nicely together. These are grouped in the `tidyverse` package.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## if (!require("tidyverse")) {
 ##   install.packages("tidyverse",
 ##                    repos="https://cloud.r-project.org/")
@@ -563,7 +564,7 @@ if (!require("tidyverse")) {
 #' 
 #' Functions are defined with the `function` reserved word (or `\` since R 4.1.0).
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 sq <- function(x) {x ^ 2}
 pow <- \(x,y) {x ^ y}
 
@@ -576,7 +577,7 @@ pow(3,4)
 #' 
 #' Pipes are a syntax variant for transferring arguments to functions. It allows for a more process oriented organization of the code. R includes two types of pipes: `%>%` from the `magrittr` package and `|>` included in R 4.1.0.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 sq(4)
 4 %>% sq    # With %>%, parenthesis are not required when there is no arguments
 4 |> sq()
@@ -584,7 +585,7 @@ sq(4)
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 pow(sq(sq(2)),3)
 2 %>% sq %>% sq %>% pow(3)
 
@@ -593,7 +594,7 @@ pow(sq(sq(2)),3)
 #' 
 #' By default, the left operand of the pipe is sent as the first argument of the function on the right. It can be sent to a different position in the calculation by including a dot (`.`) in the right-hand side of the pipe.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 pow(sq(sq(2)),sq(sq(2))/100)
 2 %>% sq %>% sq(.) %>% pow(.,./100)
 
@@ -620,13 +621,13 @@ pow(sq(sq(2)),sq(sq(2))/100)
 #' 
 #' Let's see how we operate in this logic, using as an example the `wine` data set.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 str(wine) 
 
 #' 
 #' ## Renaming columns or rows
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 newColnames <- c("label", "soil", "odorBf", "aromaBf",
                  "fruityBf", "flowerBf", "spiceBf",
                  "visual", "nuance", "surface", "odorI",
@@ -642,7 +643,7 @@ colnames(wine2)
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wine2 <- wine2 %>% rownames_to_column() %>%
   mutate(rowname = paste0("W",sprintf("%0.2d",1:21)))
 wine2$rowname
@@ -651,35 +652,35 @@ wine2$rowname
 #' 
 #' ## Adding columns or rows
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wine2 <- wine2 %>% mutate(newCol=1:21)
 head(wine2[,c(1,30:33)])
 
 #' 
 #' ------------------------------------------------------------------------
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wine2 <- wine2 %>% add_row(wine2[21,])
 tail(wine2[,c(1,30:33)])
 
 #' 
 #' ## Segmenting
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wine2 %>% select(rowname,label,soil,overall) %>% 
   filter(overall>3.6)
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wine2 %>% rowwise() %>% mutate(worse=min(c_across(4:30))) %>% 
   filter(worse<1.5) %>% select(rowname, worse)
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wine2 %>% select(overall) %>% str
 wine2 %>% pull(overall) %>% str
 
@@ -687,12 +688,12 @@ wine2 %>% pull(overall) %>% str
 #' 
 #' ## Removing columns or rows
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wine2 <- wine2 %>% select(-newCol)
 tail(wine2[,30:ncol(wine2)])
 
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wine3 <- wine2 %>% filter(overall<3.5)
 wine3 %>% pull(rowname)
 
@@ -701,7 +702,7 @@ wine3 %>% pull(rowname)
 #' 
 #' ## Joining data frames
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 qualityLevel <- data.frame(level=1:4,
   qualityNom = c("Horrendous","Bad", "Good", "Excellent"))
 wine2 <- wine2 %>% mutate(level=round(overall,0)) %>% 
@@ -739,7 +740,7 @@ head(wine2[,30:ncol(wine2)])
 #' 
 #' Let's convert it to long...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## wineL <- wine %>% rownames_to_column() %>%
 ##   pivot_longer(4:32,
 ##                names_to = "determination",
@@ -749,7 +750,7 @@ head(wine2[,30:ncol(wine2)])
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 wineL <- wine %>% rownames_to_column() %>% 
   pivot_longer(4:32,
                names_to = "determination",
@@ -757,7 +758,7 @@ wineL <- wine %>% rownames_to_column() %>%
 str(wineL)
 
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 head(wineL)
 
 #' 
@@ -765,7 +766,7 @@ head(wineL)
 #' 
 #' Let's go back to wide...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## wineW <- pivot_wider(wineL, id_cols = 1:3,
 ##                       names_from = "determination",
 ##                       values_from = "value")
@@ -774,7 +775,7 @@ head(wineL)
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 wineW <- pivot_wider(wineL, id_cols = 1:3,
                       names_from = "determination",
                       values_from = "value")
@@ -783,7 +784,7 @@ str(wineW)
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 head(wineW,2)
 
 #' 
@@ -792,7 +793,7 @@ head(wineW,2)
 #' 
 #' ### For wide data frames
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wineW %>% select(4:32) %>% summarize(across(
   everything(),list(mean=mean,sd=sd))) %>% t
 
@@ -801,7 +802,7 @@ wineW %>% select(4:32) %>% summarize(across(
 #' 
 #' ### For long data frames
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 wineL %>% group_by(determination) %>% 
   summarize(mean=mean(value), sd=sd(value))
 
@@ -855,7 +856,7 @@ if(!require("tidyverse")) {
 #' 
 #' For example,
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## plot1 <- ggplot(data = anscombe,
 ##         mapping = aes(x = x1, y = y1))  # Data and aesthetic mapping
 ## plot1 <- plot1 + geom_point()       # Geometry
@@ -864,7 +865,7 @@ if(!require("tidyverse")) {
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 plot1 <- ggplot(data = anscombe,
         mapping = aes(x = x1, y = y1))  # Data and aesthetic mapping 
 plot1 <- plot1 + geom_point()       # Geometry
@@ -874,15 +875,15 @@ plot1
 #' ## `ggplot2` -- Data
 #' In `ggplot2`, the data is the first argument of the `ggplot` function. It is usually a data frame --or an object that can be converted to one--.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## plot1 <- ggplot(data = anscombe,
 
 #' 
 #' ## `ggplot2` -- Aesthetic mapping
 #' 
-#' The aesthetic mapping establishes the relationships between data variables and graphical elements. It is the second argument of the  `ggplot`function and it must be created from the `aes` support function.
+#' The aesthetic mapping establishes the relationships between data variables and graphical elements. It is the second argument of the  `ggplot` function and it must be created from the `aes` support function.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ##         mapping = aes(x = x1, y = y1))
 
 #' 
@@ -900,7 +901,7 @@ plot1
 #' The geometries (`geom_...`) indicate the format --type-- of the plot, 
 #' meaning how the graphical variables are put together. One or more geometries (each will be a layer) can be included in a plot by adding them to the `gg` object. 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## plot1 <- plot1 + geom_point()
 
 #' 
@@ -935,7 +936,7 @@ plot1
 #' 
 #' We will use a sample of 1000 points from the `diamonds` data set --included in the `ggplot2` package-- to create the examples.
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------------
+## ---- echo = TRUE-----------------------------------------------------------------
 diaM <- diamonds[sample(1:nrow(diamonds),1000),]
 str(diaM)
 
@@ -943,13 +944,13 @@ str(diaM)
 #' 
 #' ## `ggplot2` Graphs -- Scatter Plot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=carat,y=price)) + geom_point()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=carat,y=price)) + geom_point()
 
 #' 
@@ -957,14 +958,14 @@ ggplot(diaM, aes(x=carat,y=price)) + geom_point()
 #' 
 #' Adding a third variable and adjusting formats...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=carat,y=price,color=cut)) +
 ##   geom_point(alpha=.8,shape=21,size=3)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=carat,y=price,color=cut)) + 
   geom_point(alpha=.8,shape=21,size=3)
 
@@ -973,7 +974,7 @@ ggplot(diaM, aes(x=carat,y=price,color=cut)) +
 #' 
 #' With a trend line...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=carat,y=price,color=cut)) +
 ##   geom_point(alpha=.8,shape=21,size=3) +
 ##   geom_smooth(method="lm",se=FALSE)
@@ -981,20 +982,20 @@ ggplot(diaM, aes(x=carat,y=price,color=cut)) +
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=carat,y=price,color=cut)) + 
   geom_point(alpha=.8,shape=21,size=3) +
   geom_smooth(method="lm",se=FALSE)
 
 #' 
 #' ## `ggplot2` Graphs -- Histogram
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=price)) + geom_histogram(binwidth=1000)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=price)) + geom_histogram(binwidth=1000)
 
 #' 
@@ -1002,14 +1003,14 @@ ggplot(diaM, aes(x=price)) + geom_histogram(binwidth=1000)
 #' 
 #' Adding the cut variable...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=price,fill=cut)) +
 ##   geom_histogram(position='dodge',binwidth=1000)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=price,fill=cut)) +
   geom_histogram(position='dodge',binwidth=1000)
 
@@ -1018,14 +1019,14 @@ ggplot(diaM, aes(x=price,fill=cut)) +
 #' 
 #' In relative frequencies, per group...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=price,y=..density..,fill=cut)) +
 ##   geom_histogram(position='dodge',binwidth=1000)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=price,y=..density..,fill=cut)) +
   geom_histogram(position='dodge',binwidth=1000)
 
@@ -1034,14 +1035,14 @@ ggplot(diaM, aes(x=price,y=..density..,fill=cut)) +
 #' 
 #' Let's try with a density plot...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=price,fill=cut)) +
 ##   geom_density(alpha=.3)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=price,fill=cut)) +
   geom_density(alpha=.3)
 
@@ -1049,14 +1050,14 @@ ggplot(diaM, aes(x=price,fill=cut)) +
 #' 
 #' ## `ggplot2` Graphs -- Bar Plot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=clarity)) +
 ##   geom_bar()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=clarity)) +
   geom_bar()
 
@@ -1065,14 +1066,14 @@ ggplot(diaM, aes(x=clarity)) +
 #' 
 #' Adding the cut variable...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=clarity, fill=cut)) +
 ##   geom_bar()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=clarity, fill=cut)) +
   geom_bar()
 
@@ -1082,14 +1083,14 @@ ggplot(diaM, aes(x=clarity, fill=cut)) +
 #' To compare absolute frequencies, dodged bars work better...
 #' 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=clarity, fill=cut)) +
 ##   geom_bar(position="dodge")
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=clarity, fill=cut)) +
   geom_bar(position="dodge")
 
@@ -1098,14 +1099,14 @@ ggplot(diaM, aes(x=clarity, fill=cut)) +
 #' 
 #' To compare cumulative relative frequencies, per-class stacked bars are more useful.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=clarity, fill=cut)) +
 ##   geom_bar(position="fill")
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=clarity, fill=cut)) +
   geom_bar(position="fill")
 
@@ -1117,14 +1118,14 @@ ggplot(diaM, aes(x=clarity, fill=cut)) +
 #' 
 #' ## `ggplot2` Graphs -- Boxplot
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(y=price)) +
 ##   geom_boxplot()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(y=price)) +
   geom_boxplot()
 
@@ -1133,14 +1134,14 @@ ggplot(diaM, aes(y=price)) +
 #' 
 #' Adding the cut variable...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=cut, y=price)) +
 ##   geom_boxplot()
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=cut, y=price)) +
   geom_boxplot()
 
@@ -1149,7 +1150,7 @@ ggplot(diaM, aes(x=cut, y=price)) +
 #' 
 #' The chart can be improved by showing all the data points with the position modified with some random noise --jittered--.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=cut, y=price)) +
 ##   geom_boxplot(outlier.shape = NA) +
 ##   geom_jitter(shape = 21, alpha=.5,height=0,width=.2)
@@ -1157,7 +1158,7 @@ ggplot(diaM, aes(x=cut, y=price)) +
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
 ggplot(diaM, aes(x=cut, y=price)) + 
   geom_boxplot(outlier.shape = NA) +
   geom_jitter(shape = 21, alpha=.5,height=0,width=.2)
@@ -1167,26 +1168,26 @@ ggplot(diaM, aes(x=cut, y=price)) +
 #' 
 #' Or including a violin plot, `geom_violin`, and an addtional point with the the mean.
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
-## medias <- diaM %>% group_by(cut) %>%
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## means <- diaM %>% group_by(cut) %>%
 ##   summarise(price=mean(price))
 ## 
 ## ggplot(diaM, aes(x=cut, y=price)) +
 ##   geom_violin() +
 ##   geom_boxplot(outlier.shape = NA, width = 0.1) +
-##   geom_point(data=medias,shape=3)
+##   geom_point(data=means,shape=3)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, eval = TRUE---------------------------------------------------------
-medias <- diaM %>% group_by(cut) %>%
+## ---- echo = FALSE, eval = TRUE---------------------------------------------------
+means <- diaM %>% group_by(cut) %>%
   summarise(price=mean(price))
 
 ggplot(diaM, aes(x=cut, y=price)) + 
   geom_violin() +
   geom_boxplot(outlier.shape = NA, width = 0.1) +
-  geom_point(data=medias,shape=3)
+  geom_point(data=means,shape=3)
 
 #' 
 #' 
@@ -1204,7 +1205,7 @@ ggplot(diaM, aes(x=cut, y=price)) +
 #' 
 #' One last example...
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=carat, y = price,
 ##                  shape = cut, col = clarity)) +
 ##   geom_point(alpha=.6)
@@ -1213,7 +1214,7 @@ ggplot(diaM, aes(x=cut, y=price)) +
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 ggplot(diaM, aes(x=carat, y = price,
                  shape = cut, col = clarity)) +
   geom_point(alpha=.6)
@@ -1222,7 +1223,7 @@ ggplot(diaM, aes(x=carat, y = price,
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------------
+## ---- echo = TRUE, eval = FALSE---------------------------------------------------
 ## ggplot(diaM, aes(x=carat, y = price,
 ##                  shape = cut, col = clarity)) +
 ##   geom_point(alpha=.6) +
@@ -1238,7 +1239,7 @@ ggplot(diaM, aes(x=carat, y = price,
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------------
+## ---- echo = FALSE----------------------------------------------------------------
 ggplot(diaM, aes(x=carat, y = price,
                  shape = cut, col = clarity)) +
   geom_point(alpha=.8) +

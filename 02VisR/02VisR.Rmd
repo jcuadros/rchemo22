@@ -400,7 +400,8 @@ draw_sdf(sdf1[[1]], filename=NULL)
 ----
 
 ```{r, echo = FALSE}
-sdf1 <- read.SDFset("https://cactus.nci.nih.gov/chemical/structure/CCCC/file?format=sdf")
+# sdf1 <- read.SDFset("https://cactus.nci.nih.gov/chemical/structure/CCCC/file?format=sdf")
+base::load(file="sdf1.rda")
 draw_sdf(sdf1[[1]], filename=NULL)
 ```
 
@@ -408,7 +409,7 @@ draw_sdf(sdf1[[1]], filename=NULL)
 ----
 
 ```{r, echo = TRUE}
-header(sdf1)
+ChemmineR::header(sdf1)
 MW(sdf1[[1]])
 
 ``` 
@@ -880,7 +881,7 @@ plot1 <- ggplot(data = anscombe,
 
 ## `ggplot2` -- Aesthetic mapping
 
-The aesthetic mapping establishes the relationships between data variables and graphical elements. It is the second argument of the  `ggplot`function and it must be created from the `aes` support function.
+The aesthetic mapping establishes the relationships between data variables and graphical elements. It is the second argument of the  `ggplot` function and it must be created from the `aes` support function.
 
 ```{r, echo = TRUE, eval = FALSE}
         mapping = aes(x = x1, y = y1))
@@ -1168,25 +1169,25 @@ ggplot(diaM, aes(x=cut, y=price)) +
 Or including a violin plot, `geom_violin`, and an addtional point with the the mean.
 
 ```{r, echo = TRUE, eval = FALSE}
-medias <- diaM %>% group_by(cut) %>%
+means <- diaM %>% group_by(cut) %>%
   summarise(price=mean(price))
 
 ggplot(diaM, aes(x=cut, y=price)) + 
   geom_violin() +
   geom_boxplot(outlier.shape = NA, width = 0.1) +
-  geom_point(data=medias,shape=3)
+  geom_point(data=means,shape=3)
 ```
 
 ----
 
 ```{r, echo = FALSE, eval = TRUE}
-medias <- diaM %>% group_by(cut) %>%
+means <- diaM %>% group_by(cut) %>%
   summarise(price=mean(price))
 
 ggplot(diaM, aes(x=cut, y=price)) + 
   geom_violin() +
   geom_boxplot(outlier.shape = NA, width = 0.1) +
-  geom_point(data=medias,shape=3)
+  geom_point(data=means,shape=3)
 ```
 
 
