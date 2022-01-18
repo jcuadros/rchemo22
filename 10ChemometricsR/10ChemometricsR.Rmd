@@ -1016,8 +1016,8 @@ str(clWines_hca)
 ----
 
 ``` {r, echo = TRUE}
-winesGroups <- cutree(clWines_hca, k=3)
-table(winesGroups)
+winesGroups_hca <- cutree(clWines_hca, k=3)
+table(winesGroups_hca)
 ```
 
 ----
@@ -1055,6 +1055,67 @@ clWines_km <- kmeans(dfWinesScaled, centers=3)
 str(clWines_km)
 ```
 
+----
+
+``` {r, echo = TRUE}
+winesGroups_km <- clWines_km$cluster
+table(winesGroups_km)
+
+``` 
+
+----
+
+```{r, echo = TRUE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE}
+if(!require("mclust")) {
+  install.packages("mclust",
+                   repos="https://cloud.r-project.org/")
+  library("mclust")
+}
+```
+
+----
+
+``` {r, echo = TRUE}
+adjustedRandIndex(winesGroups_hca,winesGroups_km)
+``` 
+
+## {.small}
+
+``` {r, echo = TRUE, eval = FALSE}
+dfWinesClust <- cbind(dfWines,
+                      hca=factor(winesGroups_hca),
+                      km=factor(winesGroups_km))
+g1 <- ggplot(dfWinesClust,
+    aes(x=flavonoids, y=alcohol, color=hca)) + 
+  geom_point(shape=3) + geom_encircle() + theme_classic() +
+  theme(legend.position = "top")
+g2 <- ggplot(dfWinesClust,
+    aes(x=flavonoids, y=alcohol, color=km)) + 
+  geom_point(shape=3) + geom_encircle() + theme_classic() +
+  theme(legend.position = "top")
+
+grid.arrange(g1,g2,ncol=2)
+  
+``` 
+
+----
+
+``` {r, echo = FALSE}
+dfWinesClust <- cbind(dfWines,
+                      hca=factor(winesGroups_hca),
+                      km=factor(winesGroups_km))
+g1 <- ggplot(dfWinesClust,
+    aes(x=flavonoids, y=alcohol, color=hca)) + 
+  geom_point(shape=3) + geom_encircle() + theme_classic() +
+  theme(legend.position = "top")
+g2 <- ggplot(dfWinesClust,
+    aes(x=flavonoids, y=alcohol, color=km)) + 
+  geom_point(shape=3) + geom_encircle() + theme_classic() +
+  theme(legend.position = "top")
+
+grid.arrange(g1,g2,ncol=2)
+  
+``` 
 
 ## Self-Organizing Maps
 

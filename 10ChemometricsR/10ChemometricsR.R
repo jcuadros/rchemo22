@@ -17,7 +17,7 @@
 #'   chunk_output_type: console
 #' ---
 #' 
-## ----setup, include=FALSE---------------------------------------------------------
+## ----setup, include=FALSE----------------------------------------------------
 knitr::opts_chunk$set(echo = FALSE, dev="svg")
 
 #' ##
@@ -147,14 +147,14 @@ data("gaschrom")
 
 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## help("gaschrom", package="ptw")
 ## 
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## gchrom <- data.frame(rt=1:5000,
 ##                      I=gaschrom[1,])
 ## plot(gchrom, type="l")
@@ -163,7 +163,7 @@ data("gaschrom")
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 gchrom <- data.frame(rt=1:5000,
                      I=gaschrom[1,])
 plot(gchrom, type="l")
@@ -180,14 +180,14 @@ if(!require("pls")) {
 data(gasoline)
 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## help("gasoline", package="pls")
 ## 
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE,eval = FALSE----------------------------------------------------
+## ---- echo = TRUE,eval = FALSE-----------------------------------------------
 ## gasolineNIR <- data.frame(wl=seq(900,1700,by=2),
 ##                           logRef=gasoline$NIR[4,])
 ## plot(gasolineNIR, type="l")
@@ -196,7 +196,7 @@ data(gasoline)
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 gasolineNIR <- data.frame(wl=seq(900,1700,by=2),
                           logRef=gasoline$NIR[4,])
 plot(gasolineNIR, type="l")
@@ -205,7 +205,7 @@ plot(gasolineNIR, type="l")
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## woodNIR <- get(load("../data/mydataPHAZIR.Rdata"))
 ## 
 ## spectra <- as.matrix(woodNIR$NIR)
@@ -218,7 +218,7 @@ plot(gasolineNIR, type="l")
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 woodNIR <- get(load("../data/mydataPHAZIR.Rdata"))
 
 spectra <- as.matrix(woodNIR$NIR)
@@ -260,7 +260,7 @@ sciexMS <- mzR::openMSfile(
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 sciexSpec <- mzR::spectra(sciexMS)
 length(sciexSpec)
 dim(sciexSpec[[1]])
@@ -268,14 +268,14 @@ dim(sciexSpec[[1]])
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 plot(sciexSpec[[1]], type="l")
 
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 plot(sciexSpec[[931]], type="l")
 
 
@@ -292,14 +292,14 @@ if(!require("baseline")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 data("milk")
 str(milk)
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## help("milk")
 ## 
 ## milkMS <- data.frame(mz = as.numeric(colnames(milk$spectra)),
@@ -309,7 +309,7 @@ str(milk)
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 milkMS <- data.frame(mz = as.numeric(colnames(milk$spectra)),
                      I = milk$spectra[20,])
 plot(milkMS, type="l")
@@ -329,7 +329,7 @@ plot(milkMS, type="l")
 #' 
 #' ## Noise Removal -- Moving Average
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## milkMS_mave <- milkMS
 ## milkMS_mave$I <- as.numeric(stats::filter(milkMS_mave$I,
 ##               rep(1,13)/13))
@@ -346,7 +346,7 @@ plot(milkMS, type="l")
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, warning = FALSE-----------------------------------------------
+## ---- echo = FALSE, warning = FALSE------------------------------------------
 milkMS_mave <- milkMS
 milkMS_mave$I <- as.numeric(stats::filter(milkMS_mave$I, 
               rep(1,13)/13))
@@ -363,7 +363,7 @@ grid.arrange(g1,g2)
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## g1 <- ggplot(milkMS, aes(x=mz, y=I)) +
 ##   geom_line() +
 ##   coord_cartesian(xlim=c(10000,11000),ylim=c(0,500)) +
@@ -378,7 +378,7 @@ grid.arrange(g1,g2)
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, warning = FALSE-----------------------------------------------
+## ---- echo = FALSE, warning = FALSE------------------------------------------
 g1 <- ggplot(milkMS, aes(x=mz, y=I)) + 
   geom_line() +
   coord_cartesian(xlim=c(10000,11000),ylim=c(0,500)) +
@@ -393,7 +393,7 @@ grid.arrange(g1,g2)
 #' 
 #' ## Noise Removal -- Savitzky-Golay
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## milkMS_sg7 <- milkMS
 ## milkMS_sg7$I <- as.numeric(stats::filter(milkMS_mave$I,
 ##               c(-2,3,6,7,6,3,-2)/21))
@@ -412,7 +412,7 @@ grid.arrange(g1,g2)
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, warning = FALSE-----------------------------------------------
+## ---- echo = FALSE, warning = FALSE------------------------------------------
 milkMS_sg7 <- milkMS
 milkMS_sg7$I <- as.numeric(stats::filter(milkMS_mave$I, 
               c(-2,3,6,7,6,3,-2)/21))
@@ -431,7 +431,7 @@ grid.arrange(g1,g2)
 #' 
 #' ## Noise Removal -- FFT
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## I_fft <- fft(milkMS$I)
 ## I_fft[513:(length(I_fft)-512)] <- 0
 ## milkMS_fft <- data.frame(mz = milkMS$mz,
@@ -449,7 +449,7 @@ grid.arrange(g1,g2)
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, warning = FALSE-----------------------------------------------
+## ---- echo = FALSE, warning = FALSE------------------------------------------
 I_fft <- fft(milkMS$I)
 I_fft[513:(length(I_fft)-512)] <- 0
 milkMS_fft <- data.frame(mz = milkMS$mz,
@@ -467,7 +467,7 @@ grid.arrange(g1,g2)
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## g1 <- ggplot(milkMS, aes(x=mz, y=I)) +
 ##   geom_line() +
 ##   coord_cartesian(xlim=c(10000,15000),ylim=c(0,4000)) +
@@ -482,7 +482,7 @@ grid.arrange(g1,g2)
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, warning = FALSE-----------------------------------------------
+## ---- echo = FALSE, warning = FALSE------------------------------------------
 g1 <- ggplot(milkMS, aes(x=mz, y=I)) + 
   geom_line() +
   coord_cartesian(xlim=c(10000,15000),ylim=c(0,4000)) +
@@ -510,7 +510,7 @@ grid.arrange(g1,g2)
 #' 
 #' ## Baseline Adjustment - MSC {.small}
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## originalspectra <- as.matrix(woodNIR$NIR)
 ## newspectra<-msc(originalspectra)
 ## mydataOrig <- data.frame(id=woodNIR[,5], NIR = originalspectra) %>%
@@ -531,7 +531,7 @@ grid.arrange(g1,g2)
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 originalspectra <- as.matrix(woodNIR$NIR)
 newspectra<-msc(originalspectra)            
 mydataOrig <- data.frame(id=woodNIR[,5], NIR = originalspectra) %>% 
@@ -552,7 +552,7 @@ grid.arrange(g1,g2)
 #' 
 #' ## Baseline Adjustment - ALS
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## milkMS_als <- milkMS
 ## sp <- baseline.als(t(milkMS_als$I), lambda=10)
 ## milkMS_als$I <- sp$corrected[1,]
@@ -569,7 +569,7 @@ grid.arrange(g1,g2)
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, warning = FALSE-----------------------------------------------
+## ---- echo = FALSE, warning = FALSE------------------------------------------
 milkMS_als <- milkMS
 sp <- baseline.als(t(milkMS_als$I), lambda=10)
 milkMS_als$I <- sp$corrected[1,]
@@ -593,7 +593,7 @@ grid.arrange(g1,g2)
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## gchrom1 <- data.frame(rt=1:5000,
 ##                      I=gaschrom[1,])
 ## gchrom2 <- data.frame(rt=1:5000,
@@ -608,7 +608,7 @@ grid.arrange(g1,g2)
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 gchrom1 <- data.frame(rt=1:5000,
                      I=gaschrom[1,])
 gchrom2 <- data.frame(rt=1:5000,
@@ -623,7 +623,7 @@ ggplot(gchrom1,aes(x=rt, y=I)) +
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 wcc(gchrom1[,2], gchrom2[,2], length(gchrom1[,2]))
 res <- ptw(gchrom1[,2], gchrom2[,2], init.coef=c(0,1,0))
 summary(res)    # WCC is a distance
@@ -631,7 +631,7 @@ summary(res)    # WCC is a distance
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## gchrom2c <- data.frame(rt=gchrom1$rt,
 ##                        I=res$warped.sample[1,])
 ## ggplot(gchrom1,aes(x=rt, y=I)) +
@@ -642,7 +642,7 @@ summary(res)    # WCC is a distance
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, warning = FALSE-----------------------------------------------
+## ---- echo = FALSE, warning = FALSE------------------------------------------
 gchrom2c <- data.frame(rt=gchrom1$rt,
                        I=res$warped.sample[1,])
 ggplot(gchrom1,aes(x=rt, y=I)) +
@@ -658,7 +658,7 @@ ggplot(gchrom1,aes(x=rt, y=I)) +
 #' 
 #' ## {.small}
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## dfMS1 <- data.frame(mz = sciexSpec[[1]][,1],
 ##                     I = sciexSpec[[1]][,2])
 ## dfMS2 <- dfMS1 %>% mutate(mz=round(2*mz)/2) %>%
@@ -679,7 +679,7 @@ ggplot(gchrom1,aes(x=rt, y=I)) +
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 dfMS1 <- data.frame(mz = sciexSpec[[1]][,1],
                     I = sciexSpec[[1]][,2])
 dfMS2 <- dfMS1 %>% mutate(mz=round(2*mz)/2) %>% 
@@ -706,7 +706,7 @@ grid.arrange(g1,g2,g3)
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 str(dfMS2)
 dfMS2[dfMS2$I/max(dfMS2$I)>.05,]
 
@@ -778,33 +778,33 @@ data("wines")
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 dfWines <- data.frame(wines)
 str(dfWines)
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 summary(dfWines[,1:5])
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 summary(dfWines[,6:10])
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 summary(dfWines[,11:13])
 
 #' 
 #' 
 #' ## Correlations
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 corWines <- data.frame(cor(dfWines)) %>% 
   rownames_to_column("var1") %>% 
   pivot_longer(2:14, names_to="var2", values_to = "cor") %>% 
@@ -815,19 +815,19 @@ str(corWines)
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 head(corWines)
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 tail(corWines)
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## if(!require("corrplot")) {
 ##   install.packages("corrplot",
 ##                    repos="https://cloud.r-project.org/")
@@ -850,20 +850,20 @@ corrplot(cor(wines))
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## corrplot(cor(wines), order="hclust")
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 corrplot(cor(wines), order="hclust")
 
 #' 
 #' ----
 #' 
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## ggpairs(dfWines, axisLabels = "none",
 ##         lower = list(continuous = wrap("points",
 ##               alpha = 0.3, shape = 21, size = 1))) +
@@ -872,7 +872,7 @@ corrplot(cor(wines), order="hclust")
 #' 
 #' ----
 #' 
-## ---- echo = FALSE, message = FALSE-----------------------------------------------
+## ---- echo = FALSE, message = FALSE------------------------------------------
 ggpairs(dfWines, axisLabels = "none",
         lower = list(continuous = wrap("points",
               alpha = 0.3, shape = 21, size = 1))) + 
@@ -902,77 +902,77 @@ if(!require("REdaS")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 REdaS::KMOS(dfWines)  # Kaiser-Meyer-Olkin Sample Adequacy
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 REdaS::bart_spher(cor(dfWines))  # Bartlett's Sphericty Test
 
 #' 
 #' 
 #' ## Factor Analysis -- PCA
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 pcaWines <- princomp(dfWines, cor=TRUE)
 summary(pcaWines)
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 str(pcaWines)
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## biplot(pcaWines)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 biplot(pcaWines)
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## biplot(pcaWines, choices=c(1,3))
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 biplot(pcaWines, choices=c(1,3))
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## screeplot(pcaWines)
 
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 screeplot(pcaWines)
 
 #' 
 #' 
 #' ## Factor Analysis -- Rotation
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 rfa <- varimax(pcaWines$loadings[,1:3], eps=1e-14)
 rfa
 
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 tfa <- promax(pcaWines$loadings[,1:3], m=4)
 tfa
 
@@ -989,7 +989,7 @@ if(!require("GPArotation")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 obfa <- GPArotation::oblimin(pcaWines$loadings[,1:3])
 obfa
 
@@ -1005,7 +1005,7 @@ obfa
 #' 
 #' ## Clustering - Hierarchical
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 dfWinesScaled <- data.frame(scale(dfWines))
 clWines_hca <- hclust(stats::dist(dfWinesScaled,
                                   method="euclidean"),
@@ -1015,9 +1015,9 @@ str(clWines_hca)
 #' 
 #' ----
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
-winesGroups <- cutree(clWines_hca, k=3)
-table(winesGroups)
+## ---- echo = TRUE------------------------------------------------------------
+winesGroups_hca <- cutree(clWines_hca, k=3)
+table(winesGroups_hca)
 
 #' 
 #' ----
@@ -1032,7 +1032,7 @@ if(!require("ggdendro")) {
 #' 
 #' ----
 #' 
-## ---- echo = TRUE, eval = FALSE---------------------------------------------------
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
 ## ggdendrogram(clWines_hca, labels=FALSE) +
 ##   geom_hline(yintercept=9.2, color="red") +
 ##   theme(axis.text.x = element_blank())
@@ -1040,7 +1040,7 @@ if(!require("ggdendro")) {
 #' 
 #' ----
 #' 
-## ---- echo = FALSE----------------------------------------------------------------
+## ---- echo = FALSE-----------------------------------------------------------
 ggdendrogram(clWines_hca, labels=FALSE) +
   geom_hline(yintercept=9.2, color="red") +
   theme(axis.text.x = element_blank())
@@ -1049,12 +1049,73 @@ ggdendrogram(clWines_hca, labels=FALSE) +
 #' 
 #' ## Clustering - K-means
 #' 
-## ---- echo = TRUE-----------------------------------------------------------------
+## ---- echo = TRUE------------------------------------------------------------
 dfWinesScaled <- data.frame(scale(dfWines))
 clWines_km <- kmeans(dfWinesScaled, centers=3)
 str(clWines_km)
 
 #' 
+#' ----
+#' 
+## ---- echo = TRUE------------------------------------------------------------
+winesGroups_km <- clWines_km$cluster
+table(winesGroups_km)
+
+
+#' 
+#' ----
+#' 
+## ---- echo = TRUE, results = 'hide', message = FALSE, warning = FALSE, error = FALSE----
+if(!require("mclust")) {
+  install.packages("mclust",
+                   repos="https://cloud.r-project.org/")
+  library("mclust")
+}
+
+#' 
+#' ----
+#' 
+## ---- echo = TRUE------------------------------------------------------------
+adjustedRandIndex(winesGroups_hca,winesGroups_km)
+
+#' 
+#' ## {.small}
+#' 
+## ---- echo = TRUE, eval = FALSE----------------------------------------------
+## dfWinesClust <- cbind(dfWines,
+##                       hca=factor(winesGroups_hca),
+##                       km=factor(winesGroups_km))
+## g1 <- ggplot(dfWinesClust,
+##     aes(x=flavonoids, y=alcohol, color=hca)) +
+##   geom_point(shape=3) + geom_encircle() + theme_classic() +
+##   theme(legend.position = "top")
+## g2 <- ggplot(dfWinesClust,
+##     aes(x=flavonoids, y=alcohol, color=km)) +
+##   geom_point(shape=3) + geom_encircle() + theme_classic() +
+##   theme(legend.position = "top")
+## 
+## grid.arrange(g1,g2,ncol=2)
+## 
+
+#' 
+#' ----
+#' 
+## ---- echo = FALSE-----------------------------------------------------------
+dfWinesClust <- cbind(dfWines,
+                      hca=factor(winesGroups_hca),
+                      km=factor(winesGroups_km))
+g1 <- ggplot(dfWinesClust,
+    aes(x=flavonoids, y=alcohol, color=hca)) + 
+  geom_point(shape=3) + geom_encircle() + theme_classic() +
+  theme(legend.position = "top")
+g2 <- ggplot(dfWinesClust,
+    aes(x=flavonoids, y=alcohol, color=km)) + 
+  geom_point(shape=3) + geom_encircle() + theme_classic() +
+  theme(legend.position = "top")
+
+grid.arrange(g1,g2,ncol=2)
+  
+
 #' 
 #' ## Self-Organizing Maps
 #' 
